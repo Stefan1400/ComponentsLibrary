@@ -1,12 +1,11 @@
-// server/models/userModel.js
 const db = require('../db');
 
-const findAll = async () => {
+const getAllUsers = async () => {
   const result = await db.query('SELECT * FROM users');
   return result.rows;
 };
 
-const create = async (username, password) => {
+const createUser = async (username, password) => {
   const result = await db.query(
     'INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *',
     [username, password]
@@ -14,7 +13,30 @@ const create = async (username, password) => {
   return result.rows[0];
 };
 
+const updateUser = async (id, { username, password }) => {
+   const result = await db.query(
+      'UPDATE users SET username = $1, password = $2 WHERE id = $3 RETURNING *', 
+      [username, password, id]
+   );
+   return result.rows[0];
+};
+
+const deleteUser = async (id) => {
+  const result = await db.query(
+    'DELETE FROM users WHERE id = $1 RETURNING *',
+    [id]
+  );
+
+  if (result.rows.length === 0) {
+    return null;
+  }
+
+  return result.rows[0];
+}
+
 module.exports = {
-  findAll,
-  create,
+  getAllUsers,
+  createUser,
+  updateUser,
+  deleteUser
 };
