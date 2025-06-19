@@ -1,3 +1,4 @@
+// const { getAllUsers, loginUser, updateUser, deleteUser } = require('../controllers/userController');
 const db = require('../db');
 
 const getAllUsers = async () => {
@@ -12,6 +13,14 @@ const createUser = async (username, password) => {
   );
   return result.rows[0];
 };
+
+const loginUser = async (username) => {
+  const result = await db.query(
+    'SELECT * FROM users WHERE username = $1',
+    [username]
+  )
+  return result.rows[0];
+}
 
 const updateUser = async (id, { username, password }) => {
    const result = await db.query(
@@ -37,6 +46,7 @@ const deleteUser = async (id) => {
 module.exports = {
   getAllUsers,
   createUser,
+  loginUser,
   updateUser,
   deleteUser
 };
