@@ -1,6 +1,8 @@
 const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const SALT_ROUNDS = 10;
+const activeTokens = new Set();
 
 const getAllUsers = async (req, res) => {
   try {
@@ -17,7 +19,10 @@ const createUser = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
     const newUser = await User.createUser(username, hashedPassword);
-    res.status(201).json(newUser);
+    const token = jwt.sign({id: newUser.id}, process.env.JWT_SECRET, {expiresIn: '1h'});
+    activeTokens.add(token);
+    res.status(201).json({ user: newUser, token });
+
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ error: 'Server error' });
@@ -40,7 +45,7 @@ const loginUser = async (req, res) => {
     if (!retrievedUser) {
       return res.status(401).json({ error: 'user doesnt exist' });
     }
-    
+
     const retrievedPassword = retrievedUser.password;
     const passwordMatches = await bcrypt.compare(password, retrievedPassword);
 
@@ -48,10 +53,10 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ error: 'incorrect password' });
     }
 
-    return res.status(200).json({ loggedinUser: retrievedUser });
-
-
-
+    const token = jwt.sign({id: retrievedUser.id}, process.env.JWT_SECRET, {expiresIn: '1h'});
+    activeTokens.add(token);
+    
+    return res.status(200).json({ loggedinUser: retrievedUser, token });
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ error: 'Server error' });
