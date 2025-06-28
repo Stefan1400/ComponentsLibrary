@@ -53,6 +53,8 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ error: 'incorrect password' });
     }
 
+    console.log(retrievedUser.id);
+
     const token = jwt.sign({id: retrievedUser.id}, process.env.JWT_SECRET, {expiresIn: '1h'});
     activeTokens.add(token);
     
