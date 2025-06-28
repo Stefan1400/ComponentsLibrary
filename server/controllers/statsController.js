@@ -12,13 +12,13 @@ const getMyStats = async (req, res) => {
          return res.status(400).json({ message: 'userId not found' });
       }
 
-      const gotStats = await Stat.getMyStats(userId);
+      const myStats = await Stat.getMyStats(userId);
 
-      if (!gotStats) {
-         return res.status(404).json({ message: 'gotStats not found' });
+      if (!myStats) {
+         return res.status(404).json({ message: 'myStats not found' });
       }
 
-      res.status(200).json({ retrievedStats: gotStats });
+      res.status(200).json(myStats);
 
    } catch (err) {
       console.log('500 error inside getting stats server: ', err);
