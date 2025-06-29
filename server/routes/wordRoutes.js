@@ -5,8 +5,8 @@ const {
    addNewWord,
 } = require('../controllers/wordController');
 
-router.get('/', getAllWords);
+router.get('/:userId', getAllWords);
 
-router.post('/', addNewWord);
+router.post('/:userId', addNewWord);
 
 module.exports = router;

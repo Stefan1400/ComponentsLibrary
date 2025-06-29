@@ -1,9 +1,16 @@
 const Word = require('../models/wordModel');
 
 const getAllWords = async (req, res) => {
+   
+   const { userId } = req.params;
+   
    try {
 
-      const words = await Word.getAllWords();
+      if (!userId) {
+         return res.status(400).json({ message: 'userId inside getAllWords server doesnt exist' });
+      }
+
+      const words = await Word.getAllWords(userId);
       res.json(words);
 
    } catch (err) {
@@ -13,22 +20,24 @@ const getAllWords = async (req, res) => {
 }
 
 const addNewWord = async (req, res) => {
+
+   const { userId } = req.params;
    
-   const { word, meaning, status } = req.body;
+   const { word, meaning, known } = req.body;
    
    try {
 
-      if (!word || !meaning || !status) {
-         return res.status(404).json({ error: 'word, meaning, or status are invalid' });
+      if (!word || !meaning || known === undefined) {
+         return res.status(400).json({ error: 'word, meaning, or known are invalid' });
       }
 
-      const wordExists = await Word.findWord(word);
+      const wordExists = await Word.findWord(word, userId);
 
       if (wordExists) {
          return res.status(409).json({ message: 'word already exists' });
       }
 
-      const newWord = await Word.addNewWord(word, meaning, status);
+      const newWord = await Word.addNewWord(userId, word, meaning, known);
 
       return res.status(201).json({ createdWord: newWord });
 

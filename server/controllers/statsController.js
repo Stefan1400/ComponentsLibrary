@@ -30,11 +30,11 @@ const updateStats = async (req, res) => {
 
    const { userId, stat } = req.params;
    
-   const { action } = req.body;
+   // const { action } = req.body;
    
    try {
 
-      if (!userId || !stat || !action) {
+      if (!userId || !stat) {
          return res.status(400).json({ message: 'Missing required fields' });
       }
 
@@ -42,7 +42,7 @@ const updateStats = async (req, res) => {
          return res.status(400).json({ message: 'update stats action is not allowed' });
       }
 
-      const updated = await Stat.updateStats(userId, stat, action);
+      const updated = await Stat.updateStats(userId, stat);
 
       if (!updated) {
          return res.status(404).json({ message: 'Stats not found for user' });

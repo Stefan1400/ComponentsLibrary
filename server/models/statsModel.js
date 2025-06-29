@@ -10,16 +10,21 @@ const getMyStats = async (userId) => {
    return result.rows[0];
 }
 
-const updateStats = async (userId, stat, action) => {
-
-   const operation = action === 'increment' ? '+' : '-';
+const updateStats = async (userId, stat) => {
    
-   const result = await db.query(
-      `UPDATE stats SET ${stat} = ${stat} ${operation} 1 WHERE user_id = $1 RETURNING *`,
-      [userId]
+   const calculateCount = await db.query(
+      `SELECT COUNT(*) FROM words WHERE user_id = $1`, [userId]
    );
 
-   return result.rows[0];
+   const count = Number(calculateCount.rows[0].count);
+
+   await db.query(
+      `UPDATE stats SET ${stat} = $1 WHERE user_id = $2`,
+      [count, userId]
+   )
+
+
+   return count;
 }
 
 module.exports = {
