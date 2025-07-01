@@ -25,8 +25,21 @@ const addNewWord = async (userId, word, meaning, known) => {
 
 }
 
+const deleteWord = async (userId, wordId) => {
+   const result = await db.query(
+      'DELETE FROM words WHERE user_id = $1 AND id = $2 RETURNING *',
+      [userId, wordId]
+   );
+
+   await db.query(
+      'SELECT COUNT(*) FROM stats WHERE user_id = $1',
+      [userId]
+   )
+}
+
 module.exports = {
    getAllWords,
    findWord,
    addNewWord,
+   deleteWord
 }

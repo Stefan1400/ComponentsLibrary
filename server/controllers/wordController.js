@@ -47,7 +47,30 @@ const addNewWord = async (req, res) => {
    }
 }
 
+const deleteWord = async (req, res) => {
+   
+   const { userId, wordId } = req.params;
+   
+   try {
+      if (!userId || !wordId) {
+         return res.status(400).json({ message: 'userId or wordId are invalid' });
+      }
+      
+      const deletedWord = await Word.deleteWord(userId, wordId);
+
+      if (!deletedWord) {
+         return res.status(400).json({ message: 'deleted word is invalid' });
+      }
+
+      return res.status(200).json(deletedWord);
+   } catch (err) {
+      console.log('500 error deleting word: ', err);
+      return res.status(500).json({ error: err });
+   }
+}
+
 module.exports = {
    getAllWords,
    addNewWord,
+   deleteWord,
 }
