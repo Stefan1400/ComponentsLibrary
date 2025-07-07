@@ -1,4 +1,3 @@
-// const { getAllWords, findWord, addNewWord } = require('../controllers/wordController');
 const db = require('../db');
 
 const getAllWords = async (userId) => {

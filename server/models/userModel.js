@@ -1,4 +1,3 @@
-// const { getAllUsers, loginUser, updateUser, deleteUser } = require('../controllers/userController');
 const db = require('../db');
 
 const getAllUsers = async () => {
