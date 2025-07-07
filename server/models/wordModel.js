@@ -2,14 +2,19 @@
 const db = require('../db');
 
 const getAllWords = async (userId) => {
-   const result = await db.query('SELECT * FROM words WHERE user_id = $1', [userId]);
+   const result = await db.query(
+      'SELECT * FROM words WHERE user_id = $1', 
+      [userId]
+   );
    
-   // console.log(result.rows);
    return result.rows;
 }
 
 const findWord = async (word, userId) => {
-   const result = await db.query('SELECT * FROM words WHERE word = $1 AND user_id = $2', [word, userId]);
+   const result = await db.query(
+      'SELECT * FROM words WHERE word = $1 AND user_id = $2', 
+      [word, userId]
+   );
 
    return result.rows[0];
 }
@@ -31,10 +36,7 @@ const deleteWord = async (userId, wordId) => {
       [userId, wordId]
    );
 
-   await db.query(
-      'SELECT COUNT(*) FROM stats WHERE user_id = $1',
-      [userId]
-   )
+   return result.rows[0];
 }
 
 module.exports = {

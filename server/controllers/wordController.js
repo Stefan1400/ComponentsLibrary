@@ -59,7 +59,7 @@ const deleteWord = async (req, res) => {
       const deletedWord = await Word.deleteWord(userId, wordId);
 
       if (!deletedWord) {
-         return res.status(400).json({ message: 'deleted word is invalid' });
+         return res.status(400).json({ message: 'word was not deleted' });
       }
 
       return res.status(200).json(deletedWord);
