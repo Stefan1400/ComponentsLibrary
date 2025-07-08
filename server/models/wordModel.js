@@ -29,6 +29,19 @@ const addNewWord = async (userId, word, meaning, known) => {
 
 }
 
+const editWord = async (userId, wordId, word, meaning, known) => {
+   const result = await db.query(
+      'UPDATE words SET word = $1, meaning = $2, known = $3 WHERE user_id = $4 AND id = $5 RETURNING *',
+      [word, meaning, known, userId, wordId]
+   );
+
+   if (!result) {
+      return res.status(400).json({ message: 'result is invalid' });
+   }
+
+   return result.rows[0];
+}
+
 const deleteWord = async (userId, wordId) => {
    const result = await db.query(
       'DELETE FROM words WHERE user_id = $1 AND id = $2 RETURNING *',
@@ -42,5 +55,6 @@ module.exports = {
    getAllWords,
    findWord,
    addNewWord,
+   editWord,
    deleteWord
 }

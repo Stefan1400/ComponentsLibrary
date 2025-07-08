@@ -47,6 +47,41 @@ const addNewWord = async (req, res) => {
    }
 }
 
+const editWord = async (req, res) => {
+   
+   const { userId, wordId } = req.params;
+   const { word, meaning, known } = req.body;
+
+   const data = {userId, wordId, word, meaning, known};
+   
+   try {
+
+      for (const [key, value] of Object.entries(data)) {
+         if (!value && value !== false) {
+            return res.status(400).json({ message: `given ${key} is not valid` });
+         }
+      }
+
+      const wordSame = await Word.findWord(word, userId);
+
+      if (wordSame.word === word && wordSame.meaning === meaning && wordSame.known === known) {
+         return res.status(400).json({ message: 'no changes made' });
+      }
+
+      const editedWord = await Word.editWord(userId, wordId, word, meaning, known);
+
+      if (!editedWord) {
+         return res.status(400).json({ message: 'word was not correctly edited' });
+      }
+
+      return res.status(200).json(editedWord);
+
+   } catch (err) {
+      console.log('500 error edit word controller: ', err);
+      return res.status(500).json({ error: err });
+   }
+}
+
 const deleteWord = async (req, res) => {
    
    const { userId, wordId } = req.params;
@@ -72,5 +107,6 @@ const deleteWord = async (req, res) => {
 module.exports = {
    getAllWords,
    addNewWord,
+   editWord,
    deleteWord,
 }
