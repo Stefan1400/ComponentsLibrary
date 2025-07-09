@@ -56,6 +56,8 @@ const editWord = async (req, res) => {
    
    try {
 
+      console.log('checking if data exists in controller: ', userId, wordId, word, meaning, known);
+
       for (const [key, value] of Object.entries(data)) {
          if (!value && value !== false) {
             return res.status(400).json({ message: `given ${key} is not valid` });
@@ -64,8 +66,10 @@ const editWord = async (req, res) => {
 
       const wordSame = await Word.findWord(word, userId);
 
-      if (wordSame.word === word && wordSame.meaning === meaning && wordSame.known === known) {
-         return res.status(400).json({ message: 'no changes made' });
+
+
+      if (wordSame && wordSame.word === word && wordSame.meaning === meaning && wordSame.known === known) {
+         return res.json({ message: 'no changes made' });
       }
 
       const editedWord = await Word.editWord(userId, wordId, word, meaning, known);
