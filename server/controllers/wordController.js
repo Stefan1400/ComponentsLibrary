@@ -17,7 +17,7 @@ const getAllWords = async (req, res) => {
       console.log('500 error inside getAllWords controller: ', err);
       res.status(500).json({ error: err });
    }
-}
+};
 
 const addNewWord = async (req, res) => {
 
@@ -45,7 +45,7 @@ const addNewWord = async (req, res) => {
       console.log('500 error adding new word: ', err);
       return res.status(500).json({ error: err });
    }
-}
+};
 
 const editWord = async (req, res) => {
    
@@ -66,8 +66,6 @@ const editWord = async (req, res) => {
 
       const wordSame = await Word.findWord(word, userId);
 
-
-
       if (wordSame && wordSame.word === word && wordSame.meaning === meaning && wordSame.known === known) {
          return res.json({ message: 'no changes made' });
       }
@@ -84,7 +82,7 @@ const editWord = async (req, res) => {
       console.log('500 error edit word controller: ', err);
       return res.status(500).json({ error: err });
    }
-}
+};
 
 const deleteWord = async (req, res) => {
    
@@ -106,11 +104,11 @@ const deleteWord = async (req, res) => {
       console.log('500 error deleting word: ', err);
       return res.status(500).json({ error: err });
    }
-}
+};
 
 module.exports = {
    getAllWords,
    addNewWord,
    editWord,
    deleteWord,
-}
+};

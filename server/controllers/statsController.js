@@ -22,8 +22,8 @@ const getMyStats = async (req, res) => {
       console.log('500 error inside getting stats server: ', err);
       return res.status(500).json({ error: err });
    }
-}
+};
 
 module.exports = {
    getMyStats,
-}
+};

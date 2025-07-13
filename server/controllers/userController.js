@@ -36,21 +36,21 @@ const loginUser = async (req, res) => {
 
     // check if username / password is valid
     if (!username || !password) {
-      return res.status(401).json({ error: 'no password found' });
+      return res.status(422).json({ error: 'no password found' });
     }
 
     // retrieve the entire user from the db using just the username
     const retrievedUser = await User.loginUser(username);
 
     if (!retrievedUser) {
-      return res.status(401).json({ error: 'user doesnt exist' });
+      return res.status(422).json({ error: 'user doesnt exist' });
     }
 
     const retrievedPassword = retrievedUser.password;
     const passwordMatches = await bcrypt.compare(password, retrievedPassword);
 
     if (!passwordMatches) {
-      return res.status(401).json({ error: 'incorrect password' });
+      return res.status(404).json({ error: 'incorrect password' });
     }
 
     console.log(retrievedUser.id);
@@ -63,7 +63,7 @@ const loginUser = async (req, res) => {
     console.error(err.message);
     res.status(500).json({ error: 'Server error' });
   }
-}
+};
 
 const updateUser = async (req, res) => {
 
@@ -87,7 +87,7 @@ const updateUser = async (req, res) => {
       console.error(err.message);
       res.status(500).json({ error: 'Server error' });
    }
-}
+};
 
 const deleteUser = async (req, res) => {
 
@@ -115,7 +115,7 @@ const deleteUser = async (req, res) => {
     console.error(err.message);
     res.status(500).json({ error: 'Server error' });
   }
-}
+};
 
 module.exports = {
   getAllUsers,

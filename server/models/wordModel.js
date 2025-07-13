@@ -18,6 +18,15 @@ const findWord = async (word, userId) => {
    return result.rows[0];
 }
 
+const getWordById = async (wordId, userId) => {
+   const result = await db.query(
+      'SELECT * FROM words WHERE id = $1 AND user_id = $2',
+      [wordId, userId]
+   );
+
+   return result.rows[0];
+}
+
 const addNewWord = async (userId, word, meaning, known) => {
 
    const result = await db.query(
@@ -54,6 +63,7 @@ const deleteWord = async (userId, wordId) => {
 module.exports = {
    getAllWords,
    findWord,
+   getWordById,
    addNewWord,
    editWord,
    deleteWord

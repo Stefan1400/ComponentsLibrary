@@ -7,12 +7,25 @@ const {
    deleteWord,
 } = require('../controllers/wordController');
 
+const {
+   checkWordExists
+} = require('../middleware/wordMiddleware');
+
+const {
+   verifyToken,
+   verifyUserOwnership
+} = require('../middleware/authMiddleware');
+
+
+
+router.use(verifyToken, verifyUserOwnership);
+
 router.get('/:userId', getAllWords);
 
 router.post('/:userId', addNewWord);
 
-router.patch('/:userId/:wordId', editWord);
+router.patch('/:userId/:wordId', checkWordExists, editWord);
 
-router.delete('/:userId/:wordId', deleteWord);
+router.delete('/:userId/:wordId', checkWordExists, deleteWord);
 
 module.exports = router;
