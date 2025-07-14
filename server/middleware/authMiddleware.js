@@ -22,26 +22,6 @@ const verifyToken = async (req, res, next) => {
    }
 };
 
-const verifyUserOwnership = async (req, res, next) => {
-   const userId = req.user.id;
-   const paramsUserId = parseInt(req.params.userId, 10);
-
-   if (!paramsUserId) {
-      return res.status(404).json({ message: 'userId from params is missing' });
-   }
-
-   if (isNaN(paramsUserId)) {
-      return res.status(400).json({ message: 'Invalid userId parameter' });
-   }
-
-   if (userId !== paramsUserId) {
-      return res.status(403).json({ message: 'user forbidden' });
-   }
-
-   next();
-};
-
 module.exports = {
    verifyToken,
-   verifyUserOwnership
 };

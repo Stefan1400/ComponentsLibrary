@@ -13,19 +13,20 @@ const {
 
 const {
    verifyToken,
-   verifyUserOwnership
 } = require('../middleware/authMiddleware');
 
+console.log('before verifyToken in routes');
 
+// router.use(verifyToken);
 
-router.use(verifyToken, verifyUserOwnership);
+console.log('after verifyToken in routes');
 
-router.get('/:userId', getAllWords);
+router.get('/', verifyToken, getAllWords);
 
-router.post('/:userId', addNewWord);
+router.post('/', verifyToken, addNewWord);
 
-router.patch('/:userId/:wordId', checkWordExists, editWord);
+router.patch('/:wordId', verifyToken, checkWordExists, editWord);
 
-router.delete('/:userId/:wordId', checkWordExists, deleteWord);
+router.delete('/:wordId', verifyToken, checkWordExists, deleteWord);
 
 module.exports = router;

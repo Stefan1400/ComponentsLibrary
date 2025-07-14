@@ -2,40 +2,28 @@ const Word = require('../models/wordModel');
 
 const getAllWords = async (req, res) => {
    
-   const { userId } = req.params;
+   const userId = req.user.id;
    
    try {
-
-      if (!userId) {
-         return res.status(400).json({ message: 'userId inside getAllWords server doesnt exist' });
-      }
-
       const words = await Word.getAllWords(userId);
-      res.json(words);
+      return res.json(words);
 
    } catch (err) {
       console.log('500 error inside getAllWords controller: ', err);
-      res.status(500).json({ error: err });
+      return res.status(500).json({ error: err });
    }
 };
 
 const addNewWord = async (req, res) => {
 
-   const { userId } = req.params;
-   
+   const userId = req.user.id;
    const { word, meaning, known } = req.body;
+
+   if (!word || !meaning || typeof known !== 'boolean') {
+      return res.status(400).json({ message: 'sent body not valid' });
+   }
    
    try {
-
-      if (!word || !meaning || known === undefined) {
-         return res.status(400).json({ error: 'word, meaning, or known are invalid' });
-      }
-
-      const wordExists = await Word.findWord(word, userId);
-
-      if (wordExists) {
-         return res.status(409).json({ message: 'word already exists' });
-      }
 
       const newWord = await Word.addNewWord(userId, word, meaning, known);
 
@@ -49,20 +37,15 @@ const addNewWord = async (req, res) => {
 
 const editWord = async (req, res) => {
    
-   const { userId, wordId } = req.params;
+   const userId = req.user.id;
+   const { wordId } = req.params;
    const { word, meaning, known } = req.body;
 
-   const data = {userId, wordId, word, meaning, known};
+   if (!word || !meaning || typeof known !== 'boolean') {
+      return res.status(400).json({ message: 'sent body not valid' });
+   }
    
    try {
-
-      console.log('checking if data exists in controller: ', userId, wordId, word, meaning, known);
-
-      for (const [key, value] of Object.entries(data)) {
-         if (!value && value !== false) {
-            return res.status(400).json({ message: `given ${key} is not valid` });
-         }
-      }
 
       const wordSame = await Word.findWord(word, userId);
 
@@ -86,13 +69,10 @@ const editWord = async (req, res) => {
 
 const deleteWord = async (req, res) => {
    
-   const { userId, wordId } = req.params;
+   const userId = req.user.id;
+   const { wordId } = req.params;
    
    try {
-      if (!userId || !wordId) {
-         return res.status(400).json({ message: 'userId or wordId are invalid' });
-      }
-      
       const deletedWord = await Word.deleteWord(userId, wordId);
 
       if (!deletedWord) {
