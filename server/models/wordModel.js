@@ -60,11 +60,21 @@ const deleteWord = async (userId, wordId) => {
    return result.rows[0];
 }
 
+const search = async (userId, query) => {
+   const result = await db.query(
+      'SELECT * FROM words WHERE user_id = $1 AND (word ILIKE $2 OR meaning ILIKE $2) ORDER BY word ASC',
+      [userId, `%${query}%`]
+   );
+
+   return result.rows[0];
+}
+
 module.exports = {
    getAllWords,
    findWord,
    getWordById,
    addNewWord,
    editWord,
-   deleteWord
+   deleteWord,
+   search,
 }

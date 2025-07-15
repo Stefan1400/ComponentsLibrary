@@ -5,6 +5,7 @@ const {
    addNewWord,
    editWord,
    deleteWord,
+   search,
 } = require('../controllers/wordController');
 
 const {
@@ -28,5 +29,7 @@ router.post('/', verifyToken, addNewWord);
 router.patch('/:wordId', verifyToken, checkWordExists, editWord);
 
 router.delete('/:wordId', verifyToken, checkWordExists, deleteWord);
+
+router.get('/search', verifyToken, search);
 
 module.exports = router;

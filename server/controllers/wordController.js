@@ -86,9 +86,34 @@ const deleteWord = async (req, res) => {
    }
 };
 
+const search = async (req, res) => {
+   
+   const userId = req.user.id;
+   const query = req.query.query || '';
+   
+   try {
+
+      if (!query || typeof query !== 'string') {
+         return res.status(400).json({ message: 'search query not valid' });
+      }
+
+      const searched = await Word.search(userId, query);
+
+      if (!searched || searched.length === 0) {
+         return res.json({ message: 'searched word / meaning was not found' });
+      }
+
+      return res.json(searched);
+   } catch (err) {
+      console.log('500 error inside search backend', err);
+      return res.status(500).json({ error: err });
+   }
+}
+
 module.exports = {
    getAllWords,
    addNewWord,
    editWord,
    deleteWord,
+   search,
 };
