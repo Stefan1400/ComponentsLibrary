@@ -10,6 +10,8 @@ const checkWordExists = async (req, res, next) => {
 
    try {
 
+      //just adding a random comment
+
       const fetchedWord = await WordModel.getWordById(wordId, userId);
 
       if (!fetchedWord) {
