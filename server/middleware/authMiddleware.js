@@ -9,11 +9,15 @@ const verifyToken = async (req, res, next) => {
 
    const token = authHeader.split(' ')[1];
 
+   console.log('my token: ', token);
+
    try {
 
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
       req.user = { id: decoded.id };
+
+      console.log('my userId inside middleware: ', req.user.id);
 
       next();
    } catch (err) {

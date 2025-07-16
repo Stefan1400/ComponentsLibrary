@@ -19,6 +19,6 @@ router.post('/login', loginUser);
 
 router.put('/:id', updateUser);
 
-router.delete('/', verifyToken, deleteUser);
+router.delete('/deleteAccount', verifyToken, deleteUser);
 
 module.exports = router;

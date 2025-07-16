@@ -30,6 +30,15 @@ const findPassword = async (userId, password) => {
   return result.rows[0];
 }
 
+const getUserById = async (userId) => {
+  const result = await db.query(
+    'SELECT * FROM users WHERE id = $1',
+    [userId]
+  );
+
+  return result.rows[0];
+}
+
 const updateUser = async (id, { username, password }) => {
    const result = await db.query(
       'UPDATE users SET username = $1, password = $2 WHERE id = $3 RETURNING *', 
@@ -44,10 +53,6 @@ const deleteUser = async (userId) => {
     [userId]
   );
 
-  if (result.rows.length === 0) {
-    return null;
-  }
-
   return result.rows[0];
 }
 
@@ -56,6 +61,7 @@ module.exports = {
   createUser,
   loginUser,
   findPassword,
+  getUserById,
   updateUser,
   deleteUser,
 };
