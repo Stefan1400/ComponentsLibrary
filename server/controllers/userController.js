@@ -91,25 +91,28 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
 
-  const { id } = req.params;
-
-  console.log('id checker in controller: ', id);
+  const { userId } = req.user.id;
+  const { password } = req.body;
 
   try {
 
-    console.log('id checker (before) in controller: ', id);
+    if (!password) {
+      return res.status(400).json({ message: 'invalid password' });
+    }
 
-    const deleted = await User.deleteUser(id);
+    const fetchedPassword = await User.findPassword(userId, password);
 
-    console.log('deleted checker (after) in controller: ', deleted);
+    if (!fetchedPassword) {
+      return res.status(404).json({ message: 'password was not found' });
+    }
+
+    const deleted = await User.deleteUser(userId);
 
     if (!deleted) {
       return res.status(404).json({ error: 'user doesnt exist' });
     }
 
-    console.log('deleted checker in controller: ', deleted);
-
-    res.json(deleted);
+    return;
 
   } catch (err) {
     console.error(err.message);

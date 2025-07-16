@@ -19,6 +19,15 @@ const loginUser = async (username) => {
     [username]
   )
   return result.rows[0];
+};
+
+const findPassword = async (userId, password) => {
+  const result = await db.query(
+    `SELECT * FROM users WHERE id = $1 AND password = $2`,
+    [userId, password]
+  );
+
+  return result.rows[0];
 }
 
 const updateUser = async (id, { username, password }) => {
@@ -29,10 +38,10 @@ const updateUser = async (id, { username, password }) => {
    return result.rows[0];
 };
 
-const deleteUser = async (id) => {
+const deleteUser = async (userId) => {
   const result = await db.query(
     'DELETE FROM users WHERE id = $1 RETURNING *',
-    [id]
+    [userId]
   );
 
   if (result.rows.length === 0) {
@@ -46,6 +55,7 @@ module.exports = {
   getAllUsers,
   createUser,
   loginUser,
+  findPassword,
   updateUser,
-  deleteUser
+  deleteUser,
 };
