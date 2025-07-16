@@ -66,7 +66,7 @@ const search = async (userId, query) => {
       [userId, `%${query}%`]
    );
 
-   return result.rows[0];
+   return result.rows;
 }
 
 module.exports = {

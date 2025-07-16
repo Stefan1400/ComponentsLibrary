@@ -16,11 +16,6 @@ const {
    verifyToken,
 } = require('../middleware/authMiddleware');
 
-console.log('before verifyToken in routes');
-
-// router.use(verifyToken);
-
-console.log('after verifyToken in routes');
 
 router.get('/', verifyToken, getAllWords);
 
