@@ -42,7 +42,7 @@ const addToSRS = async (userId, wordId) => {
       `INSERT INTO srs_reviews 
          (user_id, word_id, srs_stage, next_review_at, last_reviewed_at, created_at) 
       VALUES 
-         ($1, $2, 1, NOW(), null, NOW()) 
+         ($1, $2, 1, NOW(), null, NOW())
       RETURNING *`,
       [userId, wordId]
    );

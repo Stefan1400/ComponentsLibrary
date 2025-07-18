@@ -29,11 +29,7 @@ const addNewWord = async (req, res) => {
 
       const wordId = newWord.id;
 
-      console.log('wordId: ', wordId);
-
       const addedToSRS = await Word.addToSRS(userId, wordId);
-
-      console.log('made it past addedToSRS: ', addedToSRS);
 
       if (!addedToSRS) {
          return res.status(404).json({ message: 'word was not correctly added to srs_reviews' });

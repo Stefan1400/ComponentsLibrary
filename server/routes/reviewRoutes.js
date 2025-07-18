@@ -7,10 +7,6 @@ const {
    verifyToken,
 } = require('../middleware/authMiddleware');
 
-const {
-   checkWordExists,
-} = require('../middleware/wordMiddleware');
-
-router.get('/due', checkWordExists, getDue);
+router.get('/due', verifyToken, getDue);
 
 module.exports = router;

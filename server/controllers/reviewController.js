@@ -1,15 +1,11 @@
 const ReviewModel = require('../models/reviewModel');
 
-const getDue = async () => {
+const getDue = async (req, res) => {
    const userId = req.user.id;
    
    try {
 
       const fetchedDueWords = await ReviewModel.getDue(userId);
-
-      if (fetchedDueWords.length === 0) {
-         return res.status(204).json({ message: 'no reviews today' });
-      }
 
       return res.status(200).json(fetchedDueWords);
 

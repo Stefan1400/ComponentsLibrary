@@ -12,7 +12,7 @@ app.use(cors());
 app.use('/api/users', userRoutes);
 app.use('/api/words', wordRoutes);
 app.use('/api/stats', statsRoutes);
-app.use('api/review', reviewRoutes);
+app.use('/api/review', reviewRoutes);
 
 
 const PORT = process.env.PORT || 5000;
