@@ -13,15 +13,26 @@ const getDue = async (userId) => {
    return result.rows;
 }
 
-const updateSRS = async (userId, word) => {
+const getWordById = async (userId, wordId) => {
    const result = await db.query(
-      `UPDATE TABLE srs_reviews SET srs_stage += 1, next_review_at, last_reviewed_at = NOW() WHERE user_id = $1 AND word`
+      `SELECT * FROM srs_reviews WHERE user_id = $1 AND id = $2`,
+      [userId, wordId]
    );
 
-   return result.rows;
+   return result.rows[0];
+}
+
+const updateSRS = async (userId, wordId, nextStage, nextReviewAt) => {
+   const result = await db.query(
+      `UPDATE srs_reviews SET srs_stage = $1, next_review_at = $2, last_reviewed_at = NOW() WHERE user_id = $3 AND id = $4 RETURNING *`,
+      [nextStage, nextReviewAt, userId, wordId]
+   );
+
+   return result.rows[0];
 }
 
 module.exports = {
    getDue,
+   getWordById,
    updateSRS,
 }

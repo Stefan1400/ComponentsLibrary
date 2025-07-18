@@ -10,6 +10,8 @@ const {
 
 router.get('/due', verifyToken, getDue);
 
-router.patch('/update', verifyToken, updateSRS);
+router.patch('/:wordId', verifyToken, updateSRS);
+
+console.log('after routes in routes');
 
 module.exports = router;

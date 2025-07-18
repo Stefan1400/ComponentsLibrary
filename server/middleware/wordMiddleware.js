@@ -17,6 +17,7 @@ const checkWordExists = async (req, res, next) => {
       }
 
       req.word = fetchedWord;
+
       next();
 
    } catch (err) {
