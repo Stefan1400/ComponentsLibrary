@@ -5,12 +5,14 @@ const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
 const wordRoutes = require('./routes/wordRoutes');
 const statsRoutes = require('./routes/statsRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
 
 app.use(express.json());
 app.use(cors());
 app.use('/api/users', userRoutes);
 app.use('/api/words', wordRoutes);
 app.use('/api/stats', statsRoutes);
+app.use('api/review', reviewRoutes);
 
 
 const PORT = process.env.PORT || 5000;

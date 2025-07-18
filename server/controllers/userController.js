@@ -14,11 +14,39 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+const isValidEmail = (username) => {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(username);
+};
+
 const createUser = async (req, res) => {
   const { username, password } = req.body;
+
+  const normalizedEmail = username.toLowerCase();
+
+  if (normalizedEmail.length > 128) {
+    return res.status(400).json({ message: 'username is too long' });
+  }
+
+  if (normalizedEmail.length < 6) {
+    return res.status(400).json({ message: 'username is too short' });
+  }
+
+  if (password.length > 64) {
+    return res.status(400).json({ message: 'password is too long' });
+  }
+
+  if (password.length < 8) {
+    return res.status(400).json({ message: 'password is too short' });
+  }
+
+  if (!isValidEmail(normalizedEmail)) {
+    return res.status(400).json({ error: "Invalid username format" });
+  };
+
   try {
+
     const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
-    const newUser = await User.createUser(username, hashedPassword);
+    const newUser = await User.createUser(normalizedEmail, hashedPassword);
     const token = jwt.sign({id: newUser.id}, process.env.JWT_SECRET, {expiresIn: '1h'});
     activeTokens.add(token);
     res.status(201).json({ user: newUser, token });
@@ -32,15 +60,21 @@ const createUser = async (req, res) => {
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
 
+  const normalizedEmail = username.toLowerCase();
+
+  if (!isValidEmail(normalizedEmail)) {
+    return res.status(400).json({ error: "Invalid username format" });
+  };
+
   try {
 
     // check if username / password is valid
-    if (!username || !password) {
+    if (!normalizedEmail || !password) {
       return res.status(422).json({ error: 'no password found' });
     }
 
     // retrieve the entire user from the db using just the username
-    const retrievedUser = await User.loginUser(username);
+    const retrievedUser = await User.loginUser(normalizedEmail);
 
     if (!retrievedUser) {
       return res.status(422).json({ error: 'user doesnt exist' });

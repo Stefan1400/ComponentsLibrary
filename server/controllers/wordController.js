@@ -27,6 +27,18 @@ const addNewWord = async (req, res) => {
 
       const newWord = await Word.addNewWord(userId, word, meaning, known);
 
+      const wordId = newWord.id;
+
+      console.log('wordId: ', wordId);
+
+      const addedToSRS = await Word.addToSRS(userId, wordId);
+
+      console.log('made it past addedToSRS: ', addedToSRS);
+
+      if (!addedToSRS) {
+         return res.status(404).json({ message: 'word was not correctly added to srs_reviews' });
+      }
+
       return res.status(201).json({ createdWord: newWord });
 
    } catch (err) {
@@ -108,7 +120,7 @@ const search = async (req, res) => {
       console.log('500 error inside search backend', err);
       return res.status(500).json({ error: err });
    }
-}
+};
 
 module.exports = {
    getAllWords,

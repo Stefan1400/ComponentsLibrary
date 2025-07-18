@@ -35,7 +35,19 @@ const addNewWord = async (userId, word, meaning, known) => {
    );
 
    return result.rows[0];
+}
 
+const addToSRS = async (userId, wordId) => {
+   const result = await db.query(
+      `INSERT INTO srs_reviews 
+         (user_id, word_id, srs_stage, next_review_at, last_reviewed_at, created_at) 
+      VALUES 
+         ($1, $2, 1, NOW(), null, NOW()) 
+      RETURNING *`,
+      [userId, wordId]
+   );
+
+   return result.rows[0];
 }
 
 const editWord = async (userId, wordId, word, meaning, known) => {
@@ -74,6 +86,7 @@ module.exports = {
    findWord,
    getWordById,
    addNewWord,
+   addToSRS,
    editWord,
    deleteWord,
    search,
