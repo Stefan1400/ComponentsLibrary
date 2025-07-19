@@ -29,15 +29,21 @@ const getWordById = async (wordId, userId) => {
 
 const addNewWord = async (userId, word, meaning, known) => {
 
+   console.log('beginning of addNewWord model: ', userId, word, meaning, known);
+
    const result = await db.query(
       'INSERT INTO words (user_id, word, meaning, known) VALUES ($1, $2, $3, $4) RETURNING *',
       [userId, word, meaning, known]
    );
 
+   console.log('end of addNewWord model: ', result.rows[0]);
+
    return result.rows[0];
 }
 
 const addToSRS = async (userId, wordId) => {
+   console.log('beginning of addToSRS model: ', userId, wordId);
+   
    const result = await db.query(
       `INSERT INTO srs_reviews 
          (user_id, word_id, srs_stage, next_review_at, last_reviewed_at, created_at) 
@@ -46,6 +52,8 @@ const addToSRS = async (userId, wordId) => {
       RETURNING *`,
       [userId, wordId]
    );
+
+   console.log('end of addToSRS model: ', result.rows[0]);
 
    return result.rows[0];
 }
@@ -72,6 +80,15 @@ const deleteWord = async (userId, wordId) => {
    return result.rows[0];
 }
 
+// const deleteFromSRS = async (userId, wordId) => {
+//    const result = await db.query(
+//       'DELETE FROM srs_reviews WHERE user_id = $1 and id = $2 RETURNING *',
+//       [userId, wordId]
+//    );
+
+//    return result.rows[0];
+// }
+
 const search = async (userId, query) => {
    const result = await db.query(
       'SELECT * FROM words WHERE user_id = $1 AND (word ILIKE $2 OR meaning ILIKE $2) ORDER BY word ASC',
@@ -89,5 +106,6 @@ module.exports = {
    addToSRS,
    editWord,
    deleteWord,
+   // deleteFromSRS,
    search,
 }

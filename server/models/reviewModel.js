@@ -1,8 +1,21 @@
 const db = require('../db');
 
+// const getDue = async (userId) => {
+//    const result = await db.query(
+//       `SELECT r.*, w.word, w.meaning
+//       FROM srs_reviews r 
+//       JOIN words w ON r.word_id = w.id
+//       WHERE r.user_id = $1 AND r.next_review_at <= NOW()
+//       ORDER BY r.next_review_at ASC `,
+//       [userId]
+//    );
+
+//    return result.rows;
+// }
+
 const getDue = async (userId) => {
    const result = await db.query(
-      `SELECT r.*, w.word, w.meaning
+      `SELECT r.*, w.word, w.meaning, r.word_id as word_id
       FROM srs_reviews r 
       JOIN words w ON r.word_id = w.id
       WHERE r.user_id = $1 AND r.next_review_at <= NOW()
@@ -15,7 +28,7 @@ const getDue = async (userId) => {
 
 const getWordById = async (userId, wordId) => {
    const result = await db.query(
-      `SELECT * FROM srs_reviews WHERE user_id = $1 AND id = $2`,
+      `SELECT * FROM srs_reviews WHERE user_id = $1 AND word_id = $2`,
       [userId, wordId]
    );
 
@@ -24,7 +37,7 @@ const getWordById = async (userId, wordId) => {
 
 const updateSRS = async (userId, wordId, nextStage, nextReviewAt) => {
    const result = await db.query(
-      `UPDATE srs_reviews SET srs_stage = $1, next_review_at = $2, last_reviewed_at = NOW() WHERE user_id = $3 AND id = $4 RETURNING *`,
+      `UPDATE srs_reviews SET srs_stage = $1, next_review_at = $2, last_reviewed_at = NOW() WHERE user_id = $3 AND word_id = $4 RETURNING *`,
       [nextStage, nextReviewAt, userId, wordId]
    );
 

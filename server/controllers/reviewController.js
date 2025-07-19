@@ -19,7 +19,7 @@ const updateSRS = async (req, res) => {
    const userId = req.user.id;
    const { wordId } = req.params;
 
-   console.log('wordId in controller: ', wordId);
+   console.log('wordId in controller: ', wordId, userId);
 
    try {
 

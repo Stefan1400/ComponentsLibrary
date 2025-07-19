@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const verifyToken = async (req, res, next) => {
    const authHeader = req.headers.authorization;
 
-   console.log('reached auth middleware');
+   console.log('verify token beginning: ');
 
    if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return res.status(401).json({ message: 'user is not authorized' });
@@ -17,7 +17,7 @@ const verifyToken = async (req, res, next) => {
 
       req.user = { id: decoded.id };
 
-      console.log('right before next in auth middleware');
+      console.log('verify token end: ');
 
       next();
    } catch (err) {
