@@ -19,33 +19,23 @@ const addNewWord = async (req, res) => {
    const userId = req.user.id;
    const { word, meaning, known } = req.body;
 
-   console.log('start of add word controller: ', word, meaning, known, userId);
-
    if (!word || !meaning || typeof known !== 'boolean') {
       return res.status(400).json({ message: 'sent body not valid' });
    }
    
    try {
 
-      console.log('before new word added');
+      // const nextReviewAt = new Date();
+      // nextReviewAt.setDate(nextReviewAt.getDate() + 1);
 
-      const newWord = await Word.addNewWord(userId, word, meaning, known);
+      const addedWord = await Word.addNewWord(userId, 1, word, meaning, known);
 
-      console.log('after new word added: ', newWord);
 
-      const wordId = newWord.id;
-
-      console.log('before srs added: ', wordId);
-
-      const addedToSRS = await Word.addToSRS(userId, wordId);
-
-      console.log('after srs added: ', addedToSRS);
-
-      if (!addedToSRS) {
+      if (!addedWord) {
          return res.status(404).json({ message: 'word was not correctly added to srs_reviews' });
       }
 
-      return res.status(201).json({ createdWord: newWord, addedToSRS: addedToSRS });
+      return res.status(201).json(addedWord);
 
    } catch (err) {
       console.log('500 error adding new word: ', err);
