@@ -7,7 +7,7 @@ const getMyStats = async (userId) => {
          COUNT(*) AS total_words,
          COUNT(*) FILTER (WHERE known IS TRUE) AS known_words,
          COUNT(*) FILTER (WHERE known IS FALSE) AS learning_words
-      FROM words
+      FROM srs_reviews
       WHERE user_id = $1
       `, [userId]
    );

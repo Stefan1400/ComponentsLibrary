@@ -64,9 +64,13 @@ const updateSRS = async (req, res) => {
    const userId = req.user.id;
    const { wordId } = req.params;
 
+   console.log('userId and wordId in updateSRS controller: ', userId, wordId);
+
    try {
 
       const fetchedWord = await ReviewModel.getWordById(userId, wordId);
+
+      console.log('fetchedWord in updateSRS controller: ', fetchedWord);
 
       if (!fetchedWord) {
          return res.status(404).json({ message: 'word i want to update not found' });
@@ -88,14 +92,16 @@ const updateSRS = async (req, res) => {
       let nextStage = Math.min(currentStage + 1, 9);
       let intervalDays = srsIntervals[nextStage];
       
-      const currentDate = new Date();
-      const nextReviewAt = currentDate.setDate(currentDate.getDate() + intervalDays);
+      const nextReviewAt = new Date();
+      nextReviewAt.setDate(nextReviewAt.getDate() + intervalDays);
 
       const updatedReview = await ReviewModel.updateSRS(wordId, userId, nextStage, nextReviewAt);
 
       if (!updatedReview) {
          return res.status(400).json({ message: 'updatedReview didnt work' });
       }
+
+      console.log('after logic updateSRS controller and updatedReview: ', updatedReview);
 
       return res.status(200).json(updatedReview);
    } catch (err) {
