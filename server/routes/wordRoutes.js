@@ -28,3 +28,5 @@ router.delete('/:wordId', verifyToken, checkWordExists, deleteWord);
 router.get('/search', verifyToken, search);
 
 module.exports = router;
+
+//just a random comment

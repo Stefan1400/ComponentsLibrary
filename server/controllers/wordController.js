@@ -131,5 +131,3 @@ module.exports = {
    deleteWord,
    search,
 };
-
-//just a random comment
