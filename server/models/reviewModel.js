@@ -18,6 +18,19 @@ const getWordById = async (userId, wordId) => {
    return result.rows[0];
 }
 
+const resetReview = async (userId, wordId) => {
+   console.log('inside resetReview model: ', userId, wordId);
+   
+   const result = await db.query(
+      'UPDATE srs_reviews SET srs_stage = 1, next_review_at = NOW(), last_reviewed_at = NOW() WHERE user_id = $1 AND id = $2 RETURNING *',
+      [userId, wordId]
+   );
+
+   console.log('inside resetReview model, returned response: ', result.rows[0]);
+
+   return result.rows[0];
+}
+
 const updateSRS = async (wordId, userId, nextStage, nextReviewAt) => {
    console.log('values passed to updateSRS model: ', wordId, userId, nextStage, nextReviewAt);
    
@@ -34,5 +47,6 @@ const updateSRS = async (wordId, userId, nextStage, nextReviewAt) => {
 module.exports = {
    getDue,
    getWordById,
+   resetReview,
    updateSRS,
 }
