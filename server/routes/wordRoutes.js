@@ -6,6 +6,7 @@ const {
    editWord,
    deleteWord,
    search,
+   bulkCreateWords,
 } = require('../controllers/wordController');
 
 const {
@@ -27,6 +28,6 @@ router.delete('/:wordId', verifyToken, checkWordExists, deleteWord);
 
 router.get('/search', verifyToken, search);
 
-module.exports = router;
+router.post('/bulk', verifyToken, bulkCreateWords);
 
-//just a random comment
+module.exports = router;
