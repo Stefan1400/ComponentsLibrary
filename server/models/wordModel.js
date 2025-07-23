@@ -104,9 +104,9 @@ const bulkCreateWords = async (words) => {
       values.push(`($${paramIndex}, $${paramIndex + 1}, $${paramIndex + 2}, $${paramIndex + 3}, $${paramIndex + 4}, $${paramIndex + 5}, $${paramIndex + 6}, $${paramIndex + 7})`);
       params.push(
          word.userId,                      // user_id
-         1,                                // srs_stage (default to 1)
-         new Date(),                       // next_review_at
-         null,                             // last_reviewed_at
+         word.srs_stage || 1,              // ← Use preserved SRS stage
+         word.next_review_at || new Date(), // ← Use preserved next_review_at
+         word.last_reviewed_at,            // ← Use preserved last_reviewed_at
          new Date(),                       // created_at
          word.word,                        // word
          word.meaning,                     // meaning

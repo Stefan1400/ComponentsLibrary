@@ -168,7 +168,10 @@ const bulkCreateWords = async (req, res) => {
             word: word.word.trim(),
             meaning: word.meaning.trim(),
             known: word.known,
-            userId: userId
+            userId: userId,
+            srs_stage: word.srs_stage || 1,  // ← Preserve SRS stage
+            next_review_at: word.next_review_at ? new Date(word.next_review_at) : new Date(),
+            last_reviewed_at: word.last_reviewed_at ? new Date(word.last_reviewed_at) : null
          });
       }
 
