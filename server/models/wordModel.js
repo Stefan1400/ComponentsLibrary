@@ -95,54 +95,54 @@ const search = async (userId, query) => {
    return result.rows;
 }
 
-const bulkCreateWords = async (words) => {
-   const values = [];
-   const params = [];
-   let paramIndex = 1;
+// const bulkCreateWords = async (words) => {
+//    const values = [];
+//    const params = [];
+//    let paramIndex = 1;
 
-   words.forEach((word) => {
-      values.push(`($${paramIndex}, $${paramIndex + 1}, $${paramIndex + 2}, $${paramIndex + 3}, $${paramIndex + 4}, $${paramIndex + 5}, $${paramIndex + 6}, $${paramIndex + 7})`);
-      params.push(
-         word.userId,                      // user_id
-         word.srs_stage || 1,              // ← Use preserved SRS stage
-         word.next_review_at || new Date(), // ← Use preserved next_review_at
-         word.last_reviewed_at,            // ← Use preserved last_reviewed_at
-         new Date(),                       // created_at
-         word.word,                        // word
-         word.meaning,                     // meaning
-         word.known === true               // known (must be a boolean)
-      );
-      paramIndex += 8;
-   });
+//    words.forEach((word) => {
+//       values.push(`($${paramIndex}, $${paramIndex + 1}, $${paramIndex + 2}, $${paramIndex + 3}, $${paramIndex + 4}, $${paramIndex + 5}, $${paramIndex + 6}, $${paramIndex + 7})`);
+//       params.push(
+//          word.userId,                      // user_id
+//          word.srs_stage || 1,              // ← Use preserved SRS stage
+//          word.next_review_at || new Date(), // ← Use preserved next_review_at
+//          word.last_reviewed_at,            // ← Use preserved last_reviewed_at
+//          new Date(),                       // created_at
+//          word.word,                        // word
+//          word.meaning,                     // meaning
+//          word.known === true               // known (must be a boolean)
+//       );
+//       paramIndex += 8;
+//    });
 
-   const query = `
-      INSERT INTO srs_reviews (
-         user_id,
-         srs_stage,
-         next_review_at,
-         last_reviewed_at,
-         created_at,
-         word, 
-         meaning, 
-         known
-      )
-      VALUES ${values.join(', ')}
-      RETURNING *
-   `;
+//    const query = `
+//       INSERT INTO srs_reviews (
+//          user_id,
+//          srs_stage,
+//          next_review_at,
+//          last_reviewed_at,
+//          created_at,
+//          word, 
+//          meaning, 
+//          known
+//       )
+//       VALUES ${values.join(', ')}
+//       RETURNING *
+//    `;
 
-   const result = await db.query(query, params);
-   return result.rows;
-};
+//    const result = await db.query(query, params);
+//    return result.rows;
+// };
 
 
-const getWordsByUserId = async (userId) => {
-   const result = await db.query(
-      'SELECT word FROM srs_reviews WHERE user_id = $1', 
-      [userId]
-   );
+// const getWordsByUserId = async (userId) => {
+//    const result = await db.query(
+//       'SELECT word FROM srs_reviews WHERE user_id = $1', 
+//       [userId]
+//    );
    
-   return result.rows;
-}
+//    return result.rows;
+// }
 
 module.exports = {
    getAllWords,
@@ -154,6 +154,6 @@ module.exports = {
    deleteWord,
    // deleteFromSRS,
    search,
-   bulkCreateWords,
-   getWordsByUserId,
+   // bulkCreateWords,
+   // getWordsByUserId,
 }
