@@ -1,0 +1,93 @@
+.panel-wrapper {
+   overflow-y: auto;
+   /* padding: 1rem; */
+   padding-left: 0;
+   border-collapse: collapse;
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: column;
+}
+
+.my-words-flex-row {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   gap: 1rem;
+}
+
+.my-words-edit-field {
+   width: 75px;
+}
+
+.my-words-panel-table {
+   max-width: 100%;
+   max-height: 100%;
+   /* padding: 1rem; */
+   text-align: left;
+   border-collapse: separate;
+   overflow: scroll;
+   border-spacing: 2rem 1.5rem;
+   table-layout: fixed;
+   display: block;
+}
+
+.my-words-panel-table thead {
+   margin-bottom: 2rem;
+}
+
+.my-words-no-results-h3 {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.my-words-panel-table tbody {
+   display: block;
+   overflow-y: auto;
+   height: 100%;
+   max-height: 100%;
+   scrollbar-width: none;        
+  -ms-overflow-style: none;
+    
+}
+
+.my-words-panel-table thead,
+.my-words-panel-table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.my-words-panel-table tbody::-webkit-scrollbar {
+  display: none;
+  width: 1px;
+}
+
+::-webkit-scrollbar {
+   display: none;
+   scroll-behavior: smooth;
+}
+
+.my-words-search-flex {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   gap: 1rem;
+   align-items: center;
+   width: 100%;
+   height: auto;
+   position: absolute;
+   top: 30%;
+}
+
+.my-words-displayed {
+   overflow: hidden;
+}
+
+.my-words-search-input {
+   width: 70vw;
+   
+}

@@ -1,0 +1,116 @@
+.menu-slider-div {
+   position: absolute;
+   top: 0;
+   left: 0;
+   /* width: 40vw; */
+   z-index: 1000;
+   width: 100vw;
+   height: 100vh;
+   background-color: white;
+   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.menu-slider-close {
+   position: absolute;
+   top: 5%;
+   right: 7.5%;
+   cursor: pointer;
+}
+
+.logout-btn {
+   width: 50%;
+}
+
+.contact-link {
+   text-decoration: underline;
+   text-underline-offset: 3px;
+}
+
+.menu-nav-list {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   padding: 3rem;
+   list-style: none;
+}
+
+.menu-nav-auth-options {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   font-size: 1.5rem;
+   text-decoration: underline;
+}
+
+.menu-slider-top-flex {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   padding: 1rem;
+   align-items: center;
+}
+
+.menu-nav-auth-btns {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: center;
+   gap: 15%;
+   position: absolute;
+   bottom: 0%;
+   padding: 10%;
+}
+
+
+
+
+/* .account-page {
+   width: 85vw;
+   height: 95vh;
+   border-radius: 3px;
+   position: absolute;
+   padding: 3rem;
+   bottom: 1.3rem;
+   right: 3.55rem;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 2rem;
+   padding: 5rem 20rem;
+} */
+
+.delete-account-confirm-tab {
+   width: 60vw;
+   height: auto;
+   position: absolute;
+   top: 50%;
+   z-index: 2500;
+   left: 50%;
+   background-color: white;
+   box-shadow: 1px 0 6px 0px rgba(0, 0, 0, 0.25);
+   transform: translate(-50%, -50%);
+   /* background-color: white; */
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   /* color: black; */
+   gap: 2rem;
+   padding: 1rem;
+}
+
+.delete-account-confirm-h3 {
+   text-align: center;
+   font-size: 0.7rem;
+   font-weight: 500;
+}
+
+.delete-account-confirm-note {
+   text-align: center;
+   font-size: 0.8rem;
+   font-weight: 700;
+}

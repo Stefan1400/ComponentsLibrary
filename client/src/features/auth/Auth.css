@@ -1,0 +1,103 @@
+/* .page {
+   width: 30vw;
+   height: 55vh;
+   background-color: var(--grid-bg);
+   border: 1px solid var(--grid-item-border);
+   color: var(--text-color);
+   border-radius: 3px;
+   position: absolute;
+   padding: 3rem;
+   bottom: 1rem;
+   right: 3rem;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 2rem;
+} */
+/* .page {
+   width: 85vw;
+   height: 95vh;
+   background-color: var(--grid-item-bg);
+   border: 1px solid var(--grid-item-border);
+   color: var(--text-color);
+   border-radius: 3px;
+   position: absolute;
+   padding: 3rem;
+   bottom: 1.3rem;
+   right: 3.55rem;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 2rem;
+   padding: 5rem 20rem;
+} */
+
+.auth-login-page, .auth-register-page {
+   display: flex;
+   gap: 2rem;
+}
+
+.auth-header {
+   text-align: center;
+   font-size: 2rem;
+   /* color: #424242; */
+}
+
+.auth-header.change {
+   color: red;
+}
+
+.auth-input-fields {
+   width: 100%;
+   height: auto;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   gap: 1rem;
+}
+
+.auth-input {
+   width: 50%;
+   height: 2rem;
+   font-size: 0.95rem;
+   border: none;
+   border-bottom: 1px solid #424242;
+}
+
+.auth-input:focus {
+   outline: none;
+}
+
+.auth-link-small {
+   font-size: 0.7rem;
+}
+
+.underlined {
+   text-decoration: underline;
+   text-underline-offset: 2px;
+   cursor: pointer;
+   font-size: 0.7rem;
+}
+
+.auth-input.default {
+   border: 1px solid gray;
+}
+
+.auth-input.valid {
+   border: 1px solid green;
+}
+
+.auth-input.invalid {
+   border: 1px solid red;
+}
+
+.auth-email-error {
+   color: red;
+   font-size: 0.9rem;
+}
+
+.auth-switch-div {
+   display: flex;
+   gap: 1rem;
+}

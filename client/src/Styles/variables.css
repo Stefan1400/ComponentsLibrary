@@ -1,0 +1,27 @@
+/* :root {
+   --grid-item-bg: #282732;
+   --grid-bg: #000;
+   --grid-item-border: #3B3B3B;
+   --text-color: #FFF;
+   --panel-h2-color: transparent;
+} */
+
+:root {
+   --h2-color: #4E4E4E;
+   --h2-font-size: 1.7rem;
+   --text-input-border: #CECECE;
+   --text-input-bg: #FAFAFA;
+}
+
+
+
+/* ADVANCED GRID LAYOUT */
+/* :root {
+   --grid-item-bg: #FFF;
+   --grid-bg: #f3f3f3;
+   --grid-item-border: #e0e0e0;
+   --text-color: #FFF;
+   --panel-h2-color: #1f1f1f;
+   --panel-h2-color: transparent;
+}
+ */

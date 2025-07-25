@@ -1,0 +1,47 @@
+.review-panel-div {
+   display: flex;
+   gap: 6rem;
+}
+
+.review-buttons {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: auto;
+   gap: 2.5rem;
+}
+
+.words-due-h3 {
+   position: absolute;
+   top: 4%;
+   right: 5%;
+   z-index: 50;
+}
+
+.review-word-meaning-flex {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+
+   gap: 0;
+}
+
+/* .review-buttons button {
+   background-color: rgb(74, 74, 74);
+} */
+
+.review-results {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: flex-start;
+   gap: 1rem;
+
+}
+
+.review-results-finish-btn {
+   text-align: center;
+}
