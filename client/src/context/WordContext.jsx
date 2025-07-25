@@ -114,7 +114,7 @@ export const WordProvider = ({ children }) => {
 
    const getMyWords = async () => {
       try {
-         const data = await fetchWithAuth(`http://localhost:5000/api/words`, {
+         const data = await fetchWithAuth(`${process.env.REACT_APP_API_URL}/api/words`, {
             method: 'GET',
          });
 
@@ -135,7 +135,7 @@ export const WordProvider = ({ children }) => {
 
       if (isLoggedIn && user) {
          try {
-            const data = await fetchWithAuth(`http://localhost:5000/api/words`, {
+            const data = await fetchWithAuth(`${process.env.REACT_APP_API_URL}/api/words`, {
                method: 'POST',
                body: JSON.stringify({ word, meaning, known })
             });
@@ -175,7 +175,7 @@ export const WordProvider = ({ children }) => {
    const editWord = async (wordId, word, meaning, known) => {
       if (isLoggedIn && user) {
          try {
-            await fetchWithAuth(`http://localhost:5000/api/words/${wordId}`, {
+            await fetchWithAuth(`${process.env.REACT_APP_API_URL}/api/words/${wordId}`, {
                method: "PATCH",
                body: JSON.stringify({ word, meaning, known })
             });
@@ -227,7 +227,7 @@ export const WordProvider = ({ children }) => {
    const deleteWord = async (wordId) => {
       if (isLoggedIn && user) {
          try {
-            await fetchWithAuth(`http://localhost:5000/api/words/${wordId}`, {
+            await fetchWithAuth(`${process.env.REACT_APP_API_URL}/api/words/${wordId}`, {
                method: 'DELETE',
             });
 
@@ -312,7 +312,7 @@ export const WordProvider = ({ children }) => {
    const search = async (query) => {
       if (isLoggedIn && user) {
          try {
-            const data = await fetchWithAuth(`http://localhost:5000/api/words/search?query=${encodeURIComponent(query)}`);
+            const data = await fetchWithAuth(`${process.env.REACT_APP_API_URL}/api/words/search?query=${encodeURIComponent(query)}`);
             return Array.isArray(data) ? data : [];
 
          } catch (err) {
@@ -339,7 +339,7 @@ export const WordProvider = ({ children }) => {
    const getDue = async () => {
       if (isLoggedIn && user) {
          try {
-            const data = await fetchWithAuth(`http://localhost:5000/api/review/due`, {
+            const data = await fetchWithAuth(`${process.env.REACT_APP_API_URL}/api/review/due`, {
                method: 'GET'
             });
 
@@ -380,7 +380,7 @@ export const WordProvider = ({ children }) => {
 
       if (isLoggedIn && user) {
          try {
-            const data = await fetchWithAuth(`http://localhost:5000/api/review/${wordId}`, {
+            const data = await fetchWithAuth(`${process.env.REACT_APP_API_URL}/api/review/${wordId}`, {
                method: "PATCH",
                body: JSON.stringify({ answer })
             });

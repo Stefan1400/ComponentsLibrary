@@ -62,7 +62,7 @@ export const StatsProvider = ({ children }) => {
 
          if (!userId) return;
 
-         const res = await fetch(`http://localhost:5000/api/stats/${userId}`);
+         const res = await fetch(`${process.env.REACT_APP_API_URL}/api/stats/${userId}`);
 
          if (!res.ok) {
             showNotification("Failed to fetch stats. Please try again later.");
