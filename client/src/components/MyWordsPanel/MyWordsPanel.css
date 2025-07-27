@@ -89,5 +89,22 @@
 
 .my-words-search-input {
    width: 70vw;
+   padding-right: 27%;
    
+}
+
+.my-words-search-clear {
+   position: absolute;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   right: 3%;
+}
+
+.my-words-search-searchbar-clear-flex {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   position: relative;
 }

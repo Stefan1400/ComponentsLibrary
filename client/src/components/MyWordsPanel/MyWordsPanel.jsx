@@ -123,18 +123,16 @@ function MyWordsPanel() {
     setIsSearching(false);
     setSearchResults([]);
    }
-
+   
   return (
     <div className="panel-wrapper page">
-      <h2 className='my-words-h2'>My Words</h2>
       <div className="my-words-search-flex">
         <div className='my-words-search-searchbar-clear-flex'>
-          <input onChange={(e) => {setSearchQuery(e.target.value)}} value={searchQuery} className='my-words-search-input' type="text" placeholder='search for word, meaning' />
+          <input onChange={(e) => {setSearchQuery(e.target.value)}} value={searchQuery} className='my-words-search-input' type="text" placeholder='search word, meaning' />
           {isSearching && (
-            <button onClick={handleClearSearch} className='my-words-search-clear enabled'>clear</button>
+            <span onClick={handleClearSearch} className='my-words-search-clear enabled'>clear</span>
           )}
         </div>
-        {/* <button className='my-words-search-btn'>Search</button> */}
       </div>
 
     {isSearching && searchResults.length === 0 ? 

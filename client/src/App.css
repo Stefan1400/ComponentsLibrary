@@ -2,6 +2,8 @@ body {
    width: 100vw;
    height: 100vh;
    background-color: #f3f3f3;
+   position: fixed;
+   overflow: hidden;
 }
 
 .App {
@@ -29,6 +31,7 @@ input {
    padding-left: 2%;
    /* border-radius: 35px; */
    border-radius: 3px;
+   font-size: 16px;
 }
 
 input:focus {
