@@ -7,7 +7,7 @@ const getDue = async (req, res) => {
 
       const fetchedDueWords = await ReviewModel.getDue(userId);
 
-      console.log('fetched due in controller: ', fetchedDueWords);
+      // console.log('fetched due in controller: ', fetchedDueWords);
 
       return res.status(200).json(fetchedDueWords);
 
@@ -65,24 +65,24 @@ const updateSRS = async (req, res) => {
    const { wordId } = req.params;
    const { answer } = req.body;
  
-   console.log('userId and wordId in updateSRS controller: ', userId, wordId, answer);
+   // console.log('userId and wordId in updateSRS controller: ', userId, wordId, answer);
 
    try {
 
       const fetchedWord = await ReviewModel.getWordById(userId, wordId);
 
-      console.log('fetchedWord in updateSRS controller: ', fetchedWord);
+      // console.log('fetchedWord in updateSRS controller: ', fetchedWord);
 
       if (!fetchedWord) {
          return res.status(404).json({ message: 'word i want to update not found' });
       }
 
       if (answer === 'wrong') {
-         console.log('answer was wrong, inside wrong');
+         // console.log('answer was wrong, inside wrong');
          
          const resetReview = await ReviewModel.resetReview(userId, wordId);
 
-         console.log('answer was wrong, after resetReview: ', resetReview);
+         // console.log('answer was wrong, after resetReview: ', resetReview);
 
          if (!resetReview) {
             return res.status(409).json({ message: 'review was not correctly reset' });
@@ -116,7 +116,7 @@ const updateSRS = async (req, res) => {
          return res.status(400).json({ message: 'updatedReview didnt work' });
       }
 
-      console.log('after logic updateSRS controller and updatedReview: ', updatedReview);
+      // console.log('after logic updateSRS controller and updatedReview: ', updatedReview);
 
       return res.status(200).json(updatedReview);
    } catch (err) {

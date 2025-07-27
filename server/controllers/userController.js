@@ -87,7 +87,7 @@ const loginUser = async (req, res) => {
       return res.status(404).json({ error: 'incorrect password' });
     }
 
-    console.log(retrievedUser.id);
+    // console.log(retrievedUser.id);
 
     const token = jwt.sign({id: retrievedUser.id}, process.env.JWT_SECRET, {expiresIn: '1d'});
     activeTokens.add(token);
@@ -128,7 +128,7 @@ const deleteUser = async (req, res) => {
   const userId = req.user.id;
   const { password } = req.body;
 
-  console.log('userId: ', userId);
+  // console.log('userId: ', userId);
 
   try {
 
@@ -138,13 +138,13 @@ const deleteUser = async (req, res) => {
 
     const fetchedUser = await User.getUserById(userId);
 
-    console.log('before fetchedUser: ', fetchedUser);
+    // console.log('before fetchedUser: ', fetchedUser);
 
     if (!fetchedUser) {
       return res.status(404).json({ message: 'user was not found' });
     }
 
-    console.log('made it past fetchedUser');
+    // console.log('made it past fetchedUser');
 
     const fetchedPassword = fetchedUser.password;
     const comparedPassword = await bcrypt.compare(password, fetchedPassword);
@@ -159,7 +159,7 @@ const deleteUser = async (req, res) => {
       return res.status(404).json({ error: 'user doesnt exist' });
     }
 
-    console.log('made it past deleted');
+    // console.log('made it past deleted');
 
     return res.json(deleted);
 
