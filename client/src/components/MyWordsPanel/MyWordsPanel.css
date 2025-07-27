@@ -100,6 +100,15 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   right: 12%;
+}
+
+.my-words-search-close {
+   position: absolute;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
    right: 3%;
 }
 
@@ -108,4 +117,10 @@
    justify-content: space-between;
    align-items: center;
    position: relative;
+}
+
+.my-words-search-icon {
+   position: absolute;
+   top: 1.5vh;
+   right: 1vw;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import './MyWordsPanel.css';
 import { WordContext } from '../../context/WordContext';
 import { StatsContext } from '../../context/StatsContext';
@@ -18,6 +18,9 @@ function MyWordsPanel() {
    const [searchQuery, setSearchQuery] = useState('');
    const [isSearching, setIsSearching] = useState(false);
    const [searchResults, setSearchResults] = useState([]);
+   const [searchActivated, setSearchActivated] = useState(false);
+
+
 
    useEffect(() => {
     getMyWords();
@@ -123,15 +126,49 @@ function MyWordsPanel() {
     setIsSearching(false);
     setSearchResults([]);
    }
+
+   const handleSearchActivated = () => {
+      setSearchActivated(true);
+   } 
+
+   const closeSearch = () => {
+      setSearchActivated(false);
+      setSearchQuery('');
+   }
+
+   const inputRef = useRef(null);
+
+   useEffect(() => {
+    if (searchActivated && inputRef.current) {
+      inputRef.current.focus();
+    }
+   }, [searchActivated]);
    
   return (
     <div className="panel-wrapper page">
       <div className="my-words-search-flex">
         <div className='my-words-search-searchbar-clear-flex'>
-          <input onChange={(e) => {setSearchQuery(e.target.value)}} value={searchQuery} className='my-words-search-input' type="text" placeholder='search word, meaning' />
-          {isSearching && (
+          {!searchActivated && (
+            <svg onClick={handleSearchActivated} className='my-words-search-icon' width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="7.41209" cy="7.41209" r="6.66209" stroke="#202020" strokeWidth="1.5"/>
+              <line x1="12.5264" y1="12.4052" x2="18.5909" y2="18.4697" stroke="#202020" strokeWidth="1.5"/>
+            </svg>
+          )}
+
+          {searchActivated && (
+            <input ref={inputRef} onChange={(e) => {setSearchQuery(e.target.value)}} value={searchQuery} className='my-words-search-input' type="text" placeholder='search word, meaning' />
+          )}
+
+          {isSearching && searchActivated && (
             <span onClick={handleClearSearch} className='my-words-search-clear enabled'>clear</span>
           )}
+          {searchActivated && (
+            <svg onClick={closeSearch} className='my-words-search-close' width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0.823223" y1="12.8232" x2="12.8232" y2="0.823224" stroke="#000" strokeWidth="0.75"/>
+              <line x1="1.17678" y1="0.823223" x2="13.1768" y2="12.8232" stroke="#000" strokeWidth="0.75"/>
+            </svg>
+          )}
+
         </div>
       </div>
 
