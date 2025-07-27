@@ -149,7 +149,7 @@ function MyWordsPanel() {
       <div className="my-words-search-flex">
         <div className='my-words-search-searchbar-clear-flex'>
           {!searchActivated && (
-            <svg onClick={handleSearchActivated} className='my-words-search-icon' width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg onClick={handleSearchActivated} className='my-words-search-icon' width="22" height="22" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="7.41209" cy="7.41209" r="6.66209" stroke="#202020" strokeWidth="1.5"/>
               <line x1="12.5264" y1="12.4052" x2="18.5909" y2="18.4697" stroke="#202020" strokeWidth="1.5"/>
             </svg>
