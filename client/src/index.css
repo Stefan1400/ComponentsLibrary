@@ -6,6 +6,14 @@
    padding: 0;
    margin: 0;
    font-family: "Be Vietnam Pro";
-   
+
+   -webkit-tap-highlight-color: transparent;
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   user-select: none;
 }
 
+*:active {
+  background-color: initial;
+  transform: none;
+}

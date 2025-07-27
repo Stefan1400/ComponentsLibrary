@@ -56,17 +56,17 @@
    align-items: center;
    /* background-color: red; */
    padding: 15px 30px;
-   
-   -webkit-tap-highlight-color: transparent;
+
+   /* -webkit-tap-highlight-color: transparent;
    -webkit-touch-callout: none;
    -webkit-user-select: none;
-   user-select: none;
+   user-select: none; */
 }
 
-.nav-flex-item:active {
+/* .nav-flex-item:active {
    background-color: initial;
    transform: none;
-}
+} */
 
 .nav-flex-item-title {
    font-size: 0.75rem;

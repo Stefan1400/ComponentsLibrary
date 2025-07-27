@@ -87,7 +87,7 @@ export const WordProvider = ({ children }) => {
    }, [isLoggedIn, user]);
 
    useEffect(() => {
-      console.log('due words array: ', dueWords);
+      // console.log('due words array: ', dueWords);
    }, [dueWords]);
 
    const fetchWithAuth = async (url, options = {}) => {
@@ -343,7 +343,7 @@ export const WordProvider = ({ children }) => {
                method: 'GET'
             });
 
-            console.log('fetched due (getDue wordContext): ', data);
+            // console.log('fetched due (getDue wordContext): ', data);
             setDueWords(data);
             
             return;
@@ -376,7 +376,7 @@ export const WordProvider = ({ children }) => {
    }
 
    const updateSRS = async (wordId, answer) => {
-      console.log('wordId in word Context: ', wordId);
+      // console.log('wordId in word Context: ', wordId);
 
       if (isLoggedIn && user) {
          try {

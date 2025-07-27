@@ -113,7 +113,7 @@ function MyWordsPanel() {
     }
 
     cancelEdit();
-    console.log('My words logic was successful');
+    // console.log('My words logic was successful');
   }
     };
 
