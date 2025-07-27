@@ -17,16 +17,16 @@ function Navbar({ toggleLogin, toggleAccountPage, toggleAddWord, toggleReview, t
     <nav className='nav'>
       <ul className='nav-flex-list'>
 
-         <li className='nav-flex-item'>
-            <svg onClick={toggleAddWord} className='nav-add-word' width="20" height="20" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <li onClick={toggleAddWord} className='nav-flex-item'>
+            <svg className='nav-add-word nav-btn' width="25" height="25" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                <path d="M22.5045 9.03571H14.7902V1.64286C14.7902 0.735692 14.0225 0 13.0759 0H11.3616C10.415 0 9.64732 0.735692 9.64732 1.64286V9.03571H1.93304C0.986429 9.03571 0.21875 9.77141 0.21875 10.6786V12.3214C0.21875 13.2286 0.986429 13.9643 1.93304 13.9643H9.64732V21.3571C9.64732 22.2643 10.415 23 11.3616 23H13.0759C14.0225 23 14.7902 22.2643 14.7902 21.3571V13.9643H22.5045C23.4511 13.9643 24.2188 13.2286 24.2188 12.3214V10.6786C24.2188 9.77141 23.4511 9.03571 22.5045 9.03571Z" 
                fill={addWordVisible ? "black" : "#828282"}/>
             </svg>
             {/* <span className='nav-flex-item-title'>add words</span> */}
          </li>
 
-         <li className='nav-flex-item'>  
-            <svg onClick={toggleReview} width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <li onClick={toggleReview} className='nav-flex-item'>  
+            <svg className='nav-review nav-btn' width="25" height="25" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                <path d="M15 7.48583C15.0076 11.6181 11.6377 14.9971 7.50544 15C5.72071 15.0013 4.08136 14.3791 2.79308 13.3394C2.45809 13.069 2.43305 12.567 2.73747 12.2626L3.0782 11.9218C3.33856 11.6615 3.7542 11.633 4.04265 11.8618C4.99179 12.615 6.19297 13.0645 7.49999 13.0645C10.5757 13.0645 13.0645 10.5753 13.0645 7.50001C13.0645 4.42425 10.5753 1.93549 7.49999 1.93549C6.02376 1.93549 4.68299 2.50915 3.68746 3.44553L5.22235 4.98043C5.52719 5.28527 5.3113 5.80646 4.88023 5.80646H0.483871C0.216623 5.80646 0 5.58984 0 5.32259V0.926221C0 0.495152 0.521189 0.279255 0.826027 0.584064L2.31913 2.07717C3.66559 0.790405 5.49048 0 7.49999 0C11.6374 0 14.9923 3.35021 15 7.48583ZM9.52886 9.86842L9.82593 9.48646C10.072 9.17004 10.015 8.71402 9.69861 8.46794L8.46773 7.51057V4.35485C8.46773 3.95399 8.14279 3.62904 7.74193 3.62904H7.25806C6.8572 3.62904 6.53225 3.95399 6.53225 4.35485V8.4572L8.51035 9.99573C8.82677 10.2418 9.28275 10.1848 9.52886 9.86842Z" 
                fill={reviewVisible ? "black" : "#828282"}
                />
@@ -34,8 +34,8 @@ function Navbar({ toggleLogin, toggleAccountPage, toggleAddWord, toggleReview, t
             {/* <span className='nav-flex-item-title'>review</span> */}
          </li>
 
-         <li className="nav-flex-item">
-            <svg onClick={toggleMyWords} width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <li onClick={toggleMyWords} className="nav-flex-item">
+            <svg className='nav-my-words nav-btn' width="25" height="25" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                <path d="M13.5938 0H1.40625C0.62959 0 0 0.719531 0 1.60714V13.3929C0 14.2805 0.62959 15 1.40625 15H13.5938C14.3704 15 15 14.2805 15 13.3929V1.60714C15 0.719531 14.3704 0 13.5938 0ZM6.5625 12.8571H1.875V4.28571H6.5625V12.8571ZM13.125 12.8571H8.4375V4.28571H13.125V12.8571Z" 
                fill={myWordsVisible ? "black" : "#828282"}
                />
