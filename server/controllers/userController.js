@@ -47,7 +47,7 @@ const createUser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
     const newUser = await User.createUser(normalizedEmail, hashedPassword);
-    const token = jwt.sign({id: newUser.id}, process.env.JWT_SECRET, {expiresIn: '1h'});
+    const token = jwt.sign({id: newUser.id}, process.env.JWT_SECRET, {expiresIn: '14d'});
     activeTokens.add(token);
     res.status(201).json({ user: newUser, token });
 
@@ -89,7 +89,7 @@ const loginUser = async (req, res) => {
 
     // console.log(retrievedUser.id);
 
-    const token = jwt.sign({id: retrievedUser.id}, process.env.JWT_SECRET, {expiresIn: '1d'});
+    const token = jwt.sign({id: retrievedUser.id}, process.env.JWT_SECRET, {expiresIn: '14d'});
     activeTokens.add(token);
     
     return res.status(200).json({ loggedinUser: retrievedUser, token });
