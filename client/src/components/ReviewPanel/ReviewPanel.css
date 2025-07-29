@@ -12,7 +12,7 @@
    height: auto;
    gap: 2.5rem;
    position: fixed;
-   bottom: 25vh;
+   bottom: 22vh;
 }
 
 .words-due-h3 {
@@ -37,7 +37,7 @@
    justify-content: space-between;
    align-items: center;
    position: fixed;
-   top: 35vh;
+   top: 32vh;
    gap: 1rem;
 }
 
@@ -57,5 +57,5 @@
 .review-results-finish-btn {
    text-align: center;
    position: fixed;
-   bottom: 25vh;
+   bottom: 22vh;
 }
