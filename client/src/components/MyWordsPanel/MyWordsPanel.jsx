@@ -170,7 +170,7 @@ function MyWordsPanel() {
     updatedMeaning === meaning &&
     updatedKnown === known
   ) {
-    showNotification('No changes made');
+    // showNotification('No changes made');
     cancelEdit();
     return;
   }

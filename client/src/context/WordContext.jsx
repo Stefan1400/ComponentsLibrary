@@ -180,7 +180,7 @@ export const WordProvider = ({ children }) => {
                body: JSON.stringify({ word, meaning, known })
             });
 
-            showNotification('Successfully edited word');
+            // showNotification('Successfully edited word');
             return true;
 
          } catch (err) {

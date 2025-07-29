@@ -39,6 +39,7 @@ function App() {
   }
 
   const toggleMenuSlider = () => {
+    console.log('clicked')
     setMenuSliderVisible(prev => !prev);
   }
 
@@ -127,22 +128,18 @@ function App() {
         myWordsVisible={myWordsVisible}
       />
 
-    
-
-      <svg onClick={toggleMenuSlider} className='menu-slider-btn' width="42" height="18" viewBox="0 0 42 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line y1="0.5" x2="42" y2="0.5" stroke="black"/>
-        <line y1="17.5" x2="42" y2="17.5" stroke="black"/>
-      </svg>
-
-      
-
-      {menuSliderVisible && (
-        <MenuSlider 
+      <MenuSlider 
           goToLogin={toggleLoginPage} 
           goToRegister={toggleRegisterPage} 
           toggleMenuSlider={toggleMenuSlider} 
-          
-        />
+          menuSliderVisible={menuSliderVisible}
+      />
+
+      {!menuSliderVisible && (
+        <svg onClick={toggleMenuSlider} className='menu-slider-btn' width="42" height="18" viewBox="0 0 42 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line y1="0.5" x2="42" y2="0.5" stroke="black"/>
+          <line y1="17.5" x2="42" y2="17.5" stroke="black"/>
+        </svg>
       )}
 
       {addWordVisible && (

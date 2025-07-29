@@ -2,12 +2,32 @@
    position: absolute;
    top: 0;
    left: 0;
-   /* width: 40vw; */
    z-index: 1000;
    width: 100vw;
    height: 100vh;
    background-color: white;
-   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+   background-color: #27233A;
+   background-color: #1E1E1E;
+   transition: all 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+   /* flex: ; */
+   /* box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25); */
+   /* transform: translateY(-100vh); */
+   transform: scaleY(0);
+   transform-origin: top;
+}
+
+.menu-slider-div.open {
+   /* transform: translateY(0); */
+   transform: scaleY(1);
+}
+
+.fade {
+   opacity: 0;
+   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.visible {
+   opacity: 1;
 }
 
 /* .menu-slider-close {
@@ -65,7 +85,20 @@
    padding: 10%;
 }
 
+.menu-nav-auth-btns button {
+   border: 1px solid white;
+   background-color: transparent;
 
+}
+
+.menu-slider-close path {
+   fill: white;
+}
+
+.menu-slider-account-name {
+   color: white;
+   font-weight: 400;
+}
 
 
 /* .account-page {

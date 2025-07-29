@@ -56,4 +56,10 @@ button {
    left: 2rem;
    cursor: pointer;
    /* padding: 1rem; */
+   z-index: 1000;
+   transition: all 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-slider-btn line {
+   stroke: #1E1E1E;
 }
