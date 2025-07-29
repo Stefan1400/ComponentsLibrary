@@ -23,7 +23,7 @@
 }
 
 .review-word-h3 {
-   font-size: 1.8rem;
+   font-size: 1.65rem;
    color: #1E1E1E;
 }
 
@@ -36,7 +36,8 @@
    flex-direction: column;
    justify-content: space-between;
    align-items: center;
-
+   position: fixed;
+   top: 35vh;
    gap: 1rem;
 }
 
@@ -55,5 +56,6 @@
 
 .review-results-finish-btn {
    text-align: center;
-
+   position: fixed;
+   bottom: 25vh;
 }
