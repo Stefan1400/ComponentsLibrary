@@ -93,7 +93,8 @@ const WordListItem = ({
 function MyWordsPanel() {
 
    const { myWords, getMyWords, editWord, deleteWord, search } = useContext(WordContext);
-   const { getAllStats } = useContext(StatsContext);
+   const { myStats, getAllStats } = useContext(StatsContext);
+
    const { showNotification } = useContext(NotificationContext);
 
    const [isEditing, setIsEditing] = useState(false);
@@ -219,10 +220,46 @@ function MyWordsPanel() {
     }
    }, [searchActivated]);
 
-   // Create a reusable component for word list items to avoid duplication
+   
+
+  // {myStats && Object.entries(myStats)
+  //         .filter(([key]) => key === "total_words")
+  //         .map(([key, value]) => (
+  //           <li className='my-stats-ul-li' key={key}>
+  //             <span className='my-stats-title'>Total Words</span>
+  //             <span className='my-stats-number'>{value}</span>
+  //           </li>
+  //         ))
    
   return (
     <div className="panel-wrapper page">
+
+      <ul className="my-words-word-stats">
+        {myStats && Object.entries(myStats)
+        .filter(([key]) => key === "total_words")
+        .map(([key, value]) => (
+          <li className='my-words-word-stats-li' key={key}>
+            <span className='my-words-stats-title'>Total</span>
+            <span className='my-words-stats-number'>{value}</span>
+          </li>
+        ))}
+        {myStats && Object.entries(myStats)
+        .filter(([key]) => key === "known_words")
+        .map(([key, value]) => (
+          <li className='my-words-word-stats-li' key={key}>
+            <span className='my-words-stats-title'>Known</span>
+            <span className='my-words-stats-number'>{value}</span>
+          </li>
+        ))}
+        {myStats && Object.entries(myStats)
+        .filter(([key]) => key === "learning_words")
+        .map(([key, value]) => (
+          <li className='my-words-word-stats-li' key={key}>
+            <span className='my-words-stats-title'>Learning</span>
+            <span className='my-words-stats-number'>{value}</span>
+          </li>
+        ))}
+      </ul>
       
       {/* SEARCH BAR */}
       <div className="my-words-search-flex">
