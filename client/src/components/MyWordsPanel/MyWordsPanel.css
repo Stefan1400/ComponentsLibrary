@@ -166,14 +166,16 @@
 .my-words-word-stats {
    position: fixed;
    top: 10vh;
-   left: 3vw;
+   left: 2vw;
    list-style: none;
    display: flex;
    flex-direction: row;
    justify-content: space-between;
    align-items: center;
    width: 100%;
+   /* gap: 3rem; */
    padding: 0.75rem 2rem;
+   padding-right: 2.6rem;
 }
 
 .my-words-word-stats-li {
@@ -191,7 +193,7 @@
 }
 
 .my-words-stats-number {
-   font-size: 1.30rem;
+   font-size: 1.2rem;
    font-weight: 600;
    color: rgb(42, 42, 42);
 }
