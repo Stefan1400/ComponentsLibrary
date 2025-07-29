@@ -3,6 +3,7 @@ import './MyWordsPanel.css';
 import { WordContext } from '../../context/WordContext';
 import { StatsContext } from '../../context/StatsContext';
 import { NotificationContext } from '../../context/Notification/Notification';
+import MyStats from '../MyStatsPanel/MyStatsPanel';
 
 
 const WordListItem = ({ 

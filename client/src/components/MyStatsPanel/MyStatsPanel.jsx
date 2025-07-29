@@ -7,17 +7,6 @@ function MyStats() {
    const { myStats, setMyStats, getAllStats } = useContext(StatsContext);
 
   return (
-    // <ul className='my-stats-ul'>
-    //   {myStats && Object.entries(myStats)
-    //     .filter(([key]) => key === "total_words")
-    //     .map(([key, value]) => (
-    //       <li className='my-stats-ul-li' key={key}>
-    //         <span className='my-stats-title'>Total Words</span>
-    //         <span className='my-stats-number'>{value}</span>
-    //       </li>
-    //     ))
-    //   }
-    // </ul>
     <ul className='my-stats-ul'>
       <h2 className='my-stats-h2'>My Stats</h2>
       
