@@ -105,7 +105,7 @@ function ReviewPanel() {
 
 return (
   <div className='review-panel-div page'>
-    <h2>Review</h2>
+    {/* <h2>Review</h2> */}
     
     <h3 className='words-due-h3'>Due Today: {finished ? 0 : reviewsLeft}</h3>
     

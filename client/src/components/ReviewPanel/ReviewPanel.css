@@ -11,6 +11,8 @@
    width: 100%;
    height: auto;
    gap: 2.5rem;
+   position: fixed;
+   bottom: 25vh;
 }
 
 .words-due-h3 {
@@ -20,13 +22,22 @@
    z-index: 50;
 }
 
+.review-word-h3 {
+   font-size: 1.8rem;
+   color: #1E1E1E;
+}
+
+.review-meaning {
+
+}
+
 .review-word-meaning-flex {
    display: flex;
    flex-direction: column;
    justify-content: space-between;
    align-items: center;
 
-   gap: 0;
+   gap: 1rem;
 }
 
 /* .review-buttons button {
@@ -44,4 +55,5 @@
 
 .review-results-finish-btn {
    text-align: center;
+
 }
