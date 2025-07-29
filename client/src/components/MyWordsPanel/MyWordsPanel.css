@@ -115,7 +115,7 @@
    left: 0;
    top: 20vh;
    gap: 1rem;
-   padding-bottom: 30vh;
+   padding-bottom: 20vh;
    overflow-y: auto;
    overflow-x: hidden;
 }
