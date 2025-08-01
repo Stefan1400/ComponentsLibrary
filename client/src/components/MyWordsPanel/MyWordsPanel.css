@@ -79,7 +79,8 @@
    align-items: center;
    position: absolute;
    top: -15vh;
-   font-weight: 400;
+   font-weight: 300;
+   font-size: 1rem;
 }
 
 .my-words-flex-row {
