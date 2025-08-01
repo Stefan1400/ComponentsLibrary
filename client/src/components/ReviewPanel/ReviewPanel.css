@@ -15,6 +15,14 @@
    bottom: 22vh;
 }
 
+.reviews-finished-p {
+   font-weight: 600;
+}
+
+.reviews-results-bold {
+   font-size: 1.35rem;
+}
+
 .words-due-h3 {
    position: absolute;
    top: 4%;
@@ -28,7 +36,7 @@
 }
 
 .review-meaning {
-
+   
 }
 
 .review-word-meaning-flex {
@@ -49,9 +57,12 @@
    display: flex;
    flex-direction: column;
    justify-content: space-between;
-   align-items: flex-start;
-   gap: 1rem;
-
+   align-items: center;
+   gap: 0.5rem;
+   position: absolute;
+   top: 32vh;
+   padding: 10%;
+   box-shadow: 1px 0 6px 0px rgba(72, 72, 72, 0.25);
 }
 
 .review-results-finish-btn {

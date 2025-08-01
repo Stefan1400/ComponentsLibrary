@@ -119,10 +119,14 @@ return (
     ) : (
       resultsShown && reviews.length !== 0 && !finished ? (
          <div className='review-results'>
-            <p>Reviews Finished</p>
+            <p className='reviews-finished-p'>Review Results</p>
 
-            <span>total correct: {totalCorrect}</span>
-            <span>total wrong: {totalWrong}</span>
+            <span>total</span>
+            <span className='reviews-results-bold'>{originalDueCount}</span>
+            <span>correct</span>
+            <span className='reviews-results-bold'>{totalCorrect}</span>
+            <span>wrong</span>
+            <span className='reviews-results-bold'>{totalWrong}</span>
 
             <button onClick={() => handleFinish()} className='review-results-finish-btn enabled'>Finish</button>
          </div>
