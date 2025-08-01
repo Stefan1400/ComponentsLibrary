@@ -121,17 +121,26 @@ return (
          <div className='review-results'>
             <p className='reviews-finished-p'>Review Results</p>
 
-            <span>total</span>
-            <span className='reviews-results-bold'>{originalDueCount}</span>
-            <span>correct</span>
-            <span className='reviews-results-bold'>{totalCorrect}</span>
-            <span>wrong</span>
-            <span className='reviews-results-bold'>{totalWrong}</span>
+            <div className='reviews-results-category-div'>
+               <span>total: </span>
+               <span className='reviews-results-bold'>{originalDueCount}</span>
+            </div>
+
+            <div className='reviews-results-category-div'>
+               <span>correct: </span>
+               <span className='reviews-results-bold'>{totalCorrect}</span>
+            </div>
+            
+            <div className='reviews-results-category-div'>
+               <span>wrong: </span>
+               <span className='reviews-results-bold'>{totalWrong}</span>
+            </div>
+
 
             <button onClick={() => handleFinish()} className='review-results-finish-btn enabled'>Finish</button>
          </div>
       ) : (reviews.length === 0 || finished) && (
-         <p>No reviews for today</p>
+         <p className='reviews-no-reviews-today'>No reviews for today</p>
       )
    
     )}
@@ -143,7 +152,7 @@ return (
     <div className="review-buttons">
       {!answerShown && reviewsLeft !== 0 && !resultsShown && (
         <button onClick={toggelAnswerShown} className='review-btn show-answer enabled'>
-          show answer
+          show meaning
         </button>
       )}
 

@@ -77,6 +77,9 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   position: absolute;
+   top: -15vh;
+   font-weight: 400;
 }
 
 .my-words-flex-row {
