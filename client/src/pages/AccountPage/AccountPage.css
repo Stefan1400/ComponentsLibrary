@@ -1,21 +1,18 @@
 .account-page {
-   width: 85vw;
-   height: 95vh;
+   width: 100vw;
+   height: 100vh;
    /* background-color: var(--grid-item-bg);
    border: 1px solid var(--grid-item-border);
    color: var(--text-color); */
-   background-color: white;
+   background-color: red;
    border-radius: 3px;
    position: absolute;
    z-index: 299;
-   padding: 3rem;
-   bottom: 1.3rem;
-   right: 3.55rem;
+   /* padding: 3rem; */
    display: flex;
    flex-direction: column;
    align-items: center;
    gap: 2rem;
-   padding: 5rem 20rem;
 }
 
 .delete-account-confirm-tab {
@@ -44,4 +41,16 @@
 .delete-account-confirm-note {
    text-align: center;
    font-size: 0.8rem;
+}
+
+.menu-nav-auth-btns {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: center;
+   gap: 15%;
+   position: absolute;
+   bottom: 8.5%;
+   padding: 10%;
 }

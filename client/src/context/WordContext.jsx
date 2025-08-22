@@ -140,7 +140,7 @@ export const WordProvider = ({ children }) => {
                body: JSON.stringify({ word, meaning, known })
             });
 
-            showNotification('word successfully added');
+            // showNotification('word successfully added');
             setMyWords(prev => [...prev, data]);
             await getDue();
             await getAllStats();

@@ -38,11 +38,6 @@ function App() {
     setMyWordsVisible(true);
   }
 
-  const toggleMenuSlider = () => {
-    console.log('clicked')
-    setMenuSliderVisible(prev => !prev);
-  }
-
 
 
 
@@ -55,7 +50,28 @@ function App() {
   const [loginVisible, setLoginVisible] = useState(false);
   const [registerVisible, setRegisterVisible] = useState(false);
   const [accountPageVisible, setAccountPageVisible] = useState(false);
-  
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [desktopNavbarVisible, setDesktopNavbarVisible] = useState(true);
+
+  const toggleMenuSlider = () => {
+    setMenuSliderVisible(prev => !prev);
+  }
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setDesktopNavbarVisible(false);
+        setIsMobile(true);
+      } else {
+        setDesktopNavbarVisible(true);
+        setIsMobile(false);
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+  }, []);
 
   useEffect(() => {
   if (isLoggedIn) {
@@ -111,37 +127,26 @@ function App() {
     }
   }
 
-  // const toggleForm = () => {
-
-  //   if (!loginVisible && !registerVisible) {
-  //     setLoginVisible(true);
-  //     return;
-  //   }
-    
-  //   if (loginVisible || registerVisible) {
-  //     setLoginVisible(false);
-  //     setRegisterVisible(false);
-  //     return;
-  //   }
-    
-    
-  // }
+  const toggleDesktopNavbar = () => {
+    setDesktopNavbarVisible(prev => !prev);
+  }
 
 
 
   return (
     <div className="App">
-      <Navbar 
-        toggleAddWord={toggleAddWord} 
-        toggleReview={toggleReview} 
-        toggleMyWords={toggleMyWords} 
-        toggleAccountPage={toggleAccountPage} 
-        // toggleLogin={toggleForm} 
-        addWordVisible={addWordVisible}
-        reviewVisible={reviewVisible}
-        myWordsVisible={myWordsVisible}
-        accountVisible={accountPageVisible}
-      />
+        <Navbar 
+          toggleAddWord={toggleAddWord} 
+          toggleReview={toggleReview} 
+          toggleMyWords={toggleMyWords} 
+          toggleAccountPage={toggleAccountPage} 
+          // toggleLogin={toggleForm} 
+          addWordVisible={addWordVisible}
+          reviewVisible={reviewVisible}
+          myWordsVisible={myWordsVisible}
+          accountVisible={accountPageVisible}
+          toggleDesktopNavbar={toggleDesktopNavbar}
+        />
 
       <MenuSlider 
           goToLogin={toggleLoginPage} 

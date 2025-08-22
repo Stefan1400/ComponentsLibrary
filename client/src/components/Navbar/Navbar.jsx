@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/AuthContext';
 import Login from '../../features/auth/Login/Login';
 import { NotificationContext } from '../../context/Notification/Notification';
 
-function Navbar({ toggleLogin, toggleAccountPage, toggleAddWord, toggleReview, toggleMyWords, addWordVisible, reviewVisible, myWordsVisible, accountVisible }) {
+function Navbar({ toggleDesktopNavbar, toggleLogin, toggleAccountPage, toggleAddWord, toggleReview, toggleMyWords, addWordVisible, reviewVisible, myWordsVisible, accountVisible }) {
 
    const { user, isLoggedIn, logout } = useContext(AuthContext);
    const { message, showNotification } = useContext(NotificationContext);
@@ -53,6 +53,11 @@ function Navbar({ toggleLogin, toggleAccountPage, toggleAddWord, toggleReview, t
 
             <span className='nav-flex-item-title'>account</span>
          </li>
+
+         {/* <svg onClick={toggleDesktopNavbar} className='menu-slider-close' width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0.646447" y1="25.6464" x2="25.6464" y2="0.64645" stroke="black"/>
+            <line x1="1.35355" y1="0.646447" x2="26.3535" y2="25.6464" stroke="black"/>
+         </svg> */}
 
       </ul>
       
