@@ -4,8 +4,10 @@
    /* background-color: var(--grid-item-bg);
    border: 1px solid var(--grid-item-border);
    color: var(--text-color); */
+   background-color: white;
    border-radius: 3px;
    position: absolute;
+   z-index: 299;
    padding: 3rem;
    bottom: 1.3rem;
    right: 3.55rem;

@@ -72,7 +72,9 @@ function App() {
   }
 
   const toggleAccountPage = () => {
-    setAccountPageVisible(prev => !prev);
+    resetAllPages();
+
+    setAccountPageVisible(true);
   }
 
   const toggleLoginPage = () => {
@@ -94,6 +96,7 @@ function App() {
     setMyWordsVisible(false)
     setLoginVisible(false)
     setRegisterVisible(false)
+    setAccountPageVisible(false);
 
   }
 
@@ -177,7 +180,10 @@ function App() {
         <MyWordsPanel />
       )}
     
-      {accountPageVisible && <AccountPage />}
+      {accountPageVisible && <AccountPage 
+        goToLogin={toggleLoginPage} 
+        goToRegister={toggleRegisterPage} 
+      />}
 
       {loginVisible && !isLoggedIn && <Login goToRegister={toggleRegisterPage} />}
       {registerVisible && !isLoggedIn && <Register goToLogin={toggleLoginPage} toggleMenuSlider={toggleMenuSlider} />}

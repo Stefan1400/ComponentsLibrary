@@ -6,6 +6,10 @@
    
 }
 
+.add-word-h2 {
+   z-index: 250;
+}
+
 .known-div {
    width: 100%;
    display: flex;

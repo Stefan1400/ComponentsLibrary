@@ -66,7 +66,7 @@ function MenuSlider({ menuSliderVisible, toggleMenuSlider, toggleAuth, goToLogin
 
 
    return (
-    <div className={`menu-slider-div ${menuSliderVisible ? 'open' : console.log('invisible')}`}>
+    <div className={`menu-slider-div ${menuSliderVisible ? 'open' : ''}`}>
 
       <div className='menu-slider-top-flex'>
          <h4 ref={h4Ref} className='menu-slider-account-name fade'>{isLoggedIn ? `${user}` : 'Currently logged in as guest'}</h4>

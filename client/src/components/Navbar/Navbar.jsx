@@ -44,7 +44,7 @@ function Navbar({ toggleLogin, toggleAccountPage, toggleAddWord, toggleReview, t
             <span className='nav-flex-item-title'>my words</span>
          </li>
 
-         <li onClick={toggleMyWords} className="nav-flex-item nav-account">
+         <li onClick={toggleAccountPage} className="nav-flex-item nav-account">
             {/* <svg className='nav-my-words nav-btn' width="22" height="22" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                <path d="M13.5938 0H1.40625C0.62959 0 0 0.719531 0 1.60714V13.3929C0 14.2805 0.62959 15 1.40625 15H13.5938C14.3704 15 15 14.2805 15 13.3929V1.60714C15 0.719531 14.3704 0 13.5938 0ZM6.5625 12.8571H1.875V4.28571H6.5625V12.8571ZM13.125 12.8571H8.4375V4.28571H13.125V12.8571Z" 
                fill={myWordsVisible ? "black" : "#828282"}
