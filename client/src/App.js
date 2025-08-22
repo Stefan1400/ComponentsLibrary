@@ -140,6 +140,7 @@ function App() {
         addWordVisible={addWordVisible}
         reviewVisible={reviewVisible}
         myWordsVisible={myWordsVisible}
+        accountVisible={accountPageVisible}
       />
 
       <MenuSlider 

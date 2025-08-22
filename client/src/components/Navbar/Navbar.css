@@ -190,4 +190,8 @@
       background-color: #F3F3F3;
       /* background-color: red; */
    }
+
+   .nav-flex-item.selected {
+      background-color: #F3F3F3;
+   }
 }
