@@ -64,7 +64,11 @@ button {
    stroke: #1E1E1E;
 }
 
-
+@media (min-width: 768px) {
+   .menu-slider-btn {
+      display: none;
+   }
+}
 
 
 

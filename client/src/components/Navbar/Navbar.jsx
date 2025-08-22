@@ -15,14 +15,15 @@ function Navbar({ toggleLogin, toggleAccountPage, toggleAddWord, toggleReview, t
   
    return (
     <nav className='nav'>
+      <h1>Innumerable</h1>
       <ul className='nav-flex-list'>
-
+         
          <li onClick={toggleAddWord} className='nav-flex-item'>
             <svg className='nav-add-word nav-btn' width="22" height="22" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                <path d="M22.5045 9.03571H14.7902V1.64286C14.7902 0.735692 14.0225 0 13.0759 0H11.3616C10.415 0 9.64732 0.735692 9.64732 1.64286V9.03571H1.93304C0.986429 9.03571 0.21875 9.77141 0.21875 10.6786V12.3214C0.21875 13.2286 0.986429 13.9643 1.93304 13.9643H9.64732V21.3571C9.64732 22.2643 10.415 23 11.3616 23H13.0759C14.0225 23 14.7902 22.2643 14.7902 21.3571V13.9643H22.5045C23.4511 13.9643 24.2188 13.2286 24.2188 12.3214V10.6786C24.2188 9.77141 23.4511 9.03571 22.5045 9.03571Z" 
                fill={addWordVisible ? "black" : "#828282"}/>
             </svg>
-            {/* <span className='nav-flex-item-title'>add words</span> */}
+            <span className='nav-flex-item-title'>add words</span>
          </li>
 
          <li onClick={toggleReview} className='nav-flex-item'>  
@@ -31,7 +32,7 @@ function Navbar({ toggleLogin, toggleAccountPage, toggleAddWord, toggleReview, t
                fill={reviewVisible ? "black" : "#828282"}
                />
             </svg>
-            {/* <span className='nav-flex-item-title'>review</span> */}
+            <span className='nav-flex-item-title'>review</span>
          </li>
 
          <li onClick={toggleMyWords} className="nav-flex-item">
@@ -40,7 +41,23 @@ function Navbar({ toggleLogin, toggleAccountPage, toggleAddWord, toggleReview, t
                fill={myWordsVisible ? "black" : "#828282"}
                />
             </svg>
-            {/* <span className='nav-flex-item-title'>my words</span> */}
+            <span className='nav-flex-item-title'>my words</span>
+         </li>
+
+         <li onClick={toggleMyWords} className="nav-flex-item nav-account">
+            {/* <svg className='nav-my-words nav-btn' width="22" height="22" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M13.5938 0H1.40625C0.62959 0 0 0.719531 0 1.60714V13.3929C0 14.2805 0.62959 15 1.40625 15H13.5938C14.3704 15 15 14.2805 15 13.3929V1.60714C15 0.719531 14.3704 0 13.5938 0ZM6.5625 12.8571H1.875V4.28571H6.5625V12.8571ZM13.125 12.8571H8.4375V4.28571H13.125V12.8571Z" 
+               fill={myWordsVisible ? "black" : "#828282"}
+               />
+            </svg> */}
+
+            <svg className='nav-my-words nav-btn' width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M17.1445 16.5086C16.1949 14.8586 14.4117 13.75 12.375 13.75H9.625C7.58828 13.75 5.80508 14.8586 4.85547 16.5086C6.36797 18.193 8.55938 19.25 11 19.25C13.4406 19.25 15.632 18.1887 17.1445 16.5086ZM0 11C0 8.08262 1.15893 5.28473 3.22183 3.22183C5.28473 1.15893 8.08262 0 11 0C13.9174 0 16.7153 1.15893 18.7782 3.22183C20.8411 5.28473 22 8.08262 22 11C22 13.9174 20.8411 16.7153 18.7782 18.7782C16.7153 20.8411 13.9174 22 11 22C8.08262 22 5.28473 20.8411 3.22183 18.7782C1.15893 16.7153 0 13.9174 0 11ZM11 11.6875C11.8205 11.6875 12.6074 11.3616 13.1876 10.7814C13.7678 10.2012 14.0938 9.41426 14.0938 8.59375C14.0938 7.77324 13.7678 6.98633 13.1876 6.40614C12.6074 5.82595 11.8205 5.5 11 5.5C10.1795 5.5 9.39258 5.82595 8.81239 6.40614C8.2322 6.98633 7.90625 7.77324 7.90625 8.59375C7.90625 9.41426 8.2322 10.2012 8.81239 10.7814C9.39258 11.3616 10.1795 11.6875 11 11.6875Z" 
+                  fill="black"
+               />
+            </svg>
+
+            <span className='nav-flex-item-title'>account</span>
          </li>
 
       </ul>

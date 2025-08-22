@@ -8,7 +8,7 @@ const getDue = async (req, res) => {
       const fetchedDueWords = await ReviewModel.getDue(userId);
 
       // console.log('fetched due in controller: ', fetchedDueWords);
-
+      
       return res.status(200).json(fetchedDueWords);
 
    } catch (err) {
