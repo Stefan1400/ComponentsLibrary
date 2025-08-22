@@ -89,7 +89,14 @@
 .menu-nav-auth-btns button {
    border: 1px solid white;
    background-color: transparent;
+}
 
+@media (min-width: 768px) {
+   .menu-nav-auth-btns button {
+   border: 1px solid white;
+   background-color: #3E3E3E;
+
+}
 }
 
 .menu-slider-close path {

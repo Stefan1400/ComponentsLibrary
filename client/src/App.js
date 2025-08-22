@@ -140,7 +140,6 @@ function App() {
           toggleReview={toggleReview} 
           toggleMyWords={toggleMyWords} 
           toggleAccountPage={toggleAccountPage} 
-          // toggleLogin={toggleForm} 
           addWordVisible={addWordVisible}
           reviewVisible={reviewVisible}
           myWordsVisible={myWordsVisible}
@@ -148,12 +147,15 @@ function App() {
           toggleDesktopNavbar={toggleDesktopNavbar}
         />
 
-      <MenuSlider 
+      {isMobile && (
+        <MenuSlider 
           goToLogin={toggleLoginPage} 
           goToRegister={toggleRegisterPage} 
           toggleMenuSlider={toggleMenuSlider} 
           menuSliderVisible={menuSliderVisible}
-      />
+        />
+      )}
+
 
       {!isLoggedIn && guestMessageVisible && (
         <div className='guest-message-div'>
@@ -186,7 +188,7 @@ function App() {
         <MyWordsPanel />
       )}
     
-      {accountPageVisible && <AccountPage 
+      {accountPageVisible && !isMobile && <AccountPage 
         goToLogin={toggleLoginPage} 
         goToRegister={toggleRegisterPage} 
       />}

@@ -8,6 +8,16 @@
    align-items: center;
 }
 
-button.enabled {
-   /* background-color: gray; */
+@media (min-width: 768px) {
+   .page {  
+      width: 75vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      right: 0;
+   }
 }
+
+/* button.enabled {
+   background-color: gray;
+} */

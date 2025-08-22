@@ -46,16 +46,16 @@ function AccountPage({ goToLogin, goToRegister }) {
       }
 
    return (
-    <div className='account-page'>
+    <div className='account-page page'>
       <h2>{`Hello, ${isLoggedIn ? user : 'Guest'}`}</h2>
       {isLoggedIn && (
-            <div className="menu-nav-auth-btns fade">
+            <div className="menu-nav-auth-btns">
                <button onClick={handleLogout} className='logout-btn enabled'>Logout</button>
                <button onClick={showConfirmTab} className='delete-account-btn enabled'>Delete Account</button>
             </div>
          )}
          {!isLoggedIn && (
-            <div className="menu-nav-auth-btns fade">
+            <div className="menu-nav-auth-btns">
                <button onClick={goToLogin} className='login-btn enabled'>Login</button>
                <button onClick={goToRegister} className='sign-up-btn enabled'>Sign Up</button>
             </div>

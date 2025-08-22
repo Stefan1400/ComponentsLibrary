@@ -1,14 +1,10 @@
 .account-page {
-   width: 100vw;
-   height: 100vh;
-   /* background-color: var(--grid-item-bg);
-   border: 1px solid var(--grid-item-border);
-   color: var(--text-color); */
-   background-color: red;
+   /* width: 100vw;
+   height: 100vh; */
+   /* background-color: red; */
    border-radius: 3px;
    position: absolute;
    z-index: 299;
-   /* padding: 3rem; */
    display: flex;
    flex-direction: column;
    align-items: center;
