@@ -27,12 +27,14 @@ h2 {
 input {
    border: 1px solid var(--text-input-border);
    background-color: var(--text-input-bg);
+   background-color: white;
    /* width: 20vw; */
    height: 5vh;
-   padding-left: 2%;
+   padding-left: 20px;
    /* border-radius: 35px; */
-   border-radius: 3px;
+   border-radius: 75px;
    font-size: 16px;
+
 }
 
 input:focus {
@@ -46,9 +48,10 @@ input[type="checkbox"] {
 button {
    width: 30vw;
    height: 5vh;
-   background-color: #CECECE;
+   background-color: #3E3E3E;
    border: none;
    color: white;
+   border-radius: 75px;
 }
 
 .menu-slider-btn {

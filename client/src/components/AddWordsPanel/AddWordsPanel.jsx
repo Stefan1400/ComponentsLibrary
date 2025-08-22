@@ -43,11 +43,36 @@ function AddWordsPanel() {
   return (
     <div className='add-word-panel page'>
       <h2 className='add-word-h2'>Add Word</h2>
-      <input onChange={(e) => setWordValue(e.target.value)} value={wordValue} className='word-input' type="text" placeholder='word' />
+      <input onChange={(e) => setWordValue(e.target.value)} value={wordValue} className='word-input' type="text" placeholder='vocab' />
       <input onChange={(e) => setMeaningValue(e.target.value)} value={meaningValue} className='meaning-input' type="text" placeholder='meaning' />
-      <div className='known-div'> 
+      {/* <div className='known-div'> 
         <input checked={knownValue} onChange={(e) => setKnownValue(e.target.checked)} className='status-input' type="checkbox" />
         <span>Known?</span>
+      </div> */}
+
+      <input
+        type="checkbox"
+        id="toggle"
+        checked={knownValue}
+        onChange={(e) => setKnownValue(e.target.checked)}
+        style={{ display: "none" }}
+      />
+      <div className="known-toggle-pill-div">
+        <label
+          className='known-pill-label'
+          htmlFor="toggle"
+          style={{
+            display: "inline-block",
+            padding: "16px 30px",
+            borderRadius: "999px",
+            cursor: "pointer"
+          }}
+        >
+          <div className={`known-pill-inner-div ${knownValue ? 'on' : ''}`}>
+            <div className='known-pill-switch'></div>
+          </div>
+        </label>
+        <span className='known-pill-span'>{knownValue ? 'known' : 'learning'}</span>
       </div>
       <button onClick={handleAddWord} className={`add-word-submit-btn ${bothFull ? 'enabled' : ''} `}>ADD WORD</button>
     </div>
