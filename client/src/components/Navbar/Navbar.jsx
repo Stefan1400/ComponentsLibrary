@@ -15,7 +15,7 @@ function Navbar({ toggleLogin, toggleAccountPage, toggleAddWord, toggleReview, t
   
    return (
     <nav className='nav'>
-      <h1>Innumerable</h1>
+      <h1 className='nav-innumerable-h1'>Innumerable</h1>
       <ul className='nav-flex-list'>
          
          <li onClick={toggleAddWord} className={`nav-flex-item ${addWordVisible ? 'selected' : ''}`}>
@@ -44,7 +44,7 @@ function Navbar({ toggleLogin, toggleAccountPage, toggleAddWord, toggleReview, t
             <span className='nav-flex-item-title'>my words</span>
          </li>
 
-         <li onClick={toggleAccountPage} className={`nav-flex-item ${accountVisible ? 'selected' : ''}`}>
+         <li onClick={toggleAccountPage} className={`nav-flex-item nav-account ${accountVisible ? 'selected' : ''}`}>
             <svg className='nav-my-words nav-btn' width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                <path d="M17.1445 16.5086C16.1949 14.8586 14.4117 13.75 12.375 13.75H9.625C7.58828 13.75 5.80508 14.8586 4.85547 16.5086C6.36797 18.193 8.55938 19.25 11 19.25C13.4406 19.25 15.632 18.1887 17.1445 16.5086ZM0 11C0 8.08262 1.15893 5.28473 3.22183 3.22183C5.28473 1.15893 8.08262 0 11 0C13.9174 0 16.7153 1.15893 18.7782 3.22183C20.8411 5.28473 22 8.08262 22 11C22 13.9174 20.8411 16.7153 18.7782 18.7782C16.7153 20.8411 13.9174 22 11 22C8.08262 22 5.28473 20.8411 3.22183 18.7782C1.15893 16.7153 0 13.9174 0 11ZM11 11.6875C11.8205 11.6875 12.6074 11.3616 13.1876 10.7814C13.7678 10.2012 14.0938 9.41426 14.0938 8.59375C14.0938 7.77324 13.7678 6.98633 13.1876 6.40614C12.6074 5.82595 11.8205 5.5 11 5.5C10.1795 5.5 9.39258 5.82595 8.81239 6.40614C8.2322 6.98633 7.90625 7.77324 7.90625 8.59375C7.90625 9.41426 8.2322 10.2012 8.81239 10.7814C9.39258 11.3616 10.1795 11.6875 11 11.6875Z" 
                   fill={accountVisible ? "black" : "#828282"}
