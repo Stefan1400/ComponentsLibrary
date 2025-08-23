@@ -21,7 +21,7 @@ const WordListItem = ({
   cancelEdit,
   completeEdit 
 }) => (
-  <li className='my-words-list-item' key={wordObj.id}>
+  <li style={wordObj.known ? { backgroundColor: '#323232'} : { backgroundColor: 'white'} } className={`my-words-list-item ${wordObj.known ? 'known' : 'learning'}`} key={wordObj.id}>
     {/* WORD / MEANING / KNOWN */}
     {(!isEditing || (isEditing && wordObj.id !== editedWord)) && (
       <>

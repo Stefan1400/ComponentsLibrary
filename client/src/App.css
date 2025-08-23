@@ -45,12 +45,20 @@ input[type="checkbox"] {
 }
 
 button {
-   width: 30vw;
-   height: 5vh;
+   /* width: 30vw; */
+   width: 45%;
+   height: 6vh;
    background-color: #3E3E3E;
    border: none;
    color: white;
    border-radius: 75px;
+}
+
+@media (min-width: 974px) {
+   button {
+      width: 20%;
+      height: 7vh;
+   }
 }
 
 button:hover {
