@@ -18,6 +18,17 @@
    }
 }
 
+@media (min-width: 974px) {
+   .page {  
+      width: 85vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      right: 0;
+   }
+
+   
+}
 /* button.enabled {
    background-color: gray;
 } */

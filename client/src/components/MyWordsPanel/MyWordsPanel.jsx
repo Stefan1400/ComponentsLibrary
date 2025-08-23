@@ -239,7 +239,10 @@ function MyWordsPanel() {
         .filter(([key]) => key === "total_words")
         .map(([key, value]) => (
           <li className='my-words-word-stats-li' key={key}>
-            <span className='my-words-stats-title'>Total</span>
+            <div className='my-words-stats-header-div'> 
+              <div className='my-words-stats-color-indicator-total'></div>
+              <span className='my-words-stats-title'>Total</span>
+            </div>
             <span className='my-words-stats-number'>{value}</span>
           </li>
         ))}
@@ -247,7 +250,10 @@ function MyWordsPanel() {
         .filter(([key]) => key === "known_words")
         .map(([key, value]) => (
           <li className='my-words-word-stats-li' key={key}>
-            <span className='my-words-stats-title'>Known</span>
+            <div className='my-words-stats-header-div'>
+              <div className='my-words-stats-color-indicator-known'></div>
+              <span className='my-words-stats-title'>Known</span>
+            </div>
             <span className='my-words-stats-number'>{value}</span>
           </li>
         ))}
@@ -255,7 +261,10 @@ function MyWordsPanel() {
         .filter(([key]) => key === "learning_words")
         .map(([key, value]) => (
           <li className='my-words-word-stats-li' key={key}>
-            <span className='my-words-stats-title'>Learning</span>
+            <div className='my-words-stats-header-div'>
+              <div className='my-words-stats-color-indicator-learning'></div>
+              <span className='my-words-stats-title'>Learning</span>
+            </div>
             <span className='my-words-stats-number'>{value}</span>
           </li>
         ))}

@@ -12,9 +12,9 @@
    width: 80vw;
    height: 8vh;
    border-radius: 999px;
-   box-shadow: 1px 0 6px 0px rgba(0, 0, 0, 0.25);
+   /* box-shadow: 1px 0 6px 0px rgba(0, 0, 0, 0.25); */
    /* padding: 5rem 1rem; */
-
+   border: 1px solid rgb(217, 217, 217);
    gap: 5rem;
    background-color: white;
    /* border: 1px solid var(--grid-item-border); */
@@ -161,13 +161,25 @@
       padding-top: 2rem;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      /* align-items: center; */
+      background-color: #F3F3F3;
       gap: 1rem;
+      /* color: black; */
    }
 
    .nav-flex-item-title, .nav-account, .nav-innumerable-h1 {
       display: flex;
    } 
+
+   .nav-flex-item-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+   }
+
+   .nav-innumerable-h1 {
+      justify-content: start;
+      margin-left: 2rem;
+   }
 
 
    .nav-flex-list {
@@ -175,30 +187,42 @@
       height: auto;
       display: grid;
       grid-template-columns: 1fr;
-      /* margin-top: 1rem; */
-      /* gap: 1rem; */
-      /* grid-template-rows: 0; */
-      /* display: flex;
-      flex-direction: column;
-      justify-content: start;
-      align-items: center; */
-      /* background-color: red; */
+
    }
 
    .nav-flex-item {
       width: 100%;
       height: auto;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      /* display: grid;
+      grid-template-columns: repeat(2, 1fr); */
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 2rem;
+      transition: all 0.1s ease-in-out;
+      color: rgb(120, 120, 120);
       /* background-color: blue; */
+      /* border-bottom: 1px solid rgb(215, 215, 215); */
    }
 
    .nav-flex-item:hover {
       background-color: #F3F3F3;
+      background-color: #eaeaea;
       cursor: pointer;
    }
 
    .nav-flex-item.selected {
       background-color: #F3F3F3;
+      background-color: #eaeaea;
+      color: black;
    }
+   
+}
+
+@media (min-width: 974px) {
+   .nav {
+      width: 16vw;
+   }
+
+
 }

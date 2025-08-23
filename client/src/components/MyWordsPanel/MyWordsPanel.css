@@ -169,16 +169,82 @@
 
 .my-words-word-stats {
    position: fixed;
+   /* position: absolute; */
    top: 10vh;
    left: 2vw;
    list-style: none;
    display: flex;
    flex-direction: row;
+   gap: 3rem;
    justify-content: space-between;
    align-items: center;
    width: 100%;
    padding: 0.75rem 2rem;
    padding-right: 2.6rem;
+}
+
+@media (min-width: 768px) {
+   .my-words-word-stats {
+      /* position: fixed; */
+      position: absolute;
+      top: 1vh;
+      /* top: 10vh; */
+      /* left: 2vw; */
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      gap: 3rem;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      padding: 0.75rem 2rem;
+      padding-right: 2.6rem;
+   }
+
+   .my-words-list-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 70%;
+      height: auto;
+      padding: 2% 6%;
+      padding-right: 7%;
+      /* background-color: #C24758; */
+      border-radius: 3px;
+      box-shadow: 1px 0 6px 0px rgba(72, 72, 72, 0.25);
+   }
+
+   .my-words-stats-color-indicator-total,
+   .my-words-stats-color-indicator-known,
+   .my-words-stats-color-indicator-learning {
+      width: 10px;
+      height: 10px;
+      background-color: black;
+   }
+
+   .my-words-stats-color-indicator-total {
+      background-color: white;
+      border: 1px solid black;
+      /* width: 0px;
+      height: 0px; */
+   }
+
+   .my-words-stats-color-indicator-known {
+      background-color: black;
+   }
+
+   .my-words-stats-color-indicator-learning {
+      border: 1px solid black;
+      background-color: white;
+   }
+
+   .my-words-stats-header-div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+   }
 }
 
 .my-words-word-stats-li {

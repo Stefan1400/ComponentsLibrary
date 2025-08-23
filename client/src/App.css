@@ -27,8 +27,8 @@ input {
    border: 1px solid var(--text-input-border);
    background-color: var(--text-input-bg);
    background-color: white;
-   /* width: 20vw; */
-   height: 5vh;
+   width: 45%;
+   height: 6vh;
    padding-left: 20px;
    /* border-radius: 35px; */
    border-radius: 75px;
@@ -51,6 +51,10 @@ button {
    border: none;
    color: white;
    border-radius: 75px;
+}
+
+button:hover {
+   cursor: pointer;
 }
 
 .menu-slider-btn {
