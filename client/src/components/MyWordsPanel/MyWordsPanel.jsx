@@ -4,7 +4,7 @@ import { WordContext } from '../../context/WordContext';
 import { StatsContext } from '../../context/StatsContext';
 import { NotificationContext } from '../../context/Notification/Notification';
 import MyStats from '../MyStatsPanel/MyStatsPanel';
-
+import ModalPopup from './ModalPopup/ModalPopup';
 
 const WordListItem = ({ 
   wordObj, 
@@ -27,7 +27,7 @@ const WordListItem = ({
       <>
         <span className='my-words-displayed my-words-word'>{wordObj.word}</span>
         <span className='my-words-displayed my-words-meaning'>{wordObj.meaning}</span>
-        <span className='my-words-displayed my-words-known'>{wordObj.known ? "yes" : "no"}</span>
+        {/* <span className='my-words-displayed my-words-known'>{wordObj.known ? "yes" : "no"}</span> */}
       </>
     )}
     {isEditing && wordObj.id === editedWord && (
@@ -52,6 +52,7 @@ const WordListItem = ({
         />
       </>
     )}
+
 
     {/* ACTIONS */}
     {!isEditing && (
@@ -233,6 +234,7 @@ function MyWordsPanel() {
    
   return (
     <div className="panel-wrapper page">
+
 
       <ul className="my-words-word-stats">
         {myStats && Object.entries(myStats)

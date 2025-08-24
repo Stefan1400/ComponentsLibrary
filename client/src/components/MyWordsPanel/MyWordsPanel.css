@@ -133,6 +133,10 @@
    height: auto;
    padding: 5% 6%;
    padding-right: 7%;
+
+   display: grid;
+   grid-template-columns: 3fr 3fr 1fr;
+
    /* background-color: #C24758; */
    border-radius: 3px;
    box-shadow: 1px 0 6px 0px rgba(72, 72, 72, 0.25);
@@ -253,10 +257,10 @@
    }
 
    .my-words-list-item {
-      display: flex;
+      /* display: flex;
       flex-direction: row;
       justify-content: space-between;
-      align-items: center;
+      align-items: center; */
       width: 70%;
       height: auto;
       padding: 2% 6%;
