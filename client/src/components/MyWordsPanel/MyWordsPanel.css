@@ -213,11 +213,11 @@
    }
 
    .my-words-stats-color-indicator-known {
-      background-color: black;
+      background-color: #323232;
    }
 
    .my-words-stats-color-indicator-learning {
-      border: 1px solid black;
+      border: 1px solid rgb(0, 0, 0);
       background-color: white;
    }
 

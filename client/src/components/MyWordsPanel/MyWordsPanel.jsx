@@ -44,12 +44,12 @@ const WordListItem = ({
           value={newMeaning} 
           placeholder={wordObj.meaning}
         />
-        <input 
+        {/* <input 
           className='my-words-edit-field' 
           type='checkbox' 
           onChange={(e) => setNewKnown(e.target.checked)} 
           checked={newKnown}
-        />
+        /> */}
       </>
     )}
 
