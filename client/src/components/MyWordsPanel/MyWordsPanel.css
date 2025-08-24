@@ -32,7 +32,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   right: 12%;
+   right: 16%;
 }
 
 .my-words-search-close {
@@ -41,7 +41,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   right: 3%;
+   right: 6%;
 }
 
 .my-words-search-searchbar-clear-flex {
