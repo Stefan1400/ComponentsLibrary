@@ -2,9 +2,6 @@ import react, { useState, useEffect, createContext, useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import { NotificationContext } from "./Notification/Notification";
 import { StatsContext } from "./StatsContext";
-// const API_URL = process.env.REACT_APP_API_URL;
-
-// console.log('API_URL: ', API_URL);
 
 const WordContext = createContext();
 
@@ -258,57 +255,6 @@ export const WordProvider = ({ children }) => {
       return true;
    }
 
-//    const deleteWord = async (wordId) => {
-//    if (isLoggedIn && user) {
-//       try {
-//          await fetchWithAuth(`http://localhost:5000/api/words/${wordId}`, {
-//             method: 'DELETE',
-//          });
-
-//          showNotification('word deleted');
-//          setMyWords(prev => prev.filter(w => w.id !== wordId));
-         
-//          // Only update dueWords if the word is actually in the due list
-//          setDueWords(prev => {
-//             const wordIsDue = prev.some(w => w.id === wordId);
-//             if (wordIsDue) {
-//                return prev.filter(w => w.id !== wordId);
-//             }
-//             return prev; // Don't change if word wasn't due
-//          });
-         
-//          await getAllStats();
-//          return true;
-
-//       } catch (err) {
-//          showNotification('could not delete word. please try again later');
-//          console.log('could not delete word. please try again later');
-//       }
-//    }
-
-//    const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
-//    if (!stored) return;
-
-//    let myWords = JSON.parse(stored);
-//    const updatedWords = myWords.filter(w => w.id !== wordId);
-//    setMyWords(updatedWords);
-
-//    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedWords));
-   
-//    // Only update dueWords if the word is actually in the due list
-//    setDueWords(prev => {
-//       const wordIsDue = prev.some(w => w.id === wordId);
-//       if (wordIsDue) {
-//          return prev.filter(w => w.id !== wordId);
-//       }
-//       return prev; // Don't change if word wasn't due
-//    });
-   
-//    refreshLocalStats();
-//    showNotification('Word deleted');
-//    return true;
-// }
-
    const search = async (query) => {
       if (isLoggedIn && user) {
          try {
@@ -376,7 +322,6 @@ export const WordProvider = ({ children }) => {
    }
 
    const updateSRS = async (wordId, answer) => {
-      // console.log('wordId in word Context: ', wordId);
 
       if (isLoggedIn && user) {
          try {
@@ -386,6 +331,11 @@ export const WordProvider = ({ children }) => {
             });
 
             console.log('returned updatedSRS: ', data);
+
+            if (answer === 'correct') {
+               setDueWords(prev => prev.filter(w => w.id !== wordId));
+            }
+
             return true;
 
          } catch (err) {
@@ -395,7 +345,7 @@ export const WordProvider = ({ children }) => {
       }
 
       const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
-      if (!stored) return;
+      if (!stored) return false;
 
       const localWords = JSON.parse(stored);
 
@@ -440,6 +390,10 @@ export const WordProvider = ({ children }) => {
 
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedWords));
       setMyWords(updatedWords); // if you want the UI to reflect immediately
+
+      if (answer === 'correct') {
+         setDueWords(prev => prev.filter(w => w.id !== wordId));
+      }
 
       return true;
 

@@ -6,7 +6,7 @@ import { WordContext } from '../../context/WordContext';
 function ReviewPanel() {
 
    const [answerShown, setAnswerShown] = useState(false);
-   const { dueWords, updateSRS } = useContext(WordContext); // Removed setDueWords
+   const { dueWords, updateSRS } = useContext(WordContext);
 
    const [reviews, setReviews] = useState(dueWords);
    const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,30 +19,25 @@ function ReviewPanel() {
 
    const [sessionStarted, setSessionStarted] = useState(false);
 
-   const reviewsLeft = originalDueCount - totalCorrect; // Words left = original count - words completed correctly
+   const reviewsLeft = originalDueCount - totalCorrect;
 
-   // Update reviews when dueWords changes
    useEffect(() => {
-      setReviews(dueWords);
-      setCurrentIndex(0); // Reset to first word when due words change
-      setOriginalDueCount(dueWords.length); // Track original count
-      setTotalCorrect(0); // Reset counters
-      setTotalWrong(0);
-      setFinished(false);
-      setResultsShown(false);
-   }, [dueWords]);
+      if (!resultsShown && !finished) {
+         setReviews(dueWords);
+         setCurrentIndex(0);
+         setOriginalDueCount(dueWords.length);
+         setTotalCorrect(0); 
+         setTotalWrong(0);
+         setFinished(false);
+         setResultsShown(false);
+      }
+   }, [dueWords, resultsShown, finished]);
 
    useEffect(() => {
       if (reviewsLeft === 0 && originalDueCount > 0) {
          showResults();
       }
    }, [reviewsLeft, originalDueCount]);
-
-   // useEffect(() => {
-   //    if (reviewsLeft === 0) {
-   //       showResults();
-   //    }
-   // }, [reviewsLeft]);
 
    const showResults = () => {
       if (!finished) {
@@ -53,7 +48,7 @@ function ReviewPanel() {
    }
 
    const handleAnswer = (answer) => {
-      const currentWord = reviews[currentIndex]; // Use reviews instead of dueWords
+      const currentWord = reviews[currentIndex];
       
       if (!answer) {
          // console.log('error inside handleAnswer: ', answer);
@@ -64,18 +59,14 @@ function ReviewPanel() {
          setCurrentIndex(prevIndex => prevIndex + 1);
          setTotalCorrect(prev => prev + 1);
 
-         // console.log('current word object: ', currentWord);
-         // console.log('current word id: ', currentWord.id);
-
          handleUpdate(currentWord.id, 'correct');
       }
 
       if (answer === 'wrong') {
-         // Modify local reviews state, not the global dueWords
          const updatedReviews = [...reviews, currentWord];
          updatedReviews.splice(currentIndex, 1);
 
-         setReviews(updatedReviews); // Use local state instead of setDueWords
+         setReviews(updatedReviews);
 
          setTotalWrong(prev => prev + 1);
 
@@ -145,9 +136,6 @@ return (
    
     )}
 
-   {/* {reviewsLeft !== 0 && !sessionStarted && (
-      <button onClick={() => setSessionStarted(true)} className='review-btn-start-session'>Start Reviews</button>
-   )} */}
 
     <div className="review-buttons">
       {!answerShown && reviewsLeft !== 0 && !resultsShown && (
