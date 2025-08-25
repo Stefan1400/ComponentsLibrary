@@ -13,8 +13,6 @@ import MenuSlider from './components/MenuSlider/MenuSlider.jsx';
 
 function App() {
 
-  
-  //toggle 3 main pages
   const [addWordVisible, setAddWordVisible] = useState(true);
   const [reviewVisible, setReviewVisible] = useState(false);
   const [myWordsVisible, setMyWordsVisible] = useState(false);
@@ -127,6 +125,11 @@ function App() {
     }
   }
 
+  const guestToLogin = () => {
+    closeGuestMessage();
+    setLoginVisible(true);
+  }
+
   const toggleDesktopNavbar = () => {
     setDesktopNavbarVisible(prev => !prev);
   }
@@ -160,7 +163,7 @@ function App() {
       {!isLoggedIn && guestMessageVisible && (
         <div className='guest-message-div'>
           <span className='guest-message-info'>currently logged in as guest</span>
-          <span className='guest-message-cta'>login</span>
+          <span onClick={guestToLogin} className='guest-message-cta'>login</span>
           
           <svg onClick={closeGuestMessage} className='guest-message-close' width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line x1="0.823223" y1="12.8232" x2="12.8232" y2="0.823224" stroke="#000" strokeWidth="0.75"/>
