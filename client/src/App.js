@@ -10,6 +10,7 @@ import AddWordsPanel from './components/AddWordsPanel/AddWordsPanel.jsx';
 import ReviewPanel from './components/ReviewPanel/ReviewPanel.jsx';
 import MyWordsPanel from './components/MyWordsPanel/MyWordsPanel.jsx';
 import MenuSlider from './components/MenuSlider/MenuSlider.jsx';
+import { Routes, Route, Link } from 'react-router-dom';
 
 function App() {
 
@@ -204,6 +205,14 @@ function App() {
       {!addWordVisible && !reviewVisible && !myWordsVisible && !loginVisible && !registerVisible && (
         <AddWordsPanel />
       )}
+
+      {/* <Link to='/add'>
+        <div style={{backgroundColor: 'black', width: '250px', height: '250px', position: 'absolute', zIndex: 500}}></div>
+      </Link>
+
+      <Routes>
+        <Route path='/add' element={<AddWordsPanel />} />
+      </Routes> */}
       
     </div>
   );

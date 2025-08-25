@@ -58,12 +58,28 @@
 }
 
 .auth-input {
-   width: 50%;
+   width: 100%;
    height: 2rem;
    font-size: 0.95rem;
    border: none;
    border-bottom: 1px solid #424242;
 }
+
+.auth-input-fields-container {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   position: relative;
+}
+
+.pw-toggle-icon {
+   position: absolute;
+   right: 1rem;
+   height: 100%;
+}
+
+
 
 .auth-input:focus {
    outline: none;

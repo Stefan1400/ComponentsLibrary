@@ -7,10 +7,12 @@ import { AuthProvider } from './context/AuthContext';
 import { WordProvider } from './context/WordContext';
 import { StatsProvider } from './context/StatsContext';
 import { NotificationProvider } from './context/Notification/Notification';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    {/* <BrowserRouter> */}
     <NotificationProvider>
     <AuthProvider>
       <StatsProvider>
@@ -20,6 +22,7 @@ root.render(
       </StatsProvider>
     </AuthProvider>
     </NotificationProvider>
+    {/* </BrowserRouter> */}
   </React.StrictMode>
 );
 
