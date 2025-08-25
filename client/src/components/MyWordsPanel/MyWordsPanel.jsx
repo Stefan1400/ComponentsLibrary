@@ -195,12 +195,12 @@ function MyWordsPanel() {
       };
 
    const handleClearSearch = () => {
-    if (!searchQuery) {
-      return;
-    }
+    // if (!searchQuery) {
+    //   return;
+    // }
 
     setSearchQuery('');
-    setIsSearching(false);
+    // setIsSearching(false);
     setSearchResults([]);
    }
 
@@ -211,6 +211,8 @@ function MyWordsPanel() {
    const closeSearch = () => {
       setSearchActivated(false);
       setSearchQuery('');
+      // setIsSearching(false);
+      setSearchResults([]);
    }
 
    const inputRef = useRef(null);
@@ -221,16 +223,6 @@ function MyWordsPanel() {
     }
    }, [searchActivated]);
 
-   
-
-  // {myStats && Object.entries(myStats)
-  //         .filter(([key]) => key === "total_words")
-  //         .map(([key, value]) => (
-  //           <li className='my-stats-ul-li' key={key}>
-  //             <span className='my-stats-title'>Total Words</span>
-  //             <span className='my-stats-number'>{value}</span>
-  //           </li>
-  //         ))
    
   return (
     <div className="panel-wrapper page">

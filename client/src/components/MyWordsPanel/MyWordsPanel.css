@@ -16,6 +16,7 @@
    /* width: 100%; */
    height: auto;
    position: absolute;
+   z-index: 100;
    top: 2.5%;
    right: 3%;
 }
@@ -78,9 +79,12 @@
    justify-content: center;
    align-items: center;
    position: absolute;
-   top: -15vh;
+   z-index: 1;
+   /* top: -13vh; */
+   bottom: 0;
    font-weight: 300;
    font-size: 1rem;
+   /* background-color: red; */
 }
 
 .my-words-flex-row {
