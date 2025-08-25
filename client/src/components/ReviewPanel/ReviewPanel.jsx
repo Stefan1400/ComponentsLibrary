@@ -22,7 +22,7 @@ function ReviewPanel() {
    const reviewsLeft = originalDueCount - totalCorrect;
 
    useEffect(() => {
-      if (!resultsShown && !finished) {
+      if (!resultsShown && !finished && dueWords.length > 0) {
          setReviews(dueWords);
          setCurrentIndex(0);
          setOriginalDueCount(dueWords.length);
