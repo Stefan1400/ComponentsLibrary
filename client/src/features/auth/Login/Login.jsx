@@ -3,6 +3,7 @@ import { useState, useEffect, useContext, useRef } from 'react';
 // import Notification from '../../../components/Notification/Notification';
 import { AuthContext } from '../../../context/AuthContext';
 import { NotificationContext } from '../../../context/Notification/Notification';
+import { Link } from 'react-router-dom';
 
 function Login({ toggle, hideBothForms, goToRegister  }) {
 
@@ -120,7 +121,9 @@ function Login({ toggle, hideBothForms, goToRegister  }) {
             <button onClick={checkIfValid} className="auth-submit-btn enabled">Sign In</button>
             <div className="auth-switch-div">
                <span className="auth-link-small auth-switch-link">Don't have an account?</span> 
-               <span onClick={goToRegister} className='underlined'>Create an account</span>
+               <Link to='/register'>
+                  <span onClick={goToRegister} className='underlined'>Create an account</span>
+               </Link>
             </div>
          </div>
       )}

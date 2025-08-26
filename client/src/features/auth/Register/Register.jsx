@@ -3,6 +3,7 @@ import '../../auth/Auth.css';
 import { useState, useEffect, useContext } from 'react';
 import { NotificationContext } from '../../../context/Notification/Notification';
 import { AuthContext } from '../../../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 function Register({ toggle, hideBothForms, goToLogin, toggleMenuSlider }) {
 
@@ -115,7 +116,9 @@ function Register({ toggle, hideBothForms, goToLogin, toggleMenuSlider }) {
       
       <div className='auth-switch-div'>
          <span className="auth-link-small auth-switch-link">Already have an account? </span>
-         <span onClick={goToLogin} className='underlined'>Log in</span>
+         <Link to='/login'>
+            <span onClick={goToLogin} className='underlined'>Log in</span>
+         </Link>
       </div>
    </div>
   )
