@@ -43,6 +43,7 @@ function AccountPage({ goToLogin, goToRegister }) {
             setConfirmOpen(false);
             showNotification('account successfully deleted');
             setIsDeleting(false);
+            setLoggedPW('');
          }
       }
 

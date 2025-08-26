@@ -45,6 +45,7 @@ function MenuSlider({ menuSliderVisible, toggleMenuSlider, toggleAuth, goToLogin
          showNotification('account successfully deleted');
          setIsDeleting(false);
          toggleMenuSlider();
+         setLoggedPW('');
       }
    }
 
