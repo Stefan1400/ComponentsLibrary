@@ -3,9 +3,12 @@ import { useState, useEffect, useContext, useRef } from 'react';
 // import Notification from '../../../components/Notification/Notification';
 import { AuthContext } from '../../../context/AuthContext';
 import { NotificationContext } from '../../../context/Notification/Notification';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 function Login({ toggle, hideBothForms, goToRegister  }) {
+
+   const navigate = useNavigate();
 
    const { user, isLoggedIn, login, logout } = useContext(AuthContext);
    const { message, showNotification } = useContext(NotificationContext);
@@ -57,6 +60,9 @@ function Login({ toggle, hideBothForms, goToRegister  }) {
       if (loggedIn) {
          setUsername('');
          setPassword('');
+
+
+         navigate('/');
 
          // hideBothForms();
 
@@ -117,7 +123,7 @@ function Login({ toggle, hideBothForms, goToRegister  }) {
                
                {/* <span className='auth-link-small auth-forgot-pw underlined'>Forgot password?</span> */}
             </div>
-         
+               
             <button onClick={checkIfValid} className="auth-submit-btn enabled">Sign In</button>
             <div className="auth-switch-div">
                <span className="auth-link-small auth-switch-link">Don't have an account?</span> 
