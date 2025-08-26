@@ -41,11 +41,11 @@ function MenuSlider({ menuSliderVisible, toggleMenuSlider, toggleAuth, goToLogin
       const deletedAccount = await deleteAccount(loggedPW);
 
       if (deletedAccount) {
+         setLoggedPW('');
          setConfirmOpen(false);
          showNotification('account successfully deleted');
          setIsDeleting(false);
          toggleMenuSlider();
-         setLoggedPW('');
       }
    }
 
