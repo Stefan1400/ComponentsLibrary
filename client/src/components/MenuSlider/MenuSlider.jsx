@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from 'react';
 import './MenuSlider.css';
 import { AuthContext } from '../../context/AuthContext';
 import { NotificationContext } from '../../context/Notification/Notification';
+import { Link } from 'react-router-dom';
 
 function MenuSlider({ menuSliderVisible, toggleMenuSlider, toggleAuth, goToLogin, goToRegister }) {
    
@@ -101,8 +102,12 @@ function MenuSlider({ menuSliderVisible, toggleMenuSlider, toggleAuth, goToLogin
          )}
          {!isLoggedIn && (
             <div ref={authBtnsRef} className="menu-nav-auth-btns fade">
-               <button onClick={goToLogin} className='login-btn enabled'>Login</button>
-               <button onClick={goToRegister} className='sign-up-btn enabled'>Sign Up</button>
+               <Link to='/login'>
+                  <button onClick={goToLogin} className='login-btn enabled'>Login</button>
+               </Link>
+               <Link to='/register'>
+                  <button onClick={goToRegister} className='sign-up-btn enabled'>Sign Up</button>
+               </Link>
             </div>
          )}
       </ul>

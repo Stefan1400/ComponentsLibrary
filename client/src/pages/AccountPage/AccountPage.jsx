@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import './AccountPage.css';
 import { AuthContext } from '../../context/AuthContext';
 import { NotificationContext } from '../../context/Notification/Notification';
+import { Link } from 'react-router-dom';
 
 function AccountPage({ goToLogin, goToRegister }) {
    
@@ -56,8 +57,12 @@ function AccountPage({ goToLogin, goToRegister }) {
          )}
          {!isLoggedIn && (
             <div className="menu-nav-auth-btns">
-               <button onClick={goToLogin} className='login-btn enabled'>Login</button>
-               <button onClick={goToRegister} className='sign-up-btn enabled'>Sign Up</button>
+               <Link to='/login'>
+                  <button onClick={goToLogin} className='login-btn enabled'>Login</button>
+               </Link>
+               <Link to='/register'>
+                  <button onClick={goToRegister} className='sign-up-btn enabled'>Sign Up</button>
+               </Link>
             </div>
          )}
 

@@ -10,7 +10,7 @@ import AddWordsPanel from './components/AddWordsPanel/AddWordsPanel.jsx';
 import ReviewPanel from './components/ReviewPanel/ReviewPanel.jsx';
 import MyWordsPanel from './components/MyWordsPanel/MyWordsPanel.jsx';
 import MenuSlider from './components/MenuSlider/MenuSlider.jsx';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
 
 function App() {
 
@@ -36,13 +36,6 @@ function App() {
 
     setMyWordsVisible(true);
   }
-
-
-
-
-
-
-
 
   const { isLoggedIn } = useContext(AuthContext);
   
@@ -180,39 +173,43 @@ function App() {
         </svg>
       )}
 
-      {addWordVisible && (
+      {/* {addWordVisible && (
         <AddWordsPanel />
-      )}
+      )} */}
 
-      {reviewVisible && (
+      {/* {reviewVisible && (
         <ReviewPanel />
       )}
 
       {myWordsVisible && (
         <MyWordsPanel />
-      )}
+      )} */}
     
-      {accountPageVisible && !isMobile && <AccountPage 
+      {/* {accountPageVisible && !isMobile && <AccountPage 
         goToLogin={toggleLoginPage} 
         goToRegister={toggleRegisterPage} 
-      />}
+      />} */}
 
-      {loginVisible && !isLoggedIn && <Login goToRegister={toggleRegisterPage} />}
-      {registerVisible && !isLoggedIn && <Register goToLogin={toggleLoginPage} toggleMenuSlider={toggleMenuSlider} />}
+      {/* {loginVisible && !isLoggedIn && <Login goToRegister={toggleRegisterPage} />} */}
+      {/* {registerVisible && !isLoggedIn && <Register goToLogin={toggleLoginPage} toggleMenuSlider={toggleMenuSlider} />} */}
       {/* {loginVisible && <Login hideBothForms={toggleForm} />} */}
       {/* {registerVisible && <Register hideBothForms={toggleForm} />} */}
       
-      {!addWordVisible && !reviewVisible && !myWordsVisible && !loginVisible && !registerVisible && (
+      {/* {!addWordVisible && !reviewVisible && !myWordsVisible && !loginVisible && !registerVisible && (
         <AddWordsPanel />
-      )}
+      )} */}
 
-      {/* <Link to='/add'>
-        <div style={{backgroundColor: 'black', width: '250px', height: '250px', position: 'absolute', zIndex: 500}}></div>
-      </Link>
-
+      {/* const location = useLocation(); */}
+      
       <Routes>
+        <Route path='/' element={<AddWordsPanel />} />
         <Route path='/add' element={<AddWordsPanel />} />
-      </Routes> */}
+        <Route path='/review' element={<ReviewPanel />} />
+        <Route path='/my-words' element={<MyWordsPanel />} />
+        <Route path='/account' element={!isMobile ? <AccountPage /> : <Navigate to='/' />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+      </Routes>
       
     </div>
   );

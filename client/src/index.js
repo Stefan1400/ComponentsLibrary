@@ -12,7 +12,7 @@ import { BrowserRouter } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <BrowserRouter> */}
+    <BrowserRouter>
     <NotificationProvider>
     <AuthProvider>
       <StatsProvider>
@@ -22,7 +22,7 @@ root.render(
       </StatsProvider>
     </AuthProvider>
     </NotificationProvider>
-    {/* </BrowserRouter> */}
+    </BrowserRouter>
   </React.StrictMode>
 );
 
