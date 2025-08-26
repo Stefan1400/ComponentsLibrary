@@ -64,6 +64,12 @@ function MenuSlider({ menuSliderVisible, toggleMenuSlider, toggleAuth, goToLogin
       }
    }, [menuSliderVisible]);
 
+   const cancelDeleteAccount = () => {
+      setConfirmOpen(false);
+      setIsDeleting(false);
+      setLoggedPW('');
+   }
+
 
 
    return (
@@ -115,6 +121,10 @@ function MenuSlider({ menuSliderVisible, toggleMenuSlider, toggleAuth, goToLogin
 
       {confirmOpen && (
         <div className="delete-account-confirm-tab">
+         <svg onClick={cancelDeleteAccount} className='delete-account-close' width="20" height="20" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0.646447" y1="25.6464" x2="25.6464" y2="0.64645" stroke="black"/>
+            <line x1="1.35355" y1="0.646447" x2="26.3535" y2="25.6464" stroke="black"/>
+         </svg>
           <h3 className="delete-account-confirm-h3">Please enter your password to delete account</h3>
           <span className='delete-account-confirm-note'>Warning: All data will be lost and cannot be undone. </span>
           <input onChange={(e) => setLoggedPW(e.target.value)} value={loggedPW} type="text" className="delete-account-confirm-pw-input" placeholder='password'/>

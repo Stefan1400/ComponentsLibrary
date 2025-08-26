@@ -156,3 +156,8 @@
    font-weight: 700;
 }
 
+.delete-account-close {
+   position: absolute;
+   right: 1rem;
+   cursor: pointer;
+}

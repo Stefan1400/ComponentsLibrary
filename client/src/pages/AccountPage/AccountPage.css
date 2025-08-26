@@ -50,3 +50,9 @@
    bottom: 8.5%;
    padding: 10%;
 }
+
+.delete-account-close {
+   position: absolute;
+   right: 1rem;
+   cursor: pointer;
+}
