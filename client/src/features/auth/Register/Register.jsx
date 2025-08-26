@@ -3,9 +3,11 @@ import '../../auth/Auth.css';
 import { useState, useEffect, useContext } from 'react';
 import { NotificationContext } from '../../../context/Notification/Notification';
 import { AuthContext } from '../../../context/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Register({ toggle, hideBothForms, goToLogin, toggleMenuSlider }) {
+
+   const navigate = useNavigate();
 
    const { message, showNotification } = useContext(NotificationContext);
    const { register } = useContext(AuthContext);
@@ -50,6 +52,8 @@ function Register({ toggle, hideBothForms, goToLogin, toggleMenuSlider }) {
       const registered = await register(username, password);
 
       if (registered) {
+         navigate('/');
+         
          showNotification('account successfully created');
          setUsername('');
          setPassword('');
