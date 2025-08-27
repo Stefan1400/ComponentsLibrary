@@ -14,6 +14,39 @@ export const WordProvider = ({ children }) => {
    const { showNotification } = useContext(NotificationContext);
    const { myStats, setMyStats, getAllStats, refreshLocalStats, refreshStats } = useContext(StatsContext);
 
+   useEffect(() => {
+      let didCancel = false;
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 3000);
+
+      fetch(`${process.env.REACT_APP_API_URL}/api/ping`, {
+         method: 'GET',
+         cache: 'no-store',
+         signal: controller.signal,
+      })
+         .then(res => {
+            clearTimeout(timeout);
+            if (!res.ok) {
+            console.warn('ping non-ok', res.status);
+            return null;
+            }
+            return res.json().catch(()=>null);
+         })
+         .then(data => {
+            if (didCancel) return;
+            if (data) console.log('woke server:', data);
+         })
+         .catch(err => {
+            console.debug('ping failed or aborted (likely still waking):', err?.name || err);
+         });
+
+      return () => {
+         didCancel = true;
+         clearTimeout(timeout);
+         controller.abort();
+      };
+   }, []);
+
 
    // GUEST WORDS
    const LOCAL_STORAGE_KEY = 'guest_words';
