@@ -46,6 +46,7 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('userId', data.user.id);
             setUser(username);
             setIsLoggedIn(true);
+            showNotification('account successfully created');
             return true;
          }
 

@@ -41,7 +41,7 @@ function Register({ toggle, hideBothForms, goToLogin, toggleMenuSlider }) {
    }
 
    if (usernameIsValid && passwordIsValid) {
-      showNotification('username and password are valid');
+      // showNotification('username and password are valid');
       handleRegister();
    }
 };
