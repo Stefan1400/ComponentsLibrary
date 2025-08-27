@@ -20,7 +20,7 @@ function Navbar({ toggleDesktopNavbar, toggleLogin, toggleAccountPage, toggleAdd
       <ul className='nav-flex-list'>
          
          {/* ADD LINK */}
-         <li className={`nav-flex-item ${addWordVisible ? 'selected' : ''}`}>
+         <li onClick={toggleAddWord} className={`nav-flex-item ${addWordVisible ? 'selected' : ''}`}>
             <Link className='nav-link' to='/add'>
             <svg width="20" height="20" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path  className='nav-add-word nav-btn'
@@ -34,7 +34,7 @@ function Navbar({ toggleDesktopNavbar, toggleLogin, toggleAccountPage, toggleAdd
             </li>
 
          {/* REVIEW LINK */}
-         <li className={`nav-flex-item ${reviewVisible ? 'selected' : ''}`}>  
+         <li onClick={toggleReview} className={`nav-flex-item ${reviewVisible ? 'selected' : ''}`}>  
             <Link className='nav-link' to='/review'>
             <svg className='nav-review nav-btn' width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                <g clipPath="url(#clip0_3576_1094)">
@@ -55,7 +55,7 @@ function Navbar({ toggleDesktopNavbar, toggleLogin, toggleAccountPage, toggleAdd
 
          {/* MY WORDS LINK */}
          
-         <li className={`nav-flex-item ${myWordsVisible ? 'selected' : ''}`}>
+         <li onClick={toggleMyWords} className={`nav-flex-item ${myWordsVisible ? 'selected' : ''}`}>
          <Link className='nav-link' to='/my-words'>
             <svg className='nav-my-words nav-btn' width="20" height="20" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                <path d="M22 3.14286C22 1.40937 20.5906 0 18.8571 0H3.14286C1.40937 0 0 1.40937 0 3.14286V18.8571C0 20.5906 1.40937 22 3.14286 22H18.8571C20.5906 22 22 20.5906 22 18.8571V3.14286ZM12.5714 5.89286C12.5714 6.54598 12.046 7.07143 11.3929 7.07143H5.89286C5.23973 7.07143 4.71429 6.54598 4.71429 5.89286C4.71429 5.23973 5.23973 4.71429 5.89286 4.71429H11.3929C12.046 4.71429 12.5714 5.23973 12.5714 5.89286ZM16.1071 9.82143C16.7603 9.82143 17.2857 10.3469 17.2857 11C17.2857 11.6531 16.7603 12.1786 16.1071 12.1786H5.89286C5.23973 12.1786 4.71429 11.6531 4.71429 11C4.71429 10.3469 5.23973 9.82143 5.89286 9.82143H16.1071ZM9.42857 16.1071C9.42857 16.7603 8.90312 17.2857 8.25 17.2857H5.89286C5.23973 17.2857 4.71429 16.7603 4.71429 16.1071C4.71429 15.454 5.23973 14.9286 5.89286 14.9286H8.25C8.90312 14.9286 9.42857 15.454 9.42857 16.1071Z" 
@@ -66,7 +66,7 @@ function Navbar({ toggleDesktopNavbar, toggleLogin, toggleAccountPage, toggleAdd
          </Link>
          </li>
          
-         <li className={`nav-flex-item nav-account ${accountVisible ? 'selected' : ''}`}>
+         <li onClick={toggleAccountPage} className={`nav-flex-item nav-account ${accountVisible ? 'selected' : ''}`}>
             <Link className='nav-link' to='/account'>
             <svg className='nav-my-words nav-btn' width="20" height="20" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                <path d="M17.1445 16.5086C16.1949 14.8586 14.4117 13.75 12.375 13.75H9.625C7.58828 13.75 5.80508 14.8586 4.85547 16.5086C6.36797 18.193 8.55938 19.25 11 19.25C13.4406 19.25 15.632 18.1887 17.1445 16.5086ZM0 11C0 8.08262 1.15893 5.28473 3.22183 3.22183C5.28473 1.15893 8.08262 0 11 0C13.9174 0 16.7153 1.15893 18.7782 3.22183C20.8411 5.28473 22 8.08262 22 11C22 13.9174 20.8411 16.7153 18.7782 18.7782C16.7153 20.8411 13.9174 22 11 22C8.08262 22 5.28473 20.8411 3.22183 18.7782C1.15893 16.7153 0 13.9174 0 11ZM11 11.6875C11.8205 11.6875 12.6074 11.3616 13.1876 10.7814C13.7678 10.2012 14.0938 9.41426 14.0938 8.59375C14.0938 7.77324 13.7678 6.98633 13.1876 6.40614C12.6074 5.82595 11.8205 5.5 11 5.5C10.1795 5.5 9.39258 5.82595 8.81239 6.40614C8.2322 6.98633 7.90625 7.77324 7.90625 8.59375C7.90625 9.41426 8.2322 10.2012 8.81239 10.7814C9.39258 11.3616 10.1795 11.6875 11 11.6875Z" 
