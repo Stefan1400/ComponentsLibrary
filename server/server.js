@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const pool = require('./db');
+const helmet = require('helmet');
+
 const userRoutes = require('./routes/userRoutes');
 const wordRoutes = require('./routes/wordRoutes');
 const statsRoutes = require('./routes/statsRoutes');
@@ -10,6 +12,7 @@ const reviewRoutes = require('./routes/reviewRoutes');
 
 app.use(express.json());
 app.use(cors());
+app.use(helmet());
 app.use('/api/users', userRoutes);
 app.use('/api/words', wordRoutes);
 app.use('/api/stats', statsRoutes);
