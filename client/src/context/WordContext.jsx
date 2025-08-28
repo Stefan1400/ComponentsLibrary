@@ -6,6 +6,8 @@ import { StatsContext } from "./StatsContext";
 const WordContext = createContext();
 
 export const WordProvider = ({ children }) => {
+   
+   
 
    const [myWords, setMyWords] = useState([]);
    const [dueWords, setDueWords] = useState([]);

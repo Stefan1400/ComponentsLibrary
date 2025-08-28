@@ -19,7 +19,8 @@ const WordListItem = ({
   startEditing,
   handleDelete,
   cancelEdit,
-  completeEdit 
+  completeEdit,
+  toggleKnown
 }) => (
   <li style={wordObj.known ? { backgroundColor: '#323232'} : { backgroundColor: 'white'} } className={`my-words-list-item ${wordObj.known ? 'known' : 'learning'}`} key={wordObj.id}>
     {/* WORD / MEANING / KNOWN */}
@@ -67,6 +68,32 @@ const WordListItem = ({
           <path d="M21.0938 1.56251H15.2344L14.7754 0.649423C14.6782 0.454215 14.5284 0.29001 14.3429 0.175281C14.1575 0.0605526 13.9437 -0.00014785 13.7256 8.5609e-06H8.14453C7.92694 -0.000827891 7.71352 0.0596463 7.52871 0.174503C7.34391 0.289359 7.19519 0.453951 7.09961 0.649423L6.64062 1.56251H0.78125C0.57405 1.56251 0.375336 1.64482 0.228823 1.79133C0.08231 1.93784 0 2.13656 0 2.34376L0 3.90626C0 4.11346 0.08231 4.31217 0.228823 4.45869C0.375336 4.6052 0.57405 4.68751 0.78125 4.68751H21.0938C21.301 4.68751 21.4997 4.6052 21.6462 4.45869C21.7927 4.31217 21.875 4.11346 21.875 3.90626V2.34376C21.875 2.13656 21.7927 1.93784 21.6462 1.79133C21.4997 1.64482 21.301 1.56251 21.0938 1.56251ZM2.59766 22.8027C2.63492 23.3978 2.89754 23.9562 3.33206 24.3644C3.76658 24.7727 4.34033 24.9999 4.93652 25H16.9385C17.5347 24.9999 18.1084 24.7727 18.5429 24.3644C18.9775 23.9562 19.2401 23.3978 19.2773 22.8027L20.3125 6.25001H1.5625L2.59766 22.8027Z" fill="black"/>
         </svg>
         </button>
+
+        {/* known pill switch */}
+        <input
+          type="checkbox"
+          id={`toggle-${wordObj.id}`} 
+          checked={wordObj.known}
+          onChange={(e) => toggleKnown(wordObj.id, e.target.checked)}
+          style={{ display: "none" }}
+        />
+      <div className="known-toggle-pill-div">
+        <label
+          className='known-pill-label'
+          htmlFor={`toggle-${wordObj.id}`} 
+          style={{
+            display: "inline-block",
+            padding: "16px 30px",
+            borderRadius: "999px",
+            cursor: "pointer"
+          }}
+        >
+          <div className={`known-pill-inner-div my-words-pill-inner-div ${wordObj.known ? 'on' : ''}`}>
+            <div className='known-pill-switch my-words-pill-switch'></div>
+          </div>
+        </label>
+        {/* <span className='known-pill-span'>{wordObj.known ? 'known' : 'learning'}</span> */}
+      </div>
       </div>
     )}
     
@@ -107,6 +134,13 @@ function MyWordsPanel() {
    const [isSearching, setIsSearching] = useState(false);
    const [searchResults, setSearchResults] = useState([]);
    const [searchActivated, setSearchActivated] = useState(false);
+
+   const toggleKnown = async (wordId, newValue) => {
+      const wordObj = myWords.find(w => w.id === wordId);
+      await editWord(wordId, wordObj.word, wordObj.meaning, newValue);
+      getMyWords();
+      getAllStats();
+   }
 
    useEffect(() => {
     getMyWords();
@@ -320,6 +354,7 @@ function MyWordsPanel() {
               handleDelete={handleDelete}
               cancelEdit={cancelEdit}
               completeEdit={completeEdit}
+              toggleKnown={toggleKnown}
             />
           ))}
         </ul>
@@ -341,6 +376,7 @@ function MyWordsPanel() {
               handleDelete={handleDelete}
               cancelEdit={cancelEdit}
               completeEdit={completeEdit}
+              toggleKnown={toggleKnown}
             />
           ))}
         </ul>
