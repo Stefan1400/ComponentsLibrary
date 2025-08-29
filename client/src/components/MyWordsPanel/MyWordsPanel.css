@@ -464,6 +464,16 @@
 
 }
 
+.my-words-mobile-actions-modal-close-div {
+   width: 100vw;
+   height: 100vh;
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 1000;
+   opacity: 0;
+}
+
 .my-words-mobile-actions-edit-span {
    font-weight: 500;
    font-size: 1.4rem;
@@ -479,3 +489,4 @@
    gap: 1rem;
    /* border-bottom: 1px solid white; */
 }
+
