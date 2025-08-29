@@ -20,7 +20,8 @@ const WordListItem = ({
   handleDelete,
   cancelEdit,
   completeEdit,
-  toggleKnown
+  toggleKnown,
+  isMobile,
 }) => (
   <li style={wordObj.known ? { backgroundColor: '#323232'} : { backgroundColor: 'white'} } className={`my-words-list-item ${wordObj.known ? 'known' : 'learning'}`} key={wordObj.id}>
     {/* WORD / MEANING / KNOWN */}
@@ -70,30 +71,37 @@ const WordListItem = ({
         </button>
 
         {/* known pill switch */}
-        <input
-          type="checkbox"
-          id={`toggle-${wordObj.id}`} 
-          checked={wordObj.known}
-          onChange={(e) => toggleKnown(wordObj.id, e.target.checked)}
-          style={{ display: "none" }}
-        />
-      <div className="known-toggle-pill-div">
-        <label
-          className='known-pill-label'
-          htmlFor={`toggle-${wordObj.id}`} 
-          style={{
-            display: "inline-block",
-            padding: "16px 30px",
-            borderRadius: "999px",
-            cursor: "pointer"
-          }}
-        >
-          <div className={`known-pill-inner-div my-words-pill-inner-div ${wordObj.known ? 'on' : ''}`}>
-            <div className='known-pill-switch my-words-pill-switch'></div>
-          </div>
-        </label>
-        {/* <span className='known-pill-span'>{wordObj.known ? 'known' : 'learning'}</span> */}
-      </div>
+
+        {!isMobile && (
+          <>
+            <input
+            type="checkbox"
+            id={`toggle-${wordObj.id}`} 
+            checked={wordObj.known}
+            onChange={(e) => toggleKnown(wordObj.id, e.target.checked)}
+            style={{ display: "none" }}
+          />
+        <div className="known-toggle-pill-div">
+          <label
+            className='known-pill-label'
+            htmlFor={`toggle-${wordObj.id}`} 
+            style={{
+              display: "inline-block",
+              padding: "16px 30px",
+              borderRadius: "999px",
+              cursor: "pointer"
+            }}
+          >
+            <div className={`known-pill-inner-div my-words-pill-inner-div ${wordObj.known ? 'on' : ''}`}>
+              <div className='known-pill-switch my-words-pill-switch'></div>
+            </div>
+          </label>
+          {/* <span className='known-pill-span'>{wordObj.known ? 'known' : 'learning'}</span> */}
+        </div>
+          
+          </>
+        )}
+
       </div>
     )}
     
@@ -134,6 +142,21 @@ function MyWordsPanel() {
    const [isSearching, setIsSearching] = useState(false);
    const [searchResults, setSearchResults] = useState([]);
    const [searchActivated, setSearchActivated] = useState(false);
+
+
+   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+  }, []);
 
    const toggleKnown = async (wordId, newValue) => {
       const wordObj = myWords.find(w => w.id === wordId);
@@ -355,6 +378,7 @@ function MyWordsPanel() {
               cancelEdit={cancelEdit}
               completeEdit={completeEdit}
               toggleKnown={toggleKnown}
+              isMobile={isMobile}
             />
           ))}
         </ul>
@@ -377,6 +401,7 @@ function MyWordsPanel() {
               cancelEdit={cancelEdit}
               completeEdit={completeEdit}
               toggleKnown={toggleKnown}
+              isMobile={isMobile}
             />
           ))}
         </ul>
