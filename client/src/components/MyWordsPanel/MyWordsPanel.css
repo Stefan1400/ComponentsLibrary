@@ -428,3 +428,50 @@
    background-color: #323232;
    transform: translateX(25px);
 }
+
+
+
+
+.my-words-mobile-actions-open {
+   /* background-color: red; */
+   padding: 5px;
+   width: 10px;
+   height: 10px;
+}
+
+.my-words-mobile-actions-modal {
+   width: 100vw;
+   height: 30vh;
+   position: absolute;
+   margin: 0;
+   padding: 0;
+   left: 0;
+   bottom: -10px;
+   background-color: #323232;
+   z-index: 1000;
+   border-radius: 15px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
+   /* align-items: end; */
+   /* display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: repeat(3, 1fr); */
+
+
+}
+
+.my-words-mobile-actions-edit-span {
+
+}
+
+.my-words-actions-modal-action {
+   width: 100%;
+   padding: 1rem;
+   height: auto;
+   display: flex;
+   align-items: center;
+   /* justify-content: center; */
+   gap: 1rem;
+}
