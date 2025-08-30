@@ -234,3 +234,17 @@ export const SearchIcon = (props) => (
       <line x1="12.5264" y1="12.4052" x2="18.5909" y2="18.4697" stroke="#202020" strokeWidth="1.5"/>
    </svg>
 )
+
+export const MenuBurgerIcon = (props) => (
+   <svg 
+      width="42" 
+      height="18" 
+      viewBox="0 0 42 18" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      >
+      <line y1="0.5" x2="42" y2="0.5" stroke="black"/>
+      <line y1="17.5" x2="42" y2="17.5" stroke="black"/>
+   </svg>
+)

@@ -11,6 +11,7 @@ import ReviewPanel from './components/ReviewPanel/ReviewPanel.jsx';
 import MyWordsPanel from './components/MyWordsPanel/MyWordsPanel.jsx';
 import MenuSlider from './components/MenuSlider/MenuSlider.jsx';
 import { Routes, Route, Link, Navigate } from 'react-router-dom';
+import { MenuBurgerIcon, XIcon } from './assets/Icons/Icons.jsx';
 
 function App() {
 
@@ -159,18 +160,12 @@ function App() {
           <span className='guest-message-info'>currently logged in as guest</span>
           <span onClick={guestToLogin} className='guest-message-cta'>login</span>
           
-          <svg onClick={closeGuestMessage} className='guest-message-close' width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="0.823223" y1="12.8232" x2="12.8232" y2="0.823224" stroke="#000" strokeWidth="0.75"/>
-            <line x1="1.17678" y1="0.823223" x2="13.1768" y2="12.8232" stroke="#000" strokeWidth="0.75"/>
-          </svg>
+          <XIcon onClick={closeGuestMessage} className='guest-message-close' width="14" height="13" />
         </div>
       )}
 
       {!menuSliderVisible && (
-        <svg onClick={toggleMenuSlider} className='menu-slider-btn' width="42" height="18" viewBox="0 0 42 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line y1="0.5" x2="42" y2="0.5" stroke="black"/>
-          <line y1="17.5" x2="42" y2="17.5" stroke="black"/>
-        </svg>
+        <MenuBurgerIcon onClick={toggleMenuSlider} className='menu-slider-btn' />
       )}
 
       {/* {addWordVisible && (

@@ -89,7 +89,11 @@ button:hover {
    }
 }
 
-
+.guest-message-close line {
+   stroke: black;
+   stroke-width: 0.75px;
+   cursor: pointer;
+}
 
 .guest-message-div {
    width: 100%;
