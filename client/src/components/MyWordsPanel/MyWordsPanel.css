@@ -45,6 +45,11 @@
    right: 6%;
 }
 
+.my-words-search-close line {
+   stroke-width: 0.75px;
+   stroke: black;
+}
+
 .my-words-search-searchbar-clear-flex {
    display: flex;
    justify-content: space-between;
