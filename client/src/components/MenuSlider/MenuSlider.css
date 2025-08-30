@@ -108,22 +108,6 @@
    font-weight: 400;
 }
 
-
-/* .account-page {
-   width: 85vw;
-   height: 95vh;
-   border-radius: 3px;
-   position: absolute;
-   padding: 3rem;
-   bottom: 1.3rem;
-   right: 3.55rem;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   gap: 2rem;
-   padding: 5rem 20rem;
-} */
-
 .delete-account-confirm-tab {
    width: 60vw;
    height: auto;
@@ -160,4 +144,9 @@
    position: absolute;
    right: 1rem;
    cursor: pointer;
+
+}
+
+.delete-account-close line {
+   stroke: black;
 }
