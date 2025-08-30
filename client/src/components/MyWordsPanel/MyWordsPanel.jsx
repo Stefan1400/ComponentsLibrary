@@ -79,16 +79,17 @@ const WordListItem = ({
 
     )}
 
-    {isMobileActionsOpen && isMobile &&(
+    {isMobileActionsOpen && isMobile && (
       <>
-      {isMobileActionsOpen && isMobile && (
+
+      {((isMobileActionsOpen || deleteConfirmOpen) && isMobile) && (
         <div onClick={toggleMobileActionsModal} className="my-words-mobile-actions-modal-close-div"></div>
       )}
 
 
       
         <div className={`my-words-mobile-actions-modal ${isMobileActionsOpen ? 'show' : ''}`}>
-          <button onClick={() => startEditing(wordObj)} className='my-words-edit enabled my-words-actions-modal-action'>
+          <button onClick={(e) => toggleKnown(wordObj.id, !wordObj.known)} className='my-words-edit enabled my-words-actions-modal-action'>
             <svg width="28" height="24" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M15.7063 6.70469C16.0969 6.31406 16.0969 5.67969 15.7063 5.28906L10.7063 0.289062C10.3156 -0.101562 9.68125 -0.101562 9.29062 0.289062C8.9 0.679688 8.9 1.31406 9.29062 1.70469L12.5844 4.99844H1C0.446875 4.99844 0 5.44531 0 5.99844C0 6.55156 0.446875 6.99844 1 6.99844H12.5844L9.29062 10.2922C8.9 10.6828 8.9 11.3172 9.29062 11.7078C9.68125 12.0984 10.3156 12.0984 10.7063 11.7078L15.7063 6.70781V6.70469Z" fill="#323232"/>
             </svg>
@@ -199,7 +200,15 @@ function MyWordsPanel() {
    const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
 
    const toggleMobileActionsModal = () => {
-    setIsMobileActionsOpen(prev => !prev);
+    if (isMobileActionsOpen) {
+      setIsMobileActionsOpen(false);
+      return;
+    } else if (deleteConfirmOpen) {
+      setDeleteConfirmOpen(false);
+      return;
+    } else {
+      setIsMobileActionsOpen(true);
+    }
    }
    
    
@@ -246,8 +255,9 @@ function MyWordsPanel() {
    }, [searchQuery]);
 
    const toggleDeleteConfirm = () => {
-    setDeleteConfirmOpen(prev => !prev);
+    setDeleteConfirmOpen(true);
     setIsMobileActionsOpen(false);
+    
    }
 
    const handleDelete = async (wordId) => {
