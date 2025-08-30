@@ -3,7 +3,7 @@ import './Grid.css';
 import { useState } from 'react';
 import AddWordsPanel from '../AddWordsPanel/AddWordsPanel';
 import MyWordsPanel from '../MyWordsPanel/MyWordsPanel';
-import MyStatsPanel from '../MyStatsPanel/MyStatsPanel';
+// import MyStatsPanel from '../MyStatsPanel/MyStatsPanel';
 import ReviewPanel from '../ReviewPanel/ReviewPanel';
 
 
@@ -37,7 +37,7 @@ function Grid() {
       {panel3Open && (
          <div className={`grid-item ${countOpen ? 'fill-grid' : !panel4Open ? "fill-row" : ""}`}>
 
-            <MyStatsPanel />
+            {/* <MyStatsPanel /> */}
 
          </div>
       )}

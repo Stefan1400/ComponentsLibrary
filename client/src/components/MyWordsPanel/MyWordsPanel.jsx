@@ -3,8 +3,6 @@ import './MyWordsPanel.css';
 import { WordContext } from '../../context/WordContext';
 import { StatsContext } from '../../context/StatsContext';
 import { NotificationContext } from '../../context/Notification/Notification';
-import MyStats from '../MyStatsPanel/MyStatsPanel';
-import ModalPopup from './ModalPopup/ModalPopup';
 
 const WordListItem = ({ 
   wordObj, 
@@ -50,12 +48,12 @@ const WordListItem = ({
           value={newMeaning} 
           placeholder={wordObj.meaning}
         />
-        {/* <input 
+        <input 
           className='my-words-edit-field' 
           type='checkbox' 
           onChange={(e) => setNewKnown(e.target.checked)} 
           checked={newKnown}
-        /> */}
+        />
       </>
     )}
 
@@ -79,17 +77,17 @@ const WordListItem = ({
 
     )}
 
+    {(isMobileActionsOpen || deleteConfirmOpen) && (
+      <div onClick={toggleMobileActionsModal} className="my-words-mobile-actions-modal-close-div"></div>
+    )}
+
     {isMobileActionsOpen && isMobile && (
       <>
-
-      {((isMobileActionsOpen || deleteConfirmOpen) && isMobile) && (
-        <div onClick={toggleMobileActionsModal} className="my-words-mobile-actions-modal-close-div"></div>
-      )}
 
 
       
         <div className={`my-words-mobile-actions-modal ${isMobileActionsOpen ? 'show' : ''}`}>
-          <button onClick={(e) => toggleKnown(wordObj.id, !wordObj.known)} className='my-words-edit enabled my-words-actions-modal-action'>
+          <button onClick={() => toggleKnown(wordObj.id, !wordObj.known)} className='my-words-edit enabled my-words-actions-modal-action'>
             <svg width="28" height="24" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M15.7063 6.70469C16.0969 6.31406 16.0969 5.67969 15.7063 5.28906L10.7063 0.289062C10.3156 -0.101562 9.68125 -0.101562 9.29062 0.289062C8.9 0.679688 8.9 1.31406 9.29062 1.70469L12.5844 4.99844H1C0.446875 4.99844 0 5.44531 0 5.99844C0 6.55156 0.446875 6.99844 1 6.99844H12.5844L9.29062 10.2922C8.9 10.6828 8.9 11.3172 9.29062 11.7078C9.68125 12.0984 10.3156 12.0984 10.7063 11.7078L15.7063 6.70781V6.70469Z" fill="#323232"/>
             </svg>
@@ -123,7 +121,7 @@ const WordListItem = ({
             <path d="M17.474 3.60677L21.3889 7.5217C21.5538 7.68663 21.5538 7.95573 21.3889 8.12066L11.9097 17.5998L7.88194 18.0469C7.34375 18.1076 6.88802 17.6519 6.94878 17.1137L7.39583 13.0859L16.875 3.60677C17.0399 3.44184 17.309 3.44184 17.474 3.60677ZM24.5052 2.61285L22.3872 0.494792C21.7274 -0.164931 20.6554 -0.164931 19.9913 0.494792L18.4549 2.03125C18.2899 2.19618 18.2899 2.46528 18.4549 2.63021L22.3698 6.54514C22.5347 6.71007 22.8038 6.71007 22.9687 6.54514L24.5052 5.00868C25.1649 4.34462 25.1649 3.27257 24.5052 2.61285ZM16.6667 15.0217V19.4401H2.77778V5.55122H12.7517C12.8906 5.55122 13.0208 5.49479 13.1207 5.39931L14.8568 3.66319C15.1866 3.33333 14.9523 2.77344 14.4878 2.77344H2.08333C0.93316 2.77344 0 3.7066 0 4.85677V20.1345C0 21.2847 0.93316 22.2179 2.08333 22.2179H17.3611C18.5113 22.2179 19.4444 21.2847 19.4444 20.1345V13.2856C19.4444 12.8212 18.8845 12.5911 18.5547 12.9167L16.8186 14.6528C16.7231 14.7526 16.6667 14.8828 16.6667 15.0217Z" fill="black"/>
           </svg>
         </button>
-        <button onClick={() => handleDelete(wordObj.id)} className='my-words-delete enabled'>
+        <button onClick={toggleDeleteConfirm} className='my-words-delete enabled'>
         <svg width="18" height="18" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M21.0938 1.56251H15.2344L14.7754 0.649423C14.6782 0.454215 14.5284 0.29001 14.3429 0.175281C14.1575 0.0605526 13.9437 -0.00014785 13.7256 8.5609e-06H8.14453C7.92694 -0.000827891 7.71352 0.0596463 7.52871 0.174503C7.34391 0.289359 7.19519 0.453951 7.09961 0.649423L6.64062 1.56251H0.78125C0.57405 1.56251 0.375336 1.64482 0.228823 1.79133C0.08231 1.93784 0 2.13656 0 2.34376L0 3.90626C0 4.11346 0.08231 4.31217 0.228823 4.45869C0.375336 4.6052 0.57405 4.68751 0.78125 4.68751H21.0938C21.301 4.68751 21.4997 4.6052 21.6462 4.45869C21.7927 4.31217 21.875 4.11346 21.875 3.90626V2.34376C21.875 2.13656 21.7927 1.93784 21.6462 1.79133C21.4997 1.64482 21.301 1.56251 21.0938 1.56251ZM2.59766 22.8027C2.63492 23.3978 2.89754 23.9562 3.33206 24.3644C3.76658 24.7727 4.34033 24.9999 4.93652 25H16.9385C17.5347 24.9999 18.1084 24.7727 18.5429 24.3644C18.9775 23.9562 19.2401 23.3978 19.2773 22.8027L20.3125 6.25001H1.5625L2.59766 22.8027Z" fill="black"/>
         </svg>
@@ -200,12 +198,9 @@ function MyWordsPanel() {
    const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
 
    const toggleMobileActionsModal = () => {
-    if (isMobileActionsOpen) {
+    if (isMobileActionsOpen || deleteConfirmOpen) {
       setIsMobileActionsOpen(false);
-      return;
-    } else if (deleteConfirmOpen) {
       setDeleteConfirmOpen(false);
-      return;
     } else {
       setIsMobileActionsOpen(true);
     }
@@ -230,6 +225,7 @@ function MyWordsPanel() {
       await editWord(wordId, wordObj.word, wordObj.meaning, newValue);
       getMyWords();
       getAllStats();
+      setIsMobileActionsOpen(false);
    }
 
    useEffect(() => {
@@ -305,7 +301,6 @@ function MyWordsPanel() {
     updatedMeaning === meaning &&
     updatedKnown === known
   ) {
-    // showNotification('No changes made');
     cancelEdit();
     return;
   }
@@ -361,7 +356,7 @@ function MyWordsPanel() {
   return (
     <div className="panel-wrapper page">
 
-
+      {/* STATS */}
       <ul className="my-words-word-stats">
         {myStats && Object.entries(myStats)
         .filter(([key]) => key === "total_words")
