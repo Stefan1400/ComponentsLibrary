@@ -459,8 +459,9 @@
    padding: 2rem;
    padding-left: 5rem;
    left: 0;
-   bottom: -10px;
+   bottom: 5vh;
    background-color: #323232;
+   background-color: rgb(29, 29, 29);
    z-index: 1000;
    border-radius: 15px;
    display: flex;
@@ -473,7 +474,7 @@
    /* display: grid;
    grid-template-columns: 1fr;
    grid-template-rows: repeat(3, 1fr); */
-
+   
 
 }
 
