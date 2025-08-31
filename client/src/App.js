@@ -4,7 +4,6 @@ import Register from '../src/features/auth/Register/Register.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import { useState, useEffect, useContext } from 'react';
 import { AuthContext } from './context/AuthContext.jsx';
-import Grid from './components/Grid/Grid.jsx';
 import AccountPage from './pages/AccountPage/AccountPage.jsx';
 import AddWordsPanel from './components/AddWordsPanel/AddWordsPanel.jsx';
 import ReviewPanel from './components/ReviewPanel/ReviewPanel.jsx';
@@ -167,34 +166,6 @@ function App() {
       {!menuSliderVisible && (
         <MenuBurgerIcon onClick={toggleMenuSlider} className='menu-slider-btn' />
       )}
-
-      {/* {addWordVisible && (
-        <AddWordsPanel />
-      )} */}
-
-      {/* {reviewVisible && (
-        <ReviewPanel />
-      )}
-
-      {myWordsVisible && (
-        <MyWordsPanel />
-      )} */}
-    
-      {/* {accountPageVisible && !isMobile && <AccountPage 
-        goToLogin={toggleLoginPage} 
-        goToRegister={toggleRegisterPage} 
-      />} */}
-
-      {/* {loginVisible && !isLoggedIn && <Login goToRegister={toggleRegisterPage} />} */}
-      {/* {registerVisible && !isLoggedIn && <Register goToLogin={toggleLoginPage} toggleMenuSlider={toggleMenuSlider} />} */}
-      {/* {loginVisible && <Login hideBothForms={toggleForm} />} */}
-      {/* {registerVisible && <Register hideBothForms={toggleForm} />} */}
-      
-      {/* {!addWordVisible && !reviewVisible && !myWordsVisible && !loginVisible && !registerVisible && (
-        <AddWordsPanel />
-      )} */}
-
-      {/* const location = useLocation(); */}
       
       <Routes>
         <Route path='/' element={<AddWordsPanel />} />
