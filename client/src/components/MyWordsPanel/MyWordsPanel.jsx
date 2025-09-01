@@ -3,8 +3,9 @@ import './MyWordsPanel.css';
 import { WordContext } from '../../context/WordContext';
 import { StatsContext } from '../../context/StatsContext';
 import { NotificationContext } from '../../context/Notification/Notification';
-import { HorizontalElipsisIcon, RightArrowIcon, EditIcon, TrashIcon, XIcon, CircleXIcon, CircleCheckIcon, SearchIcon } from '../../assets/Icons/Icons';
+import { HorizontalElipsisIcon, RightArrowIcon, EditIcon, TrashIcon, CircleXIcon, CircleCheckIcon } from '../../assets/Icons/Icons';
 import MyStats from './MyStats/MyStats';
+import SearchBar from './Search/SearchBar';
 
 const WordListItem = ({ 
   wordObj, 
@@ -162,26 +163,29 @@ const WordListItem = ({
 );
 
 
-function MyWordsPanel() {
+function MyWordsPanel({ }) {
 
-   const { myWords, getMyWords, editWord, deleteWord, search } = useContext(WordContext);
+  // CONTEXT
+   const { myWords, getMyWords, editWord, deleteWord } = useContext(WordContext);
    const { myStats, getAllStats } = useContext(StatsContext);
-
    const { showNotification } = useContext(NotificationContext);
 
+  //  STATE
    const [isEditing, setIsEditing] = useState(false);
    const [newWord, setNewWord] = useState('');
    const [newMeaning, setNewMeaning] = useState('');
    const [newKnown, setNewKnown] = useState(null);
    const [editedWord, setEditedWord] = useState(null);
-   const [searchQuery, setSearchQuery] = useState('');
-   const [isSearching, setIsSearching] = useState(false);
-   const [searchResults, setSearchResults] = useState([]);
-   const [searchActivated, setSearchActivated] = useState(false);
-  const [isMobileActionsOpen, setIsMobileActionsOpen] = useState(false);
+   const [isMobileActionsOpen, setIsMobileActionsOpen] = useState(false);
    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
    const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
+   const [isSearching, setIsSearching] = useState(false);
+   const [searchResults, setSearchResults] = useState([]);
+  
 
+
+
+   // FUNCTIONS
    const toggleMobileActionsModal = () => {
     if (isMobileActionsOpen || deleteConfirmOpen) {
       setIsMobileActionsOpen(false);
@@ -190,20 +194,6 @@ function MyWordsPanel() {
       setIsMobileActionsOpen(true);
     }
    }
-   
-   
-   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    }
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
-  }, []);
 
    const toggleKnown = async (wordId, newValue) => {
       const wordObj = myWords.find(w => w.id === wordId);
@@ -212,28 +202,6 @@ function MyWordsPanel() {
       getAllStats();
       setIsMobileActionsOpen(false);
    }
-
-   useEffect(() => {
-    getMyWords();
-   }, []);
-
-   useEffect(() => {
-    if (!searchQuery) {
-      setIsSearching(false);
-      return;
-    }
-    
-    const handleSearch = async () => {
-      setIsSearching(true);
-      const results = await search(searchQuery);
-
-      if (results) {
-        setSearchResults(results || []);
-      }
-    }
-
-    handleSearch();
-   }, [searchQuery]);
 
    const toggleDeleteConfirm = () => {
     setDeleteConfirmOpen(true);
@@ -275,119 +243,77 @@ function MyWordsPanel() {
    } 
 
    const completeEdit = async (wordObj) => {
-  const { id, word, meaning, known } = wordObj;
+    const { id, word, meaning, known } = wordObj;
 
-  const updatedWord = newWord.trim() === '' ? word : newWord.trim();
-  const updatedMeaning = newMeaning.trim() === '' ? meaning : newMeaning.trim();
-  const updatedKnown = newKnown;
+    const updatedWord = newWord.trim() === '' ? word : newWord.trim();
+    const updatedMeaning = newMeaning.trim() === '' ? meaning : newMeaning.trim();
+    const updatedKnown = newKnown;
 
-  if (
-    updatedWord === word &&
-    updatedMeaning === meaning &&
-    updatedKnown === known
-  ) {
-    cancelEdit();
-    return;
-  }
-
-  const edited = await editWord(id, updatedWord, updatedMeaning, updatedKnown);
-
-    if (edited) {
-      getMyWords();
-      getAllStats();
-
-      if (isSearching) {
-        setSearchResults(prev =>
-          prev.map(w =>
-            w.id === id ? { ...w, word: updatedWord, meaning: updatedMeaning, known: updatedKnown } : w
-          )
-        );
-      }
-
+    if (
+      updatedWord === word &&
+      updatedMeaning === meaning &&
+      updatedKnown === known
+    ) {
       cancelEdit();
+      return;
     }
-      };
 
-   const handleClearSearch = () => {
-    // if (!searchQuery) {
-    //   return;
-    // }
+    const edited = await editWord(id, updatedWord, updatedMeaning, updatedKnown);
 
-    setSearchQuery('');
-    // setIsSearching(false);
-    setSearchResults([]);
-   }
+      if (edited) {
+        getMyWords();
+        getAllStats();
 
-   const handleSearchActivated = () => {
-      setSearchActivated(true);
-   } 
+        if (isSearching) {
+          setSearchResults(prev =>
+            prev.map(w =>
+              w.id === id ? { ...w, word: updatedWord, meaning: updatedMeaning, known: updatedKnown } : w
+            )
+          );
+        }
 
-   const closeSearch = () => {
-      setSearchActivated(false);
-      setSearchQuery('');
-      // setIsSearching(false);
-      setSearchResults([]);
-   }
-
-   const inputRef = useRef(null);
-
+        cancelEdit();
+      }
+    };
+   
+   // EFFECT
+   
    useEffect(() => {
-    if (searchActivated && inputRef.current) {
-      inputRef.current.focus();
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
     }
-   }, [searchActivated]);
 
+    window.addEventListener('resize', handleResize);
+    handleResize();
+  }, []);
+
+  useEffect(() => {
+    getMyWords();
+   }, []);
+
+
+  // JSX
    
   return (
     <div className="panel-wrapper page">
 
       {/* STATS */}
       <ul className="my-words-word-stats">
-        
         <MyStats statType='total_words' statName='total' />
         <MyStats statType='known_words' statName='known' />
         <MyStats statType='learning_words' statName='learning' />
-        
       </ul>
       
-
-
-
-
-
-
-
-
-
-
       {/* SEARCH BAR */}
-      <div className="my-words-search-flex">
-        <div className='my-words-search-searchbar-clear-flex'>
-          {!searchActivated && (
-            <SearchIcon onClick={handleSearchActivated} className='my-words-search-icon clickable' />
-          )}
+      <SearchBar isSearching={isSearching} setIsSearching={setIsSearching} setSearchResults={setSearchResults} />
 
-          {searchActivated && (
-            <input 
-              ref={inputRef} 
-              onChange={(e) => {setSearchQuery(e.target.value)}} 
-              value={searchQuery} 
-              className='my-words-search-input' 
-              type="text" 
-              placeholder='search word, meaning' 
-            />
-          )}
+      
 
-          {isSearching && searchActivated && (
-            <span onClick={handleClearSearch} className='my-words-search-clear enabled clickable'>clear</span>
-          )}
-          {searchActivated && (
-            <XIcon onClick={closeSearch} className='my-words-search-close clickable' width="14" height="13" />
-          )}
-        </div>
-      </div>
-
-      {/* CONTENT AREA */}
+      {/* DISPLAYED LISTS */}
       {isSearching && searchResults.length === 0 ? (
         <h3 className='my-words-no-results-h3'>
           No search results found
