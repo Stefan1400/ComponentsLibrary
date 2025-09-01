@@ -4,6 +4,7 @@ import { WordContext } from '../../context/WordContext';
 import { StatsContext } from '../../context/StatsContext';
 import { NotificationContext } from '../../context/Notification/Notification';
 import { HorizontalElipsisIcon, RightArrowIcon, EditIcon, TrashIcon, XIcon, CircleXIcon, CircleCheckIcon, SearchIcon } from '../../assets/Icons/Icons';
+import MyStats from './MyStats/MyStats';
 
 const WordListItem = ({ 
   wordObj, 
@@ -342,41 +343,23 @@ function MyWordsPanel() {
 
       {/* STATS */}
       <ul className="my-words-word-stats">
-        {myStats && Object.entries(myStats)
-        .filter(([key]) => key === "total_words")
-        .map(([key, value]) => (
-          <li className='my-words-word-stats-li' key={key}>
-            <div className='my-words-stats-header-div'> 
-              <div className='my-words-stats-color-indicator-total'></div>
-              <span className='my-words-stats-title'>Total</span>
-            </div>
-            <span className='my-words-stats-number'>{value}</span>
-          </li>
-        ))}
-        {myStats && Object.entries(myStats)
-        .filter(([key]) => key === "known_words")
-        .map(([key, value]) => (
-          <li className='my-words-word-stats-li' key={key}>
-            <div className='my-words-stats-header-div'>
-              <div className='my-words-stats-color-indicator-known'></div>
-              <span className='my-words-stats-title'>Known</span>
-            </div>
-            <span className='my-words-stats-number'>{value}</span>
-          </li>
-        ))}
-        {myStats && Object.entries(myStats)
-        .filter(([key]) => key === "learning_words")
-        .map(([key, value]) => (
-          <li className='my-words-word-stats-li' key={key}>
-            <div className='my-words-stats-header-div'>
-              <div className='my-words-stats-color-indicator-learning'></div>
-              <span className='my-words-stats-title'>Learning</span>
-            </div>
-            <span className='my-words-stats-number'>{value}</span>
-          </li>
-        ))}
+        
+        <MyStats statType='total_words' statName='total' />
+        <MyStats statType='known_words' statName='known' />
+        <MyStats statType='learning_words' statName='learning' />
+        
       </ul>
       
+
+
+
+
+
+
+
+
+
+
       {/* SEARCH BAR */}
       <div className="my-words-search-flex">
         <div className='my-words-search-searchbar-clear-flex'>
