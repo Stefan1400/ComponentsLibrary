@@ -65,8 +65,8 @@ function WordCard({
     {/* WORD / MEANING / KNOWN */}
     {(!isEditing || (isEditing && wordObj.id !== editedWord)) && (
       <>
-        <span className='my-words-displayed my-words-word'>{wordObj.word}</span>
-        <span className='my-words-displayed my-words-meaning'>{wordObj.meaning}</span>
+        <span className={`my-words-displayed my-words-word ${wordObj.known ? 'known' : 'learning'}`} >{wordObj.word}</span>
+        <span className={`my-words-displayed my-words-meaning ${wordObj.known ? 'known' : 'learning'}`}>{wordObj.meaning}</span>
       </>
     )}
     {isEditing && wordObj.id === editedWord && (
@@ -104,7 +104,7 @@ function WordCard({
 
     {/* MOBILE ACTIONS */}
     {!isEditing && isMobile && (
-      <button className='my-words-mobile-actions-open' onClick={toggleMobileActionsModal}>
+      <button style={{backgroundColor: wordObj.known ? '#323232' : 'white', color: wordObj.known ? '#323232' : 'white'}} className={`my-words-mobile-actions-open ${wordObj.known ? 'known' : 'learning'}`} onClick={toggleMobileActionsModal}>
         <HorizontalElipsisIcon />
       </button>
 
@@ -118,19 +118,19 @@ function WordCard({
       <>
       
         <div className={`my-words-mobile-actions-modal ${isMobileActionsOpen ? 'show' : ''}`}>
-          <button onClick={() => toggleKnown(wordObj.id, !wordObj.known)} className='my-words-known-switch enabled my-words-actions-modal-action'>
+          <button onClick={() => toggleKnown(wordObj.id, !wordObj.known)} className='my-words-known-switch my-words-actions-modal-action'>
             <RightArrowIcon />
 
             <span className='my-words-mobile-actions-edit-span'>Change to {wordObj.known ? 'learning' : 'known'}</span>
           </button>
           
-          <button onClick={() => startEditing(wordObj)} className='my-words-edit enabled my-words-actions-modal-action'>
+          <button onClick={() => startEditing(wordObj)} className='my-words-edit my-words-actions-modal-action'>
             <EditIcon />
         
             <span className='my-words-mobile-actions-edit-span'>Edit word / meaning</span>
           </button>
 
-          <button onClick={toggleDeleteConfirm} className='my-words-delete enabled my-words-actions-modal-action'>
+          <button onClick={toggleDeleteConfirm} className='my-words-delete my-words-actions-modal-action'>
             <TrashIcon />
             
             <span className='my-words-mobile-actions-edit-span'>Delete</span>
@@ -144,10 +144,10 @@ function WordCard({
     {!isEditing && !isMobile && (
       <div className='my-words-flex-row'>
         <button onClick={() => startEditing(wordObj)} className='my-words-edit enabled'>
-          <EditIcon />
+          <EditIcon className={`word-card-desktop-icon ${wordObj.known ? 'known' : 'learning'}`} />
         </button>
         <button onClick={toggleDeleteConfirm} className='my-words-delete enabled'>
-          <TrashIcon />
+          <TrashIcon className={`word-card-desktop-icon ${wordObj.known ? 'known' : 'learning'}`} />
         </button>
 
         {/* known pill switch */}
@@ -181,10 +181,10 @@ function WordCard({
     {isEditing && wordObj.id === editedWord && (
       <div className='my-words-flex-row'>
         <button onClick={() => cancelEdit()} className='my-words-edit-cancel enabled'>
-          <CircleXIcon />
+          <CircleXIcon className={`word-card-desktop-icon ${wordObj.known ? 'known' : 'learning'}`} />
         </button>
         <button onClick={() => completeEdit(wordObj)} className='my-words-edit-confirm enabled'>
-          <CircleCheckIcon />
+          <CircleCheckIcon className={`word-card-desktop-icon ${wordObj.known ? 'known' : 'learning'}`} />
         </button>
       </div>
     )}
