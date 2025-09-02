@@ -3,17 +3,12 @@
    scroll-behavior: smooth;
 }
 
-
-
-
 /* SEARCH (KEEP) */
 .my-words-search-flex {
    display: flex;
    flex-direction: row;
    justify-content: center;
-   /* gap: 1rem; */
    align-items: center;
-   /* width: 100%; */
    height: auto;
    position: absolute;
    z-index: 100;
@@ -64,13 +59,10 @@
    padding: 1px;
 }
 
-
 .panel-wrapper {
    height: 100vh;
    overflow: hidden;
 }
-
-
 
 /* OTHER */
 .my-words-edit-field {
@@ -91,11 +83,9 @@
    align-items: center;
    position: absolute;
    z-index: 1;
-   /* top: -13vh; */
    bottom: 0;
    font-weight: 300;
    font-size: 1rem;
-   /* background-color: red; */
 }
 
 .my-words-flex-row {
@@ -114,11 +104,6 @@
 .my-words-flex-row button svg path {
    fill: rgb(41, 41, 41);
 }
-
-
-
-
-
 
 /* NEW LAYOUT */
 .my-words-list,
@@ -140,22 +125,31 @@
    overflow-x: hidden;
 }
 
+.my-words-list-item#hide {
+   display: none;
+}
+
 .my-words-list-item {
    display: flex;
    flex-direction: row;
    justify-content: space-between;
    align-items: center;
+   position: relative;
+   /* z-index: 1; */
    width: 100%;
    height: auto;
    padding: 5% 6%;
    padding-right: 7%;
-
    display: grid;
    grid-template-columns: 3fr 3fr 1fr;
-
-   /* background-color: #C24758; */
    border-radius: 3px;
    box-shadow: 1px 0 6px 0px rgba(72, 72, 72, 0.25);
+}
+
+.my-words-list-item#selected {
+   position: fixed;
+   z-index: 1200;
+   width: 85vw;
 }
 
 .my-words-edit,
@@ -187,16 +181,8 @@
    fill: white;
 }
 
-/* .my-words-known {
-   font-weight: 400;
-   font-size: 0.8rem;
-   color: rgb(42, 42, 42);
-   color: white;
-} */
-
 .my-words-word-stats {
    position: fixed;
-   /* position: absolute; */
    top: 10vh;
    left: 2vw;
    list-style: none;
@@ -209,19 +195,6 @@
    padding: 0.75rem 2rem;
    padding-right: 2.6rem;
 }
-
-/* .my-words-list-item.known * {
-      background-color: #323232;
-      color: white;
-      fill: white;
-   } */
-
-   /* .my-words-list-item.learning * {
-      background-color: white;
-      color: black;
-      fill: #323232;
-   } */
-
 
    .my-words-stats-color-indicator-total,
    .my-words-stats-color-indicator-known,
@@ -250,9 +223,6 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      
-      /* gap: 0.25rem; */
-      
    }
 
    .my-words-stats-header-div {
@@ -264,11 +234,8 @@
 
 @media (min-width: 768px) {
    .my-words-word-stats {
-      /* position: fixed; */
       position: absolute;
       top: 1vh;
-      /* top: 10vh; */
-      /* left: 2vw; */
       list-style: none;
       display: flex;
       flex-direction: row;
@@ -281,17 +248,20 @@
    }
 
    .my-words-list-item {
-      /* display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center; */
       width: 70%;
       height: auto;
       padding: 2% 6%;
       padding-right: 7%;
-      /* background-color: #C24758; */
       border-radius: 3px;
       box-shadow: 1px 0 6px 0px rgba(72, 72, 72, 0.25);
+      width: 60vw;
+   }
+
+   .my-words-list-item#selected {
+      position: fixed;
+      z-index: 1200;
+      width: 60vw;
+      top: 45Vh;
    }
 
    .my-words-stats-header-div {
@@ -322,21 +292,6 @@
    color: rgb(42, 42, 42);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .known-toggle-pill-div {
    display: flex;
    flex-direction: row;
@@ -353,62 +308,6 @@
    
 }
 
-
-
-
-
-
-
-/* 
-.my-words-pill-inner-div {
-   width: 100%;
-   height: 100%;
-   background-color: white;
-   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
-   display: flex;
-   padding: 0 7px;
-   align-items: center;
-   justify-content: start;
-   flex-direction: row;
-   transition: all 0.1s ease-in-out;
-   position: absolute;
-   z-index: 2;
-   top: 0;
-   left: 0;
-   border-radius: 999px;
-}
-
-.my-words-pill-inner-div.on {
-   background-color: #323232;
-   border: 1px solid white;
-}
-
-.my-words-pill-inner-div .my-words-pill-switch {
-   width: 20px;
-   height: 20px;
-   border-radius: 50%;
-   background-color: #323232;
-   transform: translateX(0);
-   transition: all 0.1s ease-in-out;
-}
-
-.my-words-pill-inner-div.on .my-words-pill-switch {
-   background-color: white;
-   transform: translateX(25px);
-} */
-
-
-
-
-
-
-
-
-
-
-
-
-
 .my-words-pill-inner-div {
    width: 100%;
    height: 100%;
@@ -448,18 +347,11 @@
    background-color: #323232;
    transform: translateX(25px);
 }
-
-
-
 
 .my-words-mobile-actions-open {
-   /* background-color: red; */
    width: 100%;
    height: 100%;
    background-color: white;
-   /* padding: 5px; */
-   /* width: 10px; */
-   /* height: 10px; */
 }
 
 .my-words-mobile-actions-open.known path {
@@ -473,6 +365,7 @@
    transform: translateY(60vh);
    background-color: white !important;
    position: fixed;
+   z-index: 1600;
 }
 
 .my-words-mobile-actions-modal.show {
@@ -482,7 +375,6 @@
    margin: 0;
    transform: translateY(0);
    padding: 2rem;
-   /* padding-left: 5rem; */
    left: 0;
    bottom: 5vh;
    bottom: 0;
@@ -490,7 +382,6 @@
    background-color: #323232;
    background-color: rgb(29, 29, 29);
    background-color: white;
-   z-index: 1000;
    border-radius: 15px;
    display: flex;
    flex-direction: column;
@@ -506,9 +397,7 @@
    position: fixed;
    top: 0;
    left: 0;
-   /* z-index: 1000; */
    opacity: 0.4;
-   /* filter: blur(5px); */
    background-color: rgb(97, 97, 97);
 }
 
@@ -553,5 +442,4 @@
 .delete-confirm-btn {
    background-color: white;
    color: black;
-
 }

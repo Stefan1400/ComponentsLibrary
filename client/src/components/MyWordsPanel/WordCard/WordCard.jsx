@@ -22,6 +22,7 @@ function WordCard({
    completeEdit,
    toggleKnown,
    isMobile,
+   editRef,
 }) {
   
    // STATES
@@ -31,6 +32,8 @@ function WordCard({
    const [closeDivOpen, setCloseDivOpen] = useState(false);
    
    // CONTEXTS
+
+   //  REFS
 
    // FUNCTIONS
 
@@ -62,8 +65,39 @@ function WordCard({
    // JSX
   
    return (
-    <li style={wordObj.known ? { backgroundColor: '#323232'} : { backgroundColor: 'white'} } className={`my-words-list-item ${wordObj.known ? 'known' : 'learning'}`} key={wordObj.id}>
-    {/* WORD / MEANING / KNOWN */}
+    <>
+
+    {(isMobileActionsOpen || deleteConfirmOpen || closeDivOpen) && (
+      <div onClick={() => {closeChildModal(); setCloseDivOpen(false); cancelEdit()}} style={{zIndex: isMobileActionsOpen ? '1000' : '-1'}} className="my-words-mobile-actions-modal-close-div"></div>
+    )}
+
+    {isMobileActionsOpen && isMobile && (
+      <>
+      
+        <div className={`my-words-mobile-actions-modal ${isMobileActionsOpen ? 'show' : ''}`}>
+          <button onClick={() => {toggleKnown(wordObj.id, !wordObj.known); setIsMobileActionsOpen(false)}} className='my-words-known-switch my-words-actions-modal-action'>
+            <RightArrowIcon />
+
+            <span className='my-words-mobile-actions-edit-span'>Change to {wordObj.known ? 'learning' : 'known'}</span>
+          </button>
+          
+          <button onClick={() => {startEditing(wordObj); setIsMobileActionsOpen(false); setCloseDivOpen(true)}} className='my-words-edit my-words-actions-modal-action'>
+            <EditIcon />
+        
+            <span className='my-words-mobile-actions-edit-span'>Edit word / meaning</span>
+          </button>
+
+          <button onClick={toggleDeleteConfirm} className='my-words-delete my-words-actions-modal-action'>
+            <TrashIcon />
+            
+            <span className='my-words-mobile-actions-edit-span'>Delete</span>
+          </button>
+        </div>
+      </>
+    )}
+    
+    <li style={wordObj.known ? { backgroundColor: '#323232'} : { backgroundColor: 'white'} } className={`my-words-list-item ${wordObj.known ? 'known' : 'learning'}`} id={wordObj.id === editedWord ? 'selected' : wordObj.id !== editedWord && editedWord !== null ? 'hide' : ''} key={wordObj.id}>
+
     {(!isEditing || (isEditing && wordObj.id !== editedWord)) && (
       <>
         <span className={`my-words-displayed my-words-word ${wordObj.known ? 'known' : 'learning'}`} >{wordObj.word}</span>
@@ -73,6 +107,7 @@ function WordCard({
     {isEditing && wordObj.id === editedWord && (
       <>
         <input 
+          ref={editRef}
           className={`my-words-edit-field ${wordObj.known ? 'known' : 'learning'}`}
           onChange={(e) => setNewWord(e.target.value)} 
           value={newWord} 
@@ -105,34 +140,9 @@ function WordCard({
 
     )}
 
-    {(isMobileActionsOpen || deleteConfirmOpen || closeDivOpen) && (
-      <div onClick={() => {closeChildModal(); setCloseDivOpen(false); cancelEdit()}} style={{zIndex: isMobileActionsOpen ? '1000' : '-1'}} className="my-words-mobile-actions-modal-close-div"></div>
-    )}
+    
 
-    {isMobileActionsOpen && isMobile && (
-      <>
-      
-        <div className={`my-words-mobile-actions-modal ${isMobileActionsOpen ? 'show' : ''}`}>
-          <button onClick={() => {toggleKnown(wordObj.id, !wordObj.known); setIsMobileActionsOpen(false)}} className='my-words-known-switch my-words-actions-modal-action'>
-            <RightArrowIcon />
-
-            <span className='my-words-mobile-actions-edit-span'>Change to {wordObj.known ? 'learning' : 'known'}</span>
-          </button>
-          
-          <button onClick={() => {startEditing(wordObj); setIsMobileActionsOpen(false); setCloseDivOpen(true)}} className='my-words-edit my-words-actions-modal-action'>
-            <EditIcon />
-        
-            <span className='my-words-mobile-actions-edit-span'>Edit word / meaning</span>
-          </button>
-
-          <button onClick={toggleDeleteConfirm} className='my-words-delete my-words-actions-modal-action'>
-            <TrashIcon />
-            
-            <span className='my-words-mobile-actions-edit-span'>Delete</span>
-          </button>
-        </div>
-      </>
-    )}
+    
 
 
     {/* DESKTOP ACTIONS */}
@@ -184,7 +194,9 @@ function WordCard({
       </div>
     )}
   </li>
+  </>
   )
+  
 }
 
 export default WordCard;

@@ -25,6 +25,14 @@ function MyWordsPanel({  }) {
    const [newMeaning, setNewMeaning] = useState('');
    const [newKnown, setNewKnown] = useState(null);
    const [editedWord, setEditedWord] = useState(null);
+
+   const editRef = useRef();
+   
+    useEffect(() => {
+      if (isEditing && editRef.current) {
+        editRef.current.focus();
+      }
+    }, [isEditing]);
   
 
    // FUNCTIONS
@@ -165,6 +173,7 @@ function MyWordsPanel({  }) {
               completeEdit={completeEdit}
               toggleKnown={toggleKnown}
               isMobile={isMobile}
+              editRef={editRef}
             />
           ))}
         </ul>
@@ -188,6 +197,7 @@ function MyWordsPanel({  }) {
               completeEdit={completeEdit}
               toggleKnown={toggleKnown}
               isMobile={isMobile}
+              editRef={editRef}
             />
           ))}
         </ul>
