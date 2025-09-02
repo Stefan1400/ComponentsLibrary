@@ -23,7 +23,7 @@ function Navbar({ toggleDesktopNavbar, toggleLogin, toggleAccountPage, toggleAdd
          {/* ADD LINK */}
          <li onClick={toggleAddWord} className={`nav-flex-item ${addWordVisible ? 'selected' : ''}`}>
             <Link className='nav-link' to='/add'>
-               <PlusIcon />
+               <PlusIcon className={`nav-icon ${addWordVisible ? 'selected' : ''}`} />
 
             <span className='nav-flex-item-title'>add</span>
             </Link>
@@ -32,7 +32,7 @@ function Navbar({ toggleDesktopNavbar, toggleLogin, toggleAccountPage, toggleAdd
          {/* REVIEW LINK */}
          <li onClick={toggleReview} className={`nav-flex-item ${reviewVisible ? 'selected' : ''}`}>  
             <Link className='nav-link' to='/review'>
-               <ReviewIcon />
+               <ReviewIcon className={`nav-icon ${reviewVisible ? 'selected' : ''}`} />
 
             <span className='nav-flex-item-title'>review</span>
             </Link>
@@ -43,7 +43,7 @@ function Navbar({ toggleDesktopNavbar, toggleLogin, toggleAccountPage, toggleAdd
          
          <li onClick={toggleMyWords} className={`nav-flex-item ${myWordsVisible ? 'selected' : ''}`}>
          <Link className='nav-link' to='/my-words'>
-               <MyWordsIcon />
+               <MyWordsIcon className={`nav-icon ${myWordsVisible ? 'selected' : ''}`} />
 
                <span className='nav-flex-item-title'>my words</span>
          </Link>
