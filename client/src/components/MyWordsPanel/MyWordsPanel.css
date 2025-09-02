@@ -150,6 +150,8 @@
    position: fixed;
    z-index: 1200;
    width: 85vw;
+   /* top: 10vh; */
+   top: 27vh;
 }
 
 .my-words-edit,
@@ -378,7 +380,7 @@
    left: 0;
    bottom: 5vh;
    bottom: 0;
-   bottom: 10vh;
+   bottom: 9vh;
    background-color: #323232;
    background-color: rgb(29, 29, 29);
    background-color: white;
