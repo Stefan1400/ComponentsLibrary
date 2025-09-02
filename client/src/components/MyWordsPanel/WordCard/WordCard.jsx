@@ -33,6 +33,11 @@ function WordCard({
 
    // FUNCTIONS
 
+   const testDeleteFunction = (wordId) => {
+      console.log(wordId);
+      handleDelete(wordId);
+   }
+
    const closeChildModal = () => {
       setIsMobileActionsOpen(false);
       setDeleteConfirmOpen(false);
@@ -90,7 +95,7 @@ function WordCard({
     {deleteConfirmOpen && (
       <div style={{backgroundColor: 'white', color: 'black'}} className="delete-confirm-div">
         <span style={{backgroundColor: 'white', color: 'black'}} className='delete-confirm-message'>Are you sure you want to delete this word?</span>
-        <button style={{backgroundColor: 'gray', color: 'white'}} onClick={() => handleDelete(wordObj.id)} className='delete-confirm-btn'>Delete</button>
+        <button style={{backgroundColor: 'gray', color: 'white'}} onClick={() => testDeleteFunction(wordObj.id)} className='delete-confirm-btn'>Delete</button>
       </div>
     )}
 

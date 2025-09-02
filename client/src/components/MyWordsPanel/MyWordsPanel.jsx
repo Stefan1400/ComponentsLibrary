@@ -30,7 +30,9 @@ function MyWordsPanel({  }) {
    // FUNCTIONS
 
    const handleDelete = async (wordId, closeChildModal) => {
-      const deleted = await deleteWord(wordId);
+      console.log(wordId);
+    
+    const deleted = await deleteWord(wordId);
 
       if (deleted) {
         getAllStats();
