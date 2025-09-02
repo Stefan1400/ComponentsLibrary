@@ -75,6 +75,12 @@
 /* OTHER */
 .my-words-edit-field {
    width: 75px;
+   border-width: 2px;
+}
+
+.my-words-edit-field.known {
+   background-color: #323232;
+   color: white;
 }
 
 .my-words-no-results-h3 {
@@ -125,6 +131,7 @@
    height: calc(100vh - 20vh);
    padding: 0.5rem 1rem;
    position: absolute;
+   z-index: 500;
    left: 0;
    top: 20vh;
    gap: 1rem;
@@ -478,6 +485,7 @@
    /* padding-left: 5rem; */
    left: 0;
    bottom: 5vh;
+   bottom: 0;
    background-color: #323232;
    background-color: rgb(29, 29, 29);
    background-color: white;
@@ -497,8 +505,10 @@
    position: fixed;
    top: 0;
    left: 0;
-   z-index: 1000;
-   opacity: 0;
+   /* z-index: 1000; */
+   opacity: 0.4;
+   /* filter: blur(5px); */
+   background-color: rgb(97, 97, 97);
 }
 
 .my-words-mobile-actions-edit-span {

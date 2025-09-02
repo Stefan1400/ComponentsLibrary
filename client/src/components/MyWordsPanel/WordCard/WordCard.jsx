@@ -28,7 +28,8 @@ function WordCard({
 
    const [isMobileActionsOpen, setIsMobileActionsOpen] = useState(false);
    const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
-
+   const [closeDivOpen, setCloseDivOpen] = useState(false);
+   
    // CONTEXTS
 
    // FUNCTIONS
@@ -72,22 +73,16 @@ function WordCard({
     {isEditing && wordObj.id === editedWord && (
       <>
         <input 
-          className='my-words-edit-field' 
+          className={`my-words-edit-field ${wordObj.known ? 'known' : 'learning'}`}
           onChange={(e) => setNewWord(e.target.value)} 
           value={newWord} 
           placeholder={wordObj.word}
         />
         <input 
-          className='my-words-edit-field' 
+          className={`my-words-edit-field ${wordObj.known ? 'known' : 'learning'}`} 
           onChange={(e) => setNewMeaning(e.target.value)} 
           value={newMeaning} 
           placeholder={wordObj.meaning}
-        />
-        <input 
-          className='my-words-edit-field' 
-          type='checkbox' 
-          onChange={(e) => setNewKnown(e.target.checked)} 
-          checked={newKnown}
         />
       </>
     )}
@@ -110,21 +105,21 @@ function WordCard({
 
     )}
 
-    {(isMobileActionsOpen || deleteConfirmOpen) && (
-      <div onClick={closeChildModal} className="my-words-mobile-actions-modal-close-div"></div>
+    {(isMobileActionsOpen || deleteConfirmOpen || closeDivOpen) && (
+      <div onClick={() => {closeChildModal(); setCloseDivOpen(false); cancelEdit()}} style={{zIndex: isMobileActionsOpen ? '1000' : '-1'}} className="my-words-mobile-actions-modal-close-div"></div>
     )}
 
     {isMobileActionsOpen && isMobile && (
       <>
       
         <div className={`my-words-mobile-actions-modal ${isMobileActionsOpen ? 'show' : ''}`}>
-          <button onClick={() => toggleKnown(wordObj.id, !wordObj.known)} className='my-words-known-switch my-words-actions-modal-action'>
+          <button onClick={() => {toggleKnown(wordObj.id, !wordObj.known); setIsMobileActionsOpen(false)}} className='my-words-known-switch my-words-actions-modal-action'>
             <RightArrowIcon />
 
             <span className='my-words-mobile-actions-edit-span'>Change to {wordObj.known ? 'learning' : 'known'}</span>
           </button>
           
-          <button onClick={() => startEditing(wordObj)} className='my-words-edit my-words-actions-modal-action'>
+          <button onClick={() => {startEditing(wordObj); setIsMobileActionsOpen(false); setCloseDivOpen(true)}} className='my-words-edit my-words-actions-modal-action'>
             <EditIcon />
         
             <span className='my-words-mobile-actions-edit-span'>Edit word / meaning</span>
@@ -180,10 +175,10 @@ function WordCard({
     
     {isEditing && wordObj.id === editedWord && (
       <div className='my-words-flex-row'>
-        <button onClick={() => cancelEdit()} className='my-words-edit-cancel enabled'>
+        <button onClick={() => {cancelEdit(); setCloseDivOpen(false)}} className='my-words-edit-cancel enabled'>
           <CircleXIcon className={`word-card-desktop-icon ${wordObj.known ? 'known' : 'learning'}`} />
         </button>
-        <button onClick={() => completeEdit(wordObj)} className='my-words-edit-confirm enabled'>
+        <button onClick={() => {completeEdit(wordObj); setCloseDivOpen(false)}} className='my-words-edit-confirm enabled'>
           <CircleCheckIcon className={`word-card-desktop-icon ${wordObj.known ? 'known' : 'learning'}`} />
         </button>
       </div>
