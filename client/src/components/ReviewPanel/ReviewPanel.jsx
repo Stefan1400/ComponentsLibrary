@@ -21,6 +21,10 @@ function ReviewPanel() {
 
    const reviewsLeft = reviews.length - currentIndex;
 
+   // dueWords.forEach(w => {
+   //    console.log(w.known);
+   // })
+
    useEffect(() => {
       if (!resultsShown && !finished && dueWords.length > 0) {
          setReviews(dueWords);
@@ -46,6 +50,7 @@ function ReviewPanel() {
          setResultsShown(false);
       }
    }
+
 
    const handleAnswer = (answer) => {
       const currentWord = reviews[currentIndex];
@@ -87,6 +92,10 @@ function ReviewPanel() {
       setAnswerShown(prev => !prev);
    }
 
+   // useEffect(() => {
+   //    console.log(reviews[currentIndex].known);
+   // }, [])
+
 return (
   <div className='review-panel-div page'>
     {/* <h2>Review</h2> */}
@@ -94,7 +103,7 @@ return (
     <h3 className='words-due-h3'>Due Today: {finished ? 0 : reviewsLeft}</h3>
     
     {reviews.length > 0 && reviews[currentIndex] ? (
-      <div className='review-word-meaning-flex'>
+      <div className={`review-word-meaning-flex ${reviews[currentIndex].known ? 'known' : ''}`}>
         <h3 className='review-word-h3'>{reviews[currentIndex].word}</h3>
         {answerShown && (
           <p className='review-meaning'>{reviews[currentIndex].meaning}</p>

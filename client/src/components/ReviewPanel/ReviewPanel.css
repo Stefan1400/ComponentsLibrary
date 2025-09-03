@@ -45,7 +45,7 @@
 
 .review-word-h3 {
    font-size: 1.8rem;
-   color: #1E1E1E;
+   /* color: #1E1E1E; */
    position: absolute;
    top: 2rem;
    left: 2.5rem;
@@ -69,8 +69,13 @@
    width: 85vw;
    height: 45vh;
    border-radius: 18px;
-   /* position: relative; */
-   top: 25vh;
+   top: 19vh;
+   color: #1E1E1E;
+}
+
+.review-word-meaning-flex.known {
+   background-color: #1E1E1E;
+   color: white;
 }
 
 .reviews-no-reviews-today {
