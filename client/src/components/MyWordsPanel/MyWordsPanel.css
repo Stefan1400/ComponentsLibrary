@@ -18,6 +18,7 @@
 
 .my-words-search-input {
    width: 70vw;
+   width: 60vw;
    padding-right: 27%;
    
 }
@@ -272,6 +273,18 @@
       align-items: center;
       gap: 10px;
    }
+
+   .my-words-search-input {
+      width: 70vw;
+   }
+
+   .my-words-search-close {
+      right: 4%;
+   }
+
+   .my-words-search-clear {
+      right: 10%;
+   }
 }
 
 .my-words-word-stats-li {
@@ -443,4 +456,11 @@
 .delete-confirm-btn {
    background-color: white;
    color: black;
+}
+
+
+@media (min-width: 960px) {
+   .my-words-search-input {
+      width: 35vw;
+   }
 }
