@@ -43,11 +43,20 @@
    z-index: 50;
 }
 
+.review-known {
+   /* color: white; */
+   position: absolute;
+   top: 1rem;
+   font-size: 0.9rem;
+   left: 2.5rem;
+   font-weight: 200;
+   font-style: italic;
+}
+
 .review-word-h3 {
    font-size: 1.8rem;
-   /* color: #1E1E1E; */
    position: absolute;
-   top: 2rem;
+   top: 2.5rem;
    left: 2.5rem;
 }
 
@@ -67,14 +76,14 @@
    gap: 1rem;
    border: 1px solid #CECECE;
    width: 85vw;
-   height: 45vh;
+   height: 50vh;
    border-radius: 18px;
-   top: 19vh;
+   top: 16vh;
    color: #1E1E1E;
 }
 
 .review-word-meaning-flex.known {
-   background-color: #1E1E1E;
+   background-color: #343434;
    color: white;
 }
 

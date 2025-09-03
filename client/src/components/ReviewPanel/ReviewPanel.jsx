@@ -104,6 +104,7 @@ return (
     
     {reviews.length > 0 && reviews[currentIndex] ? (
       <div className={`review-word-meaning-flex ${reviews[currentIndex].known ? 'known' : ''}`}>
+        <span className='review-known'>{reviews[currentIndex].known ? 'known' : 'learning'}</span>
         <h3 className='review-word-h3'>{reviews[currentIndex].word}</h3>
         {answerShown && (
           <p className='review-meaning'>{reviews[currentIndex].meaning}</p>
