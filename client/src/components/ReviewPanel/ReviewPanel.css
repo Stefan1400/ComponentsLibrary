@@ -43,10 +43,6 @@
    color: #1E1E1E;
 }
 
-.review-meaning {
-   
-}
-
 .review-word-meaning-flex {
    display: flex;
    flex-direction: column;
@@ -59,7 +55,10 @@
 
 .reviews-no-reviews-today {
    position: absolute;
-   top: 35vh;
+   top: 42vh;
+   text-align: center;
+   line-height: 2rem;
+   width: 65vw;
 }
 
 .review-results {

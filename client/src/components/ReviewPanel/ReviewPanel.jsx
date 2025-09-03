@@ -19,7 +19,7 @@ function ReviewPanel() {
 
    const [sessionStarted, setSessionStarted] = useState(false);
 
-   const reviewsLeft = originalDueCount - totalCorrect;
+   const reviewsLeft = reviews.length - currentIndex;
 
    useEffect(() => {
       if (!resultsShown && !finished && dueWords.length > 0) {
@@ -51,7 +51,6 @@ function ReviewPanel() {
       const currentWord = reviews[currentIndex];
       
       if (!answer) {
-         // console.log('error inside handleAnswer: ', answer);
          return;
       }
 
@@ -62,12 +61,13 @@ function ReviewPanel() {
          handleUpdate(currentWord.id, 'correct');
       }
 
+
       if (answer === 'wrong') {
-         const updatedReviews = [...reviews, currentWord];
+         const updatedReviews = [...reviews];
          updatedReviews.splice(currentIndex, 1);
+         updatedReviews.push(currentWord);
 
          setReviews(updatedReviews);
-
          setTotalWrong(prev => prev + 1);
 
          handleUpdate(currentWord.id, 'wrong');
@@ -80,18 +80,11 @@ function ReviewPanel() {
       const updated = await updateSRS(wordId, answer);
 
       if (updated) {
-         // console.log('updated successfully');
       }
    }
 
    const toggelAnswerShown = () => {
       setAnswerShown(prev => !prev);
-   }
-
-   const handleFinish = () => {
-      setFinished(true);
-      setTotalCorrect(0);
-      setTotalWrong(0);
    }
 
 return (
@@ -108,35 +101,9 @@ return (
         )}
       </div>
     ) : (
-      resultsShown && reviews.length !== 0 && !finished ? (
-         <div className='review-results'>
-            <p className='reviews-finished-p'>Review Results</p>
-
-            <div className='reviews-results-category-div'>
-               <span>total: </span>
-               <span className='reviews-results-bold'>{originalDueCount}</span>
-            </div>
-
-            <div className='reviews-results-category-div'>
-               <span>correct: </span>
-               <span className='reviews-results-bold'>{totalCorrect}</span>
-            </div>
-            
-            <div className='reviews-results-category-div'>
-               <span>wrong: </span>
-               <span className='reviews-results-bold'>{totalWrong}</span>
-            </div>
-
-
-            <button onClick={() => handleFinish()} className='review-results-finish-btn enabled'>Finish</button>
-         </div>
-      ) : (reviews.length === 0 || finished) && (
-         <p className='reviews-no-reviews-today'>No reviews for today</p>
+         <p className='reviews-no-reviews-today'>You're all caught up! Nothing left to review today</p>
       )
-   
-    )}
-
-
+    }
     <div className="review-buttons">
       {!answerShown && reviewsLeft !== 0 && !resultsShown && (
         <button onClick={toggelAnswerShown} className='review-btn show-answer enabled'>
@@ -159,4 +126,4 @@ return (
 );
 }
 
-export default ReviewPanel
+export default ReviewPanel;
