@@ -57,6 +57,14 @@ function MyWordsPanel({  }) {
       await editWord(wordId, wordObj.word, wordObj.meaning, newValue);
       getMyWords();
       getAllStats();
+
+      if (isSearching) {
+        setSearchResults(prev =>
+          prev.map(w =>
+            w.id === wordId ? { ...w, known: newValue } : w
+          )
+        );
+      }
       if (closeChildModal) closeChildModal();
    }
 
