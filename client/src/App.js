@@ -172,7 +172,8 @@ function App() {
         <Route path='/add' element={<AddWordsPanel />} />
         <Route path='/review' element={<ReviewPanel />} />
         <Route path='/my-words' element={<MyWordsPanel />} />
-        <Route path='/account' element={!isMobile ? <AccountPage /> : <Navigate to='/' />} />
+        {/* <Route path='/account' element={!isMobile ? <AccountPage /> : <Navigate to='/' />} /> */}
+        <Route path='/account' element={<AccountPage /> } />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Routes>

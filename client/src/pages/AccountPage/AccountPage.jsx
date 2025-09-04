@@ -58,18 +58,18 @@ function AccountPage({ goToLogin, goToRegister }) {
     <div className='account-page page'>
       <h2>{`Hello, ${isLoggedIn ? user : 'Guest'}`}</h2>
       {isLoggedIn && (
-            <div className="menu-nav-auth-btns">
-               <button onClick={handleLogout} className='logout-btn enabled'>Logout</button>
-               <button onClick={showConfirmTab} className='delete-account-btn enabled'>Delete Account</button>
+            <div className="account-page-auth-btns">
+               <button onClick={handleLogout} className='auth-btn logout-btn'>Logout</button>
+               <button onClick={showConfirmTab} className='auth-btn delete-account-btn'>Delete Account</button>
             </div>
          )}
          {!isLoggedIn && (
-            <div className="menu-nav-auth-btns">
+            <div className="account-page-auth-btns">
                <Link to='/login'>
-                  <button onClick={goToLogin} className='login-btn enabled'>Login</button>
+                  <button onClick={goToLogin} className='auth-btn login-btn'>Login</button>
                </Link>
                <Link to='/register'>
-                  <button onClick={goToRegister} className='sign-up-btn enabled'>Sign Up</button>
+                  <button onClick={goToRegister} className='auth-btn sign-up-btn'>Sign Up</button>
                </Link>
             </div>
          )}

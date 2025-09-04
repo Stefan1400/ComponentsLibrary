@@ -38,9 +38,9 @@
    cursor: pointer;
 } */
 
-.logout-btn {
+/* .logout-btn {
    width: 50%;
-}
+} */
 
 .contact-link {
    text-decoration: underline;
@@ -84,11 +84,6 @@
    position: absolute;
    bottom: 8.5%;
    padding: 10%;
-}
-
-.menu-nav-auth-btns button {
-   border: 1px solid white;
-   background-color: transparent;
 }
 
 @media (min-width: 768px) {

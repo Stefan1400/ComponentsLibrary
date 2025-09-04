@@ -17,6 +17,7 @@
 .review-btn {
    border-radius: 3px;
    width: 8rem;
+   border: none;
 
 }
 
@@ -37,9 +38,9 @@
 }
 
 .words-due-h3 {
-   position: absolute;
+   /* position: absolute;
    top: 4%;
-   right: 5%;
+   right: 5%; */
    z-index: 50;
 }
 
@@ -58,6 +59,23 @@
    position: absolute;
    top: 2.5rem;
    left: 2.5rem;
+}
+
+.progress-circle {
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: fixed;
+   top: 1rem;
+   right: 1rem;
+
+   background: conic-gradient(
+    #444 0% var(--progress),
+    #a9a9a9 var(--progress) 100%
+  );
 }
 
 .review-meaning {

@@ -21,9 +21,7 @@ function ReviewPanel() {
 
    const reviewsLeft = reviews.length - currentIndex;
 
-   // dueWords.forEach(w => {
-   //    console.log(w.known);
-   // })
+
 
    useEffect(() => {
       if (!resultsShown && !finished && dueWords.length > 0) {
@@ -92,15 +90,27 @@ function ReviewPanel() {
       setAnswerShown(prev => !prev);
    }
 
-   // useEffect(() => {
-   //    console.log(reviews[currentIndex].known);
-   // }, [])
+   // const completed = originalDueCount - reviewsLeft;
+   // const progress = originalDueCount > 0 ? (completed / originalDueCount) * 100 : 0;
+   
+   // const completed = totalCorrect + totalWrong;
+   // const progress = originalDueCount > 0 ? (completed / originalDueCount) * 100 : 0;
+
+   const completed = currentIndex;
+   const progress = originalDueCount > 0 ? (completed / originalDueCount) * 100 : 0;
+
+   useEffect(() => {
+      console.log('completed: ', completed);
+      console.log('progress: ', progress);
+   }, []);
 
 return (
   <div className='review-panel-div page'>
     {/* <h2>Review</h2> */}
-    
-    <h3 className='words-due-h3'>Due Today: {finished ? 0 : reviewsLeft}</h3>
+
+    <div className="progress-circle" style={{ "--progress": `${progress}%`}}>
+      <h3 className='words-due-h3'>{finished ? 0 : reviewsLeft}</h3>
+    </div>
     
     {reviews.length > 0 && reviews[currentIndex] ? (
       <div className={`review-word-meaning-flex ${reviews[currentIndex].known ? 'known' : ''}`}>

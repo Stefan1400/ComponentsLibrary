@@ -49,10 +49,11 @@ function Navbar({ toggleDesktopNavbar, toggleLogin, toggleAccountPage, toggleAdd
          </Link>
          </li>
          
+         {/* ACCOUNT LINK */}
          <li onClick={toggleAccountPage} className={`nav-flex-item nav-account ${accountVisible ? 'selected' : ''}`}>
             <Link className='nav-link' to='/account'>
-               <AccountIcon />
- 
+               <AccountIcon className={`nav-icon ${accountVisible ? 'selected' : ''}`} />
+               
             <span className='nav-flex-item-title'>account</span>  
             </Link>
          </li>

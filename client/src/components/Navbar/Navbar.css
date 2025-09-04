@@ -47,7 +47,7 @@
    height: 100%;
    list-style: none;
    display: grid;
-   grid-template-columns: repeat(3, 1fr);
+   grid-template-columns: repeat(4, 1fr);
    grid-template-rows: 1fr;
    place-items: center;
    
@@ -174,7 +174,7 @@
    cursor: pointer;
 } */
 
-.nav-flex-item-title, .nav-account, .nav-innumerable-h1 {
+.nav-flex-item-title, .nav-innumerable-h1 {
    display: none;
 }
 
