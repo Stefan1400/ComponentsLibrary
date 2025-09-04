@@ -56,6 +56,8 @@ function AccountPage({ goToLogin, goToRegister }) {
 
    return (
     <div className='account-page page'>
+      <h3 className='page-header'>Account</h3>
+      
       <h2 className='account-page-username-h2'>{`Hello, ${isLoggedIn ? user : 'Guest'}`}</h2>
       {isLoggedIn && (
             <div className="account-page-auth-btns">

@@ -23,6 +23,13 @@ h2 {
    top: 20%;
 }
 
+.page-header {
+   position: fixed;
+   top: 1.5rem;
+   left: 1.5rem;
+   font-weight: 600;
+}
+
 input {
    border: 1px solid var(--text-input-border);
    background-color: var(--text-input-bg);

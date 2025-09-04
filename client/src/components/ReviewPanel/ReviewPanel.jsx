@@ -106,7 +106,7 @@ function ReviewPanel() {
 
 return (
   <div className='review-panel-div page'>
-    {/* <h2>Review</h2> */}
+    <h3 className='page-header'>Review</h3>
 
     <div className="progress-circle" style={{ "--progress": `${progress}%`}}>
       <h3 className='words-due-h3'>{finished ? 0 : reviewsLeft}</h3>

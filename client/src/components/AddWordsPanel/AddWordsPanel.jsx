@@ -42,7 +42,7 @@ function AddWordsPanel() {
 
   return (
     <div className='add-word-panel page'>
-      <h2 className='add-word-h2'>Add Word</h2>
+      <h3 className='page-header'>Add</h3>
       <input onChange={(e) => setWordValue(e.target.value)} value={wordValue} className='word-input' type="text" placeholder='vocab' />
       <input onChange={(e) => setMeaningValue(e.target.value)} value={meaningValue} className='meaning-input' type="text" placeholder='meaning' />
       {/* <div className='known-div'> 

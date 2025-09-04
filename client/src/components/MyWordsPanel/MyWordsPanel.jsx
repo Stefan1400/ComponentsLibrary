@@ -145,6 +145,8 @@ function MyWordsPanel({  }) {
   return (
     <div className="panel-wrapper page">
 
+      <h3 className='page-header'>My Words</h3>
+
       {/* STATS */}
       <ul className="my-words-word-stats">
         <MyStats statType='total_words' statName='total' />
