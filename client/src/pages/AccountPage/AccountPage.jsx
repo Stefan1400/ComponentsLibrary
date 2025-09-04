@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { NotificationContext } from '../../context/Notification/Notification';
 import { Link } from 'react-router-dom';
 import { XIcon } from '../../assets/Icons/Icons';
+import ConfirmPopup from '../../components/ConfirmPopup/ConfirmPopup';
 
 function AccountPage({ goToLogin, goToRegister }) {
    
@@ -56,6 +57,10 @@ function AccountPage({ goToLogin, goToRegister }) {
 
    return (
     <div className='account-page page'>
+      {confirmOpen && (
+         <ConfirmPopup confirmType='delete' cancelDelete={cancelDeleteAccount} confirmDelete={handleDeleteAccount} />
+      )}
+      
       <h3 className='page-header'>Account</h3>
       
       <h2 className='account-page-username-h2'>{`Hello, ${isLoggedIn ? user : 'Guest'}`}</h2>
@@ -76,7 +81,7 @@ function AccountPage({ goToLogin, goToRegister }) {
             </div>
          )}
 
-         {confirmOpen && (
+         {1 === 0 && (
             <div className="delete-account-confirm-tab">
 
                <XIcon onClick={cancelDeleteAccount} className='delete-account-close' width="20" height="20" />

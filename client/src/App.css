@@ -28,6 +28,7 @@ h2 {
    top: 1.5rem;
    left: 1.5rem;
    font-weight: 600;
+   font-size: 1.35rem;
 }
 
 input {
@@ -37,7 +38,6 @@ input {
    width: 45%;
    height: 6vh;
    padding-left: 20px;
-   /* border-radius: 35px; */
    border-radius: 75px;
    font-size: 16px;
 
@@ -52,7 +52,6 @@ input[type="checkbox"] {
 }
 
 button {
-   /* width: 30vw; */
    width: 45%;
    height: 6vh;
    background-color: #3E3E3E;
@@ -81,7 +80,6 @@ button:hover {
    top: 2rem;
    left: 2rem;
    cursor: pointer;
-   /* padding: 1rem; */
    z-index: 1000;
    transition: all 0.75s cubic-bezier(0.4, 0, 0.2, 1);
 }
