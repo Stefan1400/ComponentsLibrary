@@ -17,7 +17,7 @@ function App() {
   const [addWordVisible, setAddWordVisible] = useState(true);
   const [reviewVisible, setReviewVisible] = useState(false);
   const [myWordsVisible, setMyWordsVisible] = useState(false);
-  const [menuSliderVisible, setMenuSliderVisible] = useState(false);
+  // const [menuSliderVisible, setMenuSliderVisible] = useState(false);
 
   const toggleAddWord = () => {
     resetAllPages();
@@ -46,9 +46,9 @@ function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [desktopNavbarVisible, setDesktopNavbarVisible] = useState(true);
 
-  const toggleMenuSlider = () => {
-    setMenuSliderVisible(prev => !prev);
-  }
+  // const toggleMenuSlider = () => {
+  //   setMenuSliderVisible(prev => !prev);
+  // }
 
   useEffect(() => {
     const handleResize = () => {
@@ -98,7 +98,7 @@ function App() {
   } 
 
   const resetAllPages = () => {
-    setMenuSliderVisible(false)
+    // setMenuSliderVisible(false)
     setAddWordVisible(false)
     setReviewVisible(false)
     setMyWordsVisible(false)
@@ -144,14 +144,14 @@ function App() {
           toggleDesktopNavbar={toggleDesktopNavbar}
         />
 
-      {isMobile && (
+      {/* {isMobile && (
         <MenuSlider 
           goToLogin={toggleLoginPage} 
           goToRegister={toggleRegisterPage} 
           toggleMenuSlider={toggleMenuSlider} 
           menuSliderVisible={menuSliderVisible}
         />
-      )}
+      )} */}
 
 
       {!isLoggedIn && guestMessageVisible && (
@@ -163,9 +163,9 @@ function App() {
         </div>
       )}
 
-      {!menuSliderVisible && (
+      {/* {!menuSliderVisible && (
         <MenuBurgerIcon onClick={toggleMenuSlider} className='menu-slider-btn' />
-      )}
+      )} */}
       
       <Routes>
         <Route path='/' element={<AddWordsPanel />} />
