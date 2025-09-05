@@ -18,6 +18,7 @@
 
 .confirm-popup.delete {
    height: 35vh;
+   top: 27vh;
 }
 
 .confirm-popup.logout {
