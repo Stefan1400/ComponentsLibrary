@@ -7,7 +7,6 @@ import { XIcon } from '../../assets/Icons/Icons';
 import ConfirmPopup from '../../components/ConfirmPopup/ConfirmPopup';
 
 function AccountPage({ goToLogin, goToRegister }) {
-   
 
    const { isLoggedIn, user, logout, deleteAccount } = useContext(AuthContext);
    const { showNotification } = useContext(NotificationContext);
@@ -15,9 +14,10 @@ function AccountPage({ goToLogin, goToRegister }) {
    //logout 
       const handleLogout = async () => {
          const loggedOut = await logout();
-   
+         
          if (loggedOut) {
             showNotification('successfully logged out');
+            setShowLogoutConfirm(false);
          } else {
             showNotification('error logging out');
          }
@@ -25,11 +25,18 @@ function AccountPage({ goToLogin, goToRegister }) {
    
       //delete account
       const [isDeleting, setIsDeleting] = useState(false);
-      const [confirmOpen, setConfirmOpen] = useState(false);
+      const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+      const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
       const [loggedPW, setLoggedPW] = useState('');
    
-      const showConfirmTab = () => {
-         setConfirmOpen(true);
+      const showConfirmPopup = (type) => {
+         if (type === 'delete') {
+            setShowDeleteConfirm(true);
+            return;
+         } else if (type === 'logout') {
+            setShowLogoutConfirm(true);
+            return;
+         }
       }
    
       const handleDeleteAccount = async () => {
@@ -42,7 +49,7 @@ function AccountPage({ goToLogin, goToRegister }) {
          const deletedAccount = await deleteAccount(loggedPW);
    
          if (deletedAccount) {
-            setConfirmOpen(false);
+            setShowDeleteConfirm(false);
             showNotification('account successfully deleted');
             setIsDeleting(false);
             setLoggedPW('');
@@ -50,15 +57,32 @@ function AccountPage({ goToLogin, goToRegister }) {
       }
 
       const cancelDeleteAccount = () => {
-         setConfirmOpen(false);
+         setShowDeleteConfirm(false);
          setIsDeleting(false);
          setLoggedPW('');
       }
 
+      const cancelLogout = () => {
+         setShowLogoutConfirm(false);
+      }
+
    return (
     <div className='account-page page'>
-      {confirmOpen && (
-         <ConfirmPopup confirmType='delete' cancelDelete={cancelDeleteAccount} confirmDelete={handleDeleteAccount} />
+      {showDeleteConfirm && (
+         <ConfirmPopup 
+            confirmType='delete' 
+            cancel={cancelDeleteAccount} 
+            loggedPW={loggedPW} 
+            setLoggedPW={setLoggedPW}
+            confirm={handleDeleteAccount}
+         />
+      )}
+      {showLogoutConfirm && (
+         <ConfirmPopup 
+            confirmType='logout' 
+            cancel={cancelLogout} 
+            confirm={handleLogout}
+         />
       )}
       
       <h3 className='page-header'>Account</h3>
@@ -66,8 +90,8 @@ function AccountPage({ goToLogin, goToRegister }) {
       <h2 className='account-page-username-h2'>{`Hello, ${isLoggedIn ? user : 'Guest'}`}</h2>
       {isLoggedIn && (
             <div className="account-page-auth-btns">
-               <button onClick={handleLogout} className='auth-btn logout-btn'>Logout</button>
-               <button onClick={showConfirmTab} className='auth-btn delete-account-btn'>Delete Account</button>
+               <button onClick={() => showConfirmPopup('logout')} className='auth-btn logout-btn'>Logout</button>
+               <button onClick={() => showConfirmPopup('delete')} className='auth-btn delete-account-btn'>Delete Account</button>
             </div>
          )}
          {!isLoggedIn && (

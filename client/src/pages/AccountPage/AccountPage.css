@@ -57,13 +57,13 @@
    height: 60px;
    border-radius: 3px;
    font-size: 1.15rem;
-
+   
 }
 
 .login-btn {
    border: 1px solid gray;
    background-color: transparent;
-   background-color: rgb(241, 241, 241);
+   /* background-color: rgb(241, 241, 241); */
    color: black;
 }
 
