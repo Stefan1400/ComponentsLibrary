@@ -7,7 +7,8 @@ function ConfirmPopup({
    cancel, 
    loggedPW, 
    setLoggedPW, 
-   confirm 
+   confirm,
+   word,
 }) {
 
    // STATES
@@ -19,6 +20,13 @@ function ConfirmPopup({
    return (
     <div className={`confirm-popup ${confirmType}`}>
       <h3 className='confirm-popup-message'>{confirmType === 'delete' ? 'Delete Account?' : confirmType === 'logout' ? 'Logout?' : ''}</h3>
+      
+      {confirmType === 'delete-word' && (
+         <h3 className="confirm-popup-message-delete-word"> Delete 
+            <span className='confirm-popup-message-word'>{word}</span>
+            ?
+         </h3>
+      )}
       {confirmType === 'delete' && (
          <>
             <span className='confirm-popup-message-details'>Please enter your password to delete</span>
@@ -31,7 +39,7 @@ function ConfirmPopup({
       
       <div className="confirm-popup-btns">
          <button onClick={cancel} className="confirm-popup-btn-cancel">Cancel</button>
-         <button onClick={confirm} className="confirm-popup-btn-confirm">{confirmType === 'delete' ? 'Delete' : confirmType === 'logout' ? 'Logout' : ''}</button>
+         <button onClick={confirm} className="confirm-popup-btn-confirm">{confirmType === 'delete' ? 'Delete' : confirmType === 'logout' ? 'Logout' : confirmType === 'delete-word' ? 'Delete' : ''}</button>
       </div>
     </div>
   )

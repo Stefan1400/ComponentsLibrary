@@ -24,6 +24,11 @@
 .confirm-popup.logout {
    height: 20vh;
 }
+
+.confirm-popup.delete-word {
+   height: 22vh;
+}
+
 .confirm-popup.logout .confirm-popup-btn-cancel {
    border-color: #3E3E3E;
    color: #3E3E3E;
@@ -40,7 +45,6 @@
 }
 
 .confirm-popup-message-details {
-   /* text-align: center; */
    font-size: 0.8rem;
    font-weight: 400;
 }
@@ -72,4 +76,14 @@
 .little {
    font-size: 0.6rem;
    font-weight: 400;
+}
+
+.confirm-popup-message-delete-word {
+   font-size: 1.1rem;
+   font-weight: 500;
+}
+
+.confirm-popup-message-word {
+   font-weight: 900;
+   margin-left: 10px;
 }

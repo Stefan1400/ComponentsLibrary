@@ -5,6 +5,7 @@ import { WordContext } from '../../../context/WordContext';
 import { StatsContext } from '../../../context/StatsContext';
 import { NotificationContext } from '../../../context/Notification/Notification';
 import { HorizontalElipsisIcon, RightArrowIcon, EditIcon, TrashIcon, CircleXIcon, CircleCheckIcon } from '../../../assets/Icons/Icons';
+import ConfirmPopup from '../../ConfirmPopup/ConfirmPopup';
 
 function WordCard({ 
    wordObj,
@@ -101,6 +102,10 @@ function WordCard({
     )}
 
     {deleteConfirmOpen && (
+      <ConfirmPopup word={wordObj.word} confirmType='delete-word' cancel={() => {setIsDeleting(false); setDeleteConfirmOpen(false)}} confirm={() => testDeleteFunction(wordObj.id)} />
+    )}
+
+    {1 === 0 && (
       <div style={{backgroundColor: 'white', color: 'black'}} className="delete-confirm-div">
         <span style={{backgroundColor: 'white', color: 'black'}} className='delete-confirm-message'>Are you sure you want to delete this word?</span>
         <button style={{backgroundColor: 'gray', color: 'white'}} onClick={() => testDeleteFunction(wordObj.id)} className='delete-confirm-btn'>Delete</button>
