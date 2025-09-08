@@ -28,7 +28,7 @@ function AccountPage({ goToLogin, goToRegister }) {
       const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
       const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
       const [loggedPW, setLoggedPW] = useState('');
-   
+
       const showConfirmPopup = (type) => {
          if (type === 'delete') {
             setShowDeleteConfirm(true);
@@ -102,18 +102,6 @@ function AccountPage({ goToLogin, goToRegister }) {
                <Link to='/register'>
                   <button onClick={goToRegister} className='auth-btn sign-up-btn'>Sign Up</button>
                </Link>
-            </div>
-         )}
-
-         {1 === 0 && (
-            <div className="delete-account-confirm-tab">
-
-               <XIcon onClick={cancelDeleteAccount} className='delete-account-close' width="20" height="20" />
-
-               <h3 className="delete-account-confirm-h3">Please enter your password to delete account</h3>
-               <span className='delete-account-confirm-note'>Warning: All data will be lost and cannot be undone. </span>
-               <input onChange={(e) => setLoggedPW(e.target.value)} value={loggedPW} type="text" className="delete-account-confirm-pw-input" placeholder='password'/>
-               <button onClick={handleDeleteAccount} className="delete-account-confirm-submit-btn enabled">Submit</button>
             </div>
          )}
     </div>

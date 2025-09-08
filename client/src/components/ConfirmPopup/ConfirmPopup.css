@@ -87,3 +87,14 @@
    font-weight: 900;
    margin-left: 10px;
 }
+
+.confirm-popup-close-div {
+   width: 100vw;
+   height: 100vh;
+   opacity: 0.4;
+   background-color: rgb(97, 97, 97);
+   position: fixed;
+   left: 0;
+   top: 0;
+   z-index: 1000;
+}
