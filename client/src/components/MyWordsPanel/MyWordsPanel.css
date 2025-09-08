@@ -407,9 +407,9 @@
 
 .my-words-mobile-actions-modal-close-div {
    width: 100vw;
-   height: 100vh;
+   height: 120vh;
    position: fixed;
-   top: 0;
+   top: -20vh;
    left: 0;
    opacity: 0.4;
    background-color: rgb(97, 97, 97);
