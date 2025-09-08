@@ -37,13 +37,6 @@
    width: 100%;
 }
 
-.words-due-h3 {
-   /* position: absolute;
-   top: 4%;
-   right: 5%; */
-   z-index: 50;
-}
-
 .review-known {
    /* color: white; */
    position: absolute;
@@ -59,23 +52,6 @@
    position: absolute;
    top: 2.5rem;
    left: 2.5rem;
-}
-
-.progress-circle {
-   width: 40px;
-   height: 40px;
-   border-radius: 50%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   position: fixed;
-   top: 1rem;
-   right: 1rem;
-
-   background: conic-gradient(
-    #444 0% var(--progress),
-    #a9a9a9 var(--progress) 100%
-  );
 }
 
 .review-meaning {
@@ -129,4 +105,84 @@
    text-align: center;
    position: fixed;
    bottom: 22vh;
+}
+
+
+
+
+
+
+/* PROGRESS BAR CIRCLE */
+
+
+/* .progress-circle {
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: fixed;
+   top: 1rem;
+   right: 1rem;
+   transition: --progress 1s ease-in-out;
+   background: conic-gradient(
+    #444 0% var(--progress),
+    #a9a9a9 var(--progress) 100%
+  );
+}
+
+.progress-circle-inner {
+   width: 75%;
+   height: 75%;
+   position: absolute;
+   background-color: white;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+} */
+
+.words-due-h3 {
+   z-index: 50;
+   font-size: 1.3rem;
+}
+
+.progress-svg {
+   position: fixed;
+   top: 1rem;
+   right: 1rem;
+}
+
+.progress-bar {
+  transition: stroke-dashoffset 0.3s ease-in-out;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%; /* start from top */
+}
+
+
+
+
+
+
+
+/* PROGRESS BAR */
+
+.progress-bar {
+   position: fixed;
+   top: 2rem;
+   right: 5vw;
+   height: 10px;
+   width: 150px;
+   background-color: rgb(184, 184, 184);
+   border-radius: 10px;
+}
+
+.progress-bar-fill {
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 10px;
+   background-color: rgb(16, 16, 16);
+   border-radius: 10px;
 }
