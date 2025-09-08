@@ -25,9 +25,6 @@ const addNewWord = async (req, res) => {
    
    try {
 
-      // const nextReviewAt = new Date();
-      // nextReviewAt.setDate(nextReviewAt.getDate() + 1);
-
       const addedWord = await Word.addNewWord(userId, 1, word, meaning, known);
 
 
@@ -124,86 +121,10 @@ const search = async (req, res) => {
    }
 };
 
-// const bulkCreateWords = async (req, res) => {
-//    try {
-//       const { words } = req.body;
-//       const userId = req.user.id; // Assuming you have user ID from auth middleware
-
-//       if (!words || !Array.isArray(words) || words.length === 0) {
-//          return res.status(400).json({ message: 'No words provided for migration' });
-//       }
-
-//       // Validate each word has required fields
-//       for (const word of words) {
-//          if (!word.word || !word.meaning || typeof word.known !== 'boolean') {
-//             return res.status(400).json({ 
-//                message: 'Each word must have word, meaning, and known fields' 
-//             });
-//          }
-//       }
-
-//       // Check for duplicates within the batch and against existing words
-//       const existingWords = await Word.getWordsByUserId(userId);
-//       const existingWordsList = existingWords.map(w => w.word.toLowerCase().trim());
-      
-//       const wordsToInsert = [];
-//       const duplicates = [];
-
-//       for (const word of words) {
-//          const normalizedWord = word.word.toLowerCase().trim();
-         
-//          // Check if word already exists in user's collection
-//          if (existingWordsList.includes(normalizedWord)) {
-//             duplicates.push(word.word);
-//             continue;
-//          }
-
-//          // Check if word is duplicate within the batch
-//          if (wordsToInsert.some(w => w.word.toLowerCase().trim() === normalizedWord)) {
-//             duplicates.push(word.word);
-//             continue;
-//          }
-
-//          wordsToInsert.push({
-//             word: word.word.trim(),
-//             meaning: word.meaning.trim(),
-//             known: word.known,
-//             userId: userId,
-//             srs_stage: word.srs_stage || 1,  // ← Preserve SRS stage
-//             next_review_at: word.next_review_at ? new Date(word.next_review_at) : new Date(),
-//             last_reviewed_at: word.last_reviewed_at ? new Date(word.last_reviewed_at) : null
-//          });
-//       }
-
-//       // Insert non-duplicate words
-//       let insertedWords = [];
-//       if (wordsToInsert.length > 0) {
-//          insertedWords = await Word.bulkCreateWords(wordsToInsert);
-//       }
-
-//       res.status(200).json({
-//          message: 'Migration completed',
-//          inserted: insertedWords.length,
-//          duplicates: duplicates.length,
-//          duplicateWords: duplicates
-//       });
-
-//    } catch (err) {
-//       console.error('Error in bulk word creation:', err);
-//       res.status(500).json({ message: 'Failed to migrate words' });
-//    }
-// };
-
-
-
 module.exports = {
    getAllWords,
    addNewWord,
    editWord,
    deleteWord,
    search,
-   // bulkCreateWords,
 };
-
-
-//just a random comment

@@ -23,6 +23,8 @@ function WordCard({
    toggleKnown,
    isMobile,
    editRef,
+   isDeleting,
+   setIsDeleting,
 }) {
   
    // STATES
@@ -59,7 +61,7 @@ function WordCard({
    const toggleDeleteConfirm = () => {
     setDeleteConfirmOpen(true);
     setIsMobileActionsOpen(false);
-    
+    setIsDeleting(true);
    } 
   
    // JSX
@@ -95,8 +97,15 @@ function WordCard({
         </div>
       </>
     )}
+
+    {deleteConfirmOpen && (
+      <div style={{backgroundColor: 'white', color: 'black'}} className="delete-confirm-div">
+        <span style={{backgroundColor: 'white', color: 'black'}} className='delete-confirm-message'>Are you sure you want to delete this word?</span>
+        <button style={{backgroundColor: 'gray', color: 'white'}} onClick={() => testDeleteFunction(wordObj.id)} className='delete-confirm-btn'>Delete</button>
+      </div>
+    )}
     
-    <li style={wordObj.known ? { backgroundColor: '#323232'} : { backgroundColor: 'white'} } className={`my-words-list-item ${wordObj.known ? 'known' : 'learning'}`} id={wordObj.id === editedWord ? 'selected' : wordObj.id !== editedWord && editedWord !== null ? 'hide' : ''} key={wordObj.id}>
+    <li style={wordObj.known ? { backgroundColor: '#323232'} : { backgroundColor: 'white'} } className={`my-words-list-item ${wordObj.known ? 'known' : 'learning'}`} id={wordObj.id === editedWord ? 'selected' : wordObj.id !== editedWord && editedWord !== null ? 'hide' : isDeleting ? 'hide' : ''} key={wordObj.id}>
 
     {(!isEditing || (isEditing && wordObj.id !== editedWord)) && (
       <>
@@ -120,13 +129,6 @@ function WordCard({
           placeholder={wordObj.meaning}
         />
       </>
-    )}
-
-    {deleteConfirmOpen && (
-      <div style={{backgroundColor: 'white', color: 'black'}} className="delete-confirm-div">
-        <span style={{backgroundColor: 'white', color: 'black'}} className='delete-confirm-message'>Are you sure you want to delete this word?</span>
-        <button style={{backgroundColor: 'gray', color: 'white'}} onClick={() => testDeleteFunction(wordObj.id)} className='delete-confirm-btn'>Delete</button>
-      </div>
     )}
 
 

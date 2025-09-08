@@ -25,6 +25,7 @@ function MyWordsPanel({  }) {
    const [newMeaning, setNewMeaning] = useState('');
    const [newKnown, setNewKnown] = useState(null);
    const [editedWord, setEditedWord] = useState(null);
+   const [isDeleting, setIsDeleting] = useState(false);
 
    const editRef = useRef();
    
@@ -38,12 +39,13 @@ function MyWordsPanel({  }) {
    // FUNCTIONS
 
    const handleDelete = async (wordId, closeChildModal) => {
-      console.log(wordId);
+    console.log('deleted word: ');
     
     const deleted = await deleteWord(wordId);
 
       if (deleted) {
         getAllStats();
+        setIsDeleting(false);
         if (closeChildModal) closeChildModal();
       }
 
@@ -184,6 +186,8 @@ function MyWordsPanel({  }) {
               toggleKnown={toggleKnown}
               isMobile={isMobile}
               editRef={editRef}
+              isDeleting={isDeleting}
+              setIsDeleting={setIsDeleting}
             />
           ))}
         </ul>
@@ -208,6 +212,8 @@ function MyWordsPanel({  }) {
               toggleKnown={toggleKnown}
               isMobile={isMobile}
               editRef={editRef}
+              isDeleting={isDeleting}
+              setIsDeleting={setIsDeleting}
             />
           ))}
         </ul>
