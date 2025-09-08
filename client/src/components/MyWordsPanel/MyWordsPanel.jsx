@@ -16,6 +16,7 @@ function MyWordsPanel({  }) {
 
   //  STATE
    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
    
    const [isSearching, setIsSearching] = useState(false);
    const [searchResults, setSearchResults] = useState([]);
@@ -188,6 +189,8 @@ function MyWordsPanel({  }) {
               editRef={editRef}
               isDeleting={isDeleting}
               setIsDeleting={setIsDeleting}
+              deleteConfirmOpen={deleteConfirmOpen}
+              setDeleteConfirmOpen={setDeleteConfirmOpen}
             />
           ))}
         </ul>
@@ -214,6 +217,8 @@ function MyWordsPanel({  }) {
               editRef={editRef}
               isDeleting={isDeleting}
               setIsDeleting={setIsDeleting}
+              deleteConfirmOpen={deleteConfirmOpen}
+              setDeleteConfirmOpen={setDeleteConfirmOpen}
             />
           ))}
         </ul>

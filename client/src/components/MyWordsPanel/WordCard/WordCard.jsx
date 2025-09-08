@@ -25,12 +25,13 @@ function WordCard({
    editRef,
    isDeleting,
    setIsDeleting,
+   deleteConfirmOpen,
+   setDeleteConfirmOpen,
 }) {
   
    // STATES
 
    const [isMobileActionsOpen, setIsMobileActionsOpen] = useState(false);
-   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
    const [closeDivOpen, setCloseDivOpen] = useState(false);
    
    // CONTEXTS
@@ -42,6 +43,7 @@ function WordCard({
    const testDeleteFunction = (wordId) => {
       console.log(wordId);
       handleDelete(wordId);
+      setDeleteConfirmOpen(false);
    }
 
    const closeChildModal = () => {
@@ -105,7 +107,7 @@ function WordCard({
       </div>
     )}
     
-    <li style={wordObj.known ? { backgroundColor: '#323232'} : { backgroundColor: 'white'} } className={`my-words-list-item ${wordObj.known ? 'known' : 'learning'}`} id={wordObj.id === editedWord ? 'selected' : wordObj.id !== editedWord && editedWord !== null ? 'hide' : isDeleting ? 'hide' : ''} key={wordObj.id}>
+    <li style={wordObj.known ? { backgroundColor: '#323232'} : { backgroundColor: 'white'} } className={`my-words-list-item ${wordObj.known ? 'known' : 'learning'}`} id={wordObj.id === editedWord ? 'selected' : isDeleting && deleteConfirmOpen ? 'hide' : wordObj.id !== editedWord && editedWord !== null ? 'hide' : ''} key={wordObj.id}>
 
     {(!isEditing || (isEditing && wordObj.id !== editedWord)) && (
       <>
